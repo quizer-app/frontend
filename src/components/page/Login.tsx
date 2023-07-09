@@ -1,7 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
-import { useContext, useEffect, useRef, useState } from "react";
-import axios from "../api/axios";
-import AuthContext from "../context/AuthProvider";
+import { useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "../../api/axios";
+import useAuth from "../../hooks/useAuth";
 
 interface LoginForm {
 	usernameOrEmail: string;
@@ -9,14 +10,18 @@ interface LoginForm {
 }
 
 export default function Login() {
-	const { setAuth } = useContext(AuthContext);
+	const { setAuth } = useAuth();
+
+	const navigate = useNavigate();
+	const location = useLocation();
+	const from: string = location.state?.from.pathname || "/";
+
 	const userRef = useRef<HTMLInputElement>(null);
 	const errorRef = useRef<HTMLParagraphElement>(null);
 
 	const [user, setUser] = useState("");
 	const [password, setPassword] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
-	const [success, setSuccess] = useState(false);
 
 	useEffect(() => {
 		userRef.current?.focus();
@@ -35,7 +40,7 @@ export default function Login() {
 		onSuccess: (data) => {
 			const accessToken: string = data.data.accessToken;
 			setAuth({ accessToken });
-			setSuccess(true);
+			navigate(from, { replace: true });
 		},
 		onError: (err: any) => {
 			setErrorMessage(err.response.data.message);
@@ -79,7 +84,6 @@ export default function Login() {
 
 				<button>Sign In</button>
 			</form>
-			{success && JSON.stringify(loginMutation.data)}
 		</section>
 	);
 }

@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
-import axios from "../api/axios";
+import axios from "../../api/axios";
 
 interface RegisterForm {
 	username: string;
