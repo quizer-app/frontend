@@ -34,7 +34,7 @@ export default function Login() {
 	const loginMutation = useMutation({
 		mutationFn: (user: LoginForm) => {
 			return axios.post("/auth/login", user, {
-				withCredentials: false,
+				withCredentials: true,
 			});
 		},
 		onSuccess: (data) => {

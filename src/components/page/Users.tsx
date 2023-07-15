@@ -1,33 +1,31 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import axios from "../../api/axios";
-// import axios from '../api/axios'
+import useRefreshToken from "../../hooks/useRefreshToken";
 
 export default function Users() {
-	const [users, setUsers] = useState();
+	const { isLoading, isError, data } = useQuery({
+		queryKey: ["users"],
+		queryFn: () => axios.get("/users"),
+	});
+	const refresh = useRefreshToken();
 
-	useEffect(() => {
-		let isMounted = true;
-		const controller = new AbortController();
+	return (
+		<article>
+			<h2>Users list</h2>
+			{JSON.stringify(data)}
+			{isLoading && <div>Loading...</div>}
+			{isError && <div>Error</div>}
+			{!isLoading && !isError && (
+				<ul>
+					{data.data.map((user: any) => (
+						<li key={user.id}>
+							{user.username} - {user.email}
+						</li>
+					))}
+				</ul>
+			)}
 
-		const getUsers = async () => {
-			try {
-				const response = await axios.get("/users", {
-					signal: controller.signal,
-				});
-				console.log(response.data);
-				if (isMounted) {
-					setUsers(response.data);
-				}
-			} catch (error) {
-				console.error(error);
-			}
-		};
-		getUsers();
-		return () => {
-			isMounted = false;
-			controller.abort();
-		};
-	}, []);
-
-	return <div>Users</div>;
+			<button onClick={refresh}>Refresh</button>
+		</article>
+	);
 }

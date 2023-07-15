@@ -57,7 +57,7 @@ export default function Register() {
 	const registerMutation = useMutation({
 		mutationFn: (newUser: RegisterForm) => {
 			return axios.post("/auth/register", newUser, {
-				withCredentials: false,
+				withCredentials: true,
 			});
 		},
 		onSuccess: () => {
