@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
+import Layout from "./layout/Layout";
 import Home from "./page/Home";
 import Login from "./page/Login";
 import Register from "./page/Register";
 import Users from "./page/Users";
-import Layout from "./router/Layout";
 import RequireAuth from "./router/RequireAuth";
 import NotFound from "./status/NotFound";
 import Unauthorized from "./status/Unauthorized";
@@ -18,7 +18,7 @@ export default function App() {
 				<Route path="users" element={<Users />} />
 
 				<Route element={<RequireAuth />}>
-					<Route path="/" element={<Home />} />R
+					<Route path="/" element={<Home />} />
 				</Route>
 
 				<Route path="*" element={<NotFound />} />

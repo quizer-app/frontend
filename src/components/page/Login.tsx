@@ -58,7 +58,7 @@ export default function Login() {
 			<p ref={errorRef} className={errorMessage ? "errmsg" : "hidden"}>
 				{errorMessage}
 			</p>
-			<h1>Sign In</h1>
+			<h1 className="text-3xl underline">Sign In</h1>
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="usernameOrEmail">Username or Email:</label>
 				<input
