@@ -19,6 +19,7 @@ export default function Register() {
 		formState: { errors },
 	} = useForm({
 		resolver: zodResolver(schema),
+		mode: "onChange",
 	});
 
 	const onSubmit = (data: object) => console.log(data as RegisterForm);
