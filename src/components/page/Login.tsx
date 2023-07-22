@@ -2,7 +2,6 @@ import { useMutation } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
-import useAuth from "../../hooks/useAuth";
 
 interface LoginForm {
 	usernameOrEmail: string;
@@ -10,8 +9,6 @@ interface LoginForm {
 }
 
 export default function Login() {
-	const { setAuth } = useAuth();
-
 	const navigate = useNavigate();
 	const location = useLocation();
 	const from: string = location.state?.from.pathname || "/";
@@ -38,12 +35,12 @@ export default function Login() {
 			});
 		},
 		onSuccess: (data) => {
-			const accessToken: string = data.data.accessToken;
-			setAuth({ accessToken });
+			// const accessToken: string = data.data.accessToken;
+			// Add accessToken to accessToken atom
 			navigate(from, { replace: true });
 		},
-		onError: (err: any) => {
-			setErrorMessage(err.response.data.message);
+		onError: (err: Error) => {
+			console.error(err.message);
 		},
 	});
 

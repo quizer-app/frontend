@@ -1,24 +1,27 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import "@/index.css";
+import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Provider as JotaiProvider } from "jotai";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./components/App";
-import { AuthProvider } from "./context/AuthProvider";
-
-import "@/index.css";
+import HydrateAtoms from "./components/HydrateAtoms";
+import queryClient from "./utils/queryClient";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>
-		<BrowserRouter>
-			<QueryClientProvider client={new QueryClient()}>
-				<AuthProvider>
-					<Routes>
-						<Route path="/*" element={<App />} />
-					</Routes>
+		<QueryClientProvider client={queryClient}>
+			<JotaiProvider>
+				<HydrateAtoms>
+					<BrowserRouter>
+						<Routes>
+							<Route path="/*" element={<App />} />
+						</Routes>
+					</BrowserRouter>
 					<ReactQueryDevtools />
-				</AuthProvider>
-			</QueryClientProvider>
-		</BrowserRouter>
+				</HydrateAtoms>
+			</JotaiProvider>
+		</QueryClientProvider>
 	</React.StrictMode>
 );
