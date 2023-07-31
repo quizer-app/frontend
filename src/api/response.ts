@@ -1,7 +1,7 @@
 export interface AuthResponse {
 	message: string;
 	errors?: ValidationErrors;
-	token?: string;
+	accessToken?: string;
 }
 
 interface ValidationErrors {

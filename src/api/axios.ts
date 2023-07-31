@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { getAccessToken, setAccessToken } from "@/utils/accessToken";
 import axios, { AxiosError } from "axios";
 import { AuthResponse } from "./response";
 
@@ -19,40 +19,38 @@ export const apiPrivate = axios.create({
 	},
 });
 
+apiPrivate.interceptors.request.use((config) => {
+	const accessToken = getAccessToken();
+	console.log("accessToken", accessToken);
+
+	if (accessToken) {
+		config.headers["Authorization"] = `Bearer ${accessToken}`;
+	}
+	return config;
+});
+
 apiPrivate.interceptors.response.use(
 	(response) => response,
 	async (error: AxiosError) => {
-		if (error.config == undefined || error.response == undefined) {
+		if (!error.config || !error.response) {
 			return Promise.reject(error);
 		}
 		const originalRequest = error.config;
 		const statusCode = error.response.status;
-		const refreshAccessTokenMutation = useMutation<AuthResponse>({
-			mutationFn: async () => {
-				const { data } = await apiPrivate.post<AuthResponse>("/auth/token");
-				return data;
-			},
-			onSuccess: (data) => {
-				apiPrivate.defaults.headers["Authorization"] = `Bearer ${data.token}`;
-			},
-			onError: (error) => {
-				console.log(error);
-			},
-		});
-		if (statusCode === 401) {
-			refreshAccessTokenMutation.mutate();
-			apiPrivate.request(originalRequest);
-			return apiPrivate(originalRequest);
+
+		if (statusCode === 401 && !originalRequest._retry) {
+			originalRequest._retry = true;
+
+			const refreshTokenRequest = await apiPrivate.post<AuthResponse>(
+				"/auth/token"
+			);
+			if (refreshTokenRequest.status === 200) {
+				const { accessToken } = refreshTokenRequest.data;
+				setAccessToken(accessToken ?? null);
+
+				return apiPrivate(originalRequest);
+			}
 		}
 		return Promise.reject(error);
-	}
-);
-
-api.interceptors.response.use(
-	(response) => response,
-	(error: AxiosError) => {
-		if (error.config == undefined || error.response == undefined) {
-			return Promise.reject(error);
-		}
 	}
 );
