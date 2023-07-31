@@ -1,4 +1,8 @@
+import { api } from "@/api/axios";
+import { AuthResponse } from "@/api/response";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import Input from "../ui/Form/Input";
@@ -22,10 +26,25 @@ export default function Register() {
 		mode: "onChange",
 	});
 
-	const onSubmit = (data: object) => console.log(data as RegisterForm);
+	const registerMutation = useMutation({
+		mutationFn: (data: RegisterForm) => {
+			return api.post<AuthResponse>("/auth/register", data, {
+				withCredentials: true,
+			});
+		},
+		onSuccess: (data) => {
+			console.log(data);
+		},
+		onError: (error: AxiosError) => {
+			console.log(error.response?.data);
+		},
+	});
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
+		<form
+			onSubmit={handleSubmit((data: object) => {
+				registerMutation.mutate(data as RegisterForm);
+			})}>
 			<Input
 				label="Username"
 				name="username"
