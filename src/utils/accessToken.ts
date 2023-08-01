@@ -17,6 +17,7 @@ export function getTokenData(): TokenData | null {
 }
 
 export function isAuthenticated(): boolean {
+	console.log(accessToken);
 	return accessToken !== null;
 }
 
