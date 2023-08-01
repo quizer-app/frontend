@@ -119,13 +119,13 @@ export default function SignIn() {
 }
 
 interface ButtonProps {
-	text: string;
+	children?: React.ReactNode;
 }
 
-export function Button({ text }: ButtonProps) {
+export function Button({ children }: ButtonProps) {
 	return (
 		<button className="text-white bg-blueButtonHover rounded-md w-full font-medium py-4 mt-3">
-			{text}
+			{children}
 		</button>
 	);
 }

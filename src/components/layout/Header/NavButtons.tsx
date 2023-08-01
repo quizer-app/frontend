@@ -1,12 +1,16 @@
+import { Link } from "react-router-dom";
+
 export default function NavButtons() {
-  return (
-    <div className="hidden sm:block font-bold">
-      <a href="#" className="py-[0.8rem] px-6">
-        Sign In
-      </a>
-      <a href="#" className="bg-blueButtonHover py-[0.8rem] px-8 rounded-md">
-        Sign Up
-      </a>
-    </div>
-  )
+	return (
+		<div className="hidden sm:block font-bold">
+			<Link to="/signin" className="py-[0.8rem] px-6">
+				Sign In
+			</Link>
+			<Link
+				to="/signup"
+				className="bg-blueButtonHover py-[0.8rem] px-8 rounded-md">
+				Sign Up
+			</Link>
+		</div>
+	);
 }
