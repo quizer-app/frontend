@@ -1,11 +1,10 @@
-import { isAuthenticated } from "@/utils/accessToken";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 export default function RequireAuth() {
-	const location = useLocation();
+	// const location = useLocation();
 
-	if (!isAuthenticated()) {
-		return <Navigate to="/login" state={{ from: location }} replace />;
-	}
+	// if (false == 1) {
+	// 	return <Navigate to="/login" state={{ from: location }} replace />;
+	// }
 	return <Outlet />;
 }
