@@ -4,7 +4,7 @@ import GoogleLogo from "@/assets/images/GoogleIcon.svg";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useSetAtom } from "jotai";
 import {
 	FieldValues,
 	RegisterOptions,
@@ -12,7 +12,7 @@ import {
 	useForm,
 } from "react-hook-form";
 import { z } from "zod";
-import { accessTokenAtom, isAuthenticatedAtom } from "../atoms/auth";
+import { accessTokenAtom } from "../atoms/auth";
 
 const schema = z.object({
 	usernameOrEmail: z.string().min(1),
@@ -32,7 +32,6 @@ export default function SignIn() {
 	});
 
 	const setAccessToken = useSetAtom(accessTokenAtom);
-	const isAuthenticated = useAtomValue(isAuthenticatedAtom);
 
 	const loginMutation = useMutation({
 		mutationFn: (data: LoginForm) => {
@@ -41,9 +40,8 @@ export default function SignIn() {
 			});
 		},
 		onSuccess: (data) => {
-			const { accessToken, message } = data.data;
+			const { accessToken } = data.data;
 			setAccessToken(accessToken ?? null);
-			console.log(message, isAuthenticated);
 		},
 		onError: (error: AxiosError) => {
 			console.log(error.response?.data);

@@ -16,9 +16,6 @@ export default function Users() {
 	const { isLoading, isError, data } = useQuery({
 		queryKey: ["users"],
 		queryFn: () => apiPrivate.get("/users"),
-		onSuccess: (data) => {
-			console.log(data);
-		},
 	});
 
 	return (
