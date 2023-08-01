@@ -1,5 +1,9 @@
 import { api } from "@/api/axios";
-import { accessTokenAtom, isAuthenticatedAtom } from "@/components/atoms/auth";
+import {
+	accessTokenAtom,
+	isAuthenticatedAtom,
+	tokenDataAtom,
+} from "@/components/atoms/auth";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { useAtomValue, useSetAtom } from "jotai";
@@ -8,6 +12,7 @@ import { Link } from "react-router-dom";
 export default function NavButtons() {
 	const isAuthenticated = useAtomValue(isAuthenticatedAtom);
 	const setAccessToken = useSetAtom(accessTokenAtom);
+	const tokenData = useAtomValue(tokenDataAtom);
 
 	const logoutMutation = useMutation({
 		mutationFn: () => {
@@ -26,7 +31,7 @@ export default function NavButtons() {
 			{isAuthenticated ? (
 				<>
 					<Link to="/dashboard" className="py-[0.8rem] px-6">
-						Dashboard
+						Dashboard ({tokenData?.user.username})
 					</Link>
 					<button
 						className="bg-blueButtonHover py-[0.8rem] px-8 rounded-md"

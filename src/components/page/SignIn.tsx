@@ -49,70 +49,63 @@ export default function SignIn() {
 	});
 
 	return (
-		<section className="pt-36 flex justify-center font-primary">
-			<div className="container">
-				<div className="flex flex-wrap">
-					<div className="w-full px-4">
-						<div className="bg-secondary mx-auto max-w-[500px] rounded-md py-10 px-6 sm:p-[60px]">
-							<h1 className="text-white font-bold text-center text-2xl sm:text-3xl">
-								Sign in to your account
-							</h1>
-							<p className="text-textPrimary text-center mt-3">
-								Login to your account for better experience
-							</p>
-							<button
-								className="text-textPrimary bg-input shadow-md rounded-md font-medium w-full py-3
+		<div className="w-full px-4">
+			<div className="bg-secondary mx-auto max-w-[500px] rounded-md py-10 px-6 sm:p-[60px]">
+				<h1 className="font-bold text-center text-2xl sm:text-3xl">
+					Sign in to your account
+				</h1>
+				<p className="text-textPrimary text-center mt-3">
+					Login to your account for better experience
+				</p>
+				<button
+					className="text-textPrimary bg-input shadow-md rounded-md font-medium w-full py-3
                             flex items-center justify-center gap-4 mt-10">
-								<span>
-									<img src={GoogleLogo} alt="logo" className="w-5 h-5"></img>
-								</span>
-								Sign in with Google
-							</button>
-							<div className="flex items-center justify-center mt-5">
-								<span className="h-[1px] w-full max-w-[70px] bg-textPrimary font-medium hidden sm:block"></span>
-								<p className="text-textPrimary px-5 text-center font-medium">
-									Or, sign in with your email
-								</p>
-								<span className="h-[1px] w-full max-w-[70px] bg-textPrimary font-medium hidden sm:block"></span>
-							</div>
-							<form
-								onSubmit={handleSubmit((data: object) => {
-									loginMutation.mutate(data as LoginForm);
-								})}>
-								<FormInput
-									name="usernameOrEmail"
-									type="text"
-									placeholder="Enter your Email"
-									labelText="Your Email"
-									register={register}
-								/>
-								<FormInput
-									name="password"
-									type="password"
-									placeholder="Enter your Password"
-									labelText="Your Password"
-									register={register}
-								/>
-								<div className="mt-5">
-									<input></input>
-									<a href="#" className="">
-										Forgot Password?
-									</a>
-								</div>
-								<Button>Sign In</Button>
-							</form>
-							<p className="text-textPrimary font-medium text-center mt-12">
-								Don't have an account?
-								<a href="#" className="text-blueButtonHover pl-2">
-									Sign up
-								</a>
-							</p>
-						</div>
-					</div>
+					<span>
+						<img src={GoogleLogo} alt="logo" className="w-5 h-5"></img>
+					</span>
+					Sign in with Google
+				</button>
+				<div className="flex items-center justify-center mt-5">
+					<span className="h-[1px] w-full max-w-[70px] bg-textPrimary font-medium hidden sm:block"></span>
+					<p className="text-textPrimary px-5 text-center font-medium">
+						Or, sign in with your email
+					</p>
+					<span className="h-[1px] w-full max-w-[70px] bg-textPrimary font-medium hidden sm:block"></span>
 				</div>
+				<form
+					onSubmit={handleSubmit((data: object) => {
+						loginMutation.mutate(data as LoginForm);
+					})}>
+					<FormInput
+						name="usernameOrEmail"
+						type="text"
+						placeholder="Enter your Email"
+						labelText="Your Email"
+						register={register}
+					/>
+					<FormInput
+						name="password"
+						type="password"
+						placeholder="Enter your Password"
+						labelText="Your Password"
+						register={register}
+					/>
+					<div className="mt-5">
+						<input></input>
+						<a href="#" className="">
+							Forgot Password?
+						</a>
+					</div>
+					<Button>Sign In</Button>
+				</form>
+				<p className="text-textPrimary font-medium text-center mt-12">
+					Don't have an account?
+					<a href="#" className="text-blueButtonHover pl-2">
+						Sign up
+					</a>
+				</p>
 			</div>
-			<div className="bg-primary absolute top-0 right-0 w-full h-[300vh] -z-50"></div>
-		</section>
+		</div>
 	);
 }
 
@@ -122,7 +115,7 @@ interface ButtonProps {
 
 export function Button({ children }: ButtonProps) {
 	return (
-		<button className="text-white bg-blueButtonHover rounded-md w-full font-medium py-4 mt-3">
+		<button className="bg-blueButtonHover rounded-md w-full font-medium py-4 mt-3">
 			{children}
 		</button>
 	);
@@ -148,7 +141,7 @@ export function FormInput({
 }: FormInputProps) {
 	return (
 		<div className="mt-8">
-			<label htmlFor={name} className="block text-white text-sm font-medium">
+			<label htmlFor={name} className="block text-sm font-medium">
 				{labelText}
 			</label>
 			<input

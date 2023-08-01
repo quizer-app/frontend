@@ -14,7 +14,9 @@ export default function PersistLogin() {
 			try {
 				await refresh();
 			} catch (err) {
-				console.log(err);
+				if (err instanceof Error) {
+					console.log(err.message);
+				}
 			} finally {
 				setIsLoading(false);
 			}
