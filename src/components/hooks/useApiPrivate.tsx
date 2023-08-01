@@ -1,13 +1,13 @@
 import { apiPrivate } from "@/api/axios";
 import { AxiosError } from "axios";
-import { useAtom } from "jotai";
+import { useAtomValue } from "jotai";
 import { useEffect } from "react";
 import { accessTokenAtom } from "../atoms/auth";
 import useRefreshToken from "./useRefreshToken";
 
 export default function useApiPrivate() {
 	const refresh = useRefreshToken();
-	const [accessToken, setAccessToken] = useAtom(accessTokenAtom);
+	const accessToken = useAtomValue(accessTokenAtom);
 
 	useEffect(() => {
 		const requestIntercept = apiPrivate.interceptors.request.use(
@@ -30,7 +30,6 @@ export default function useApiPrivate() {
 					prevRequest._retry = true;
 					const newAccessToken = await refresh();
 					prevRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
-					setAccessToken(newAccessToken);
 					return apiPrivate(prevRequest);
 				}
 				return Promise.reject(error);
@@ -40,7 +39,7 @@ export default function useApiPrivate() {
 			apiPrivate.interceptors.response.eject(responseIntercept);
 			apiPrivate.interceptors.request.eject(requestIntercept);
 		};
-	}, [accessToken, refresh, setAccessToken]);
+	}, [accessToken, refresh]);
 
 	return apiPrivate;
 }

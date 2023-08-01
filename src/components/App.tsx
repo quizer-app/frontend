@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import PersistLogin from "./PersistLogin";
 import Layout from "./layout/Layout";
 import Home from "./page/Home";
 import SignIn from "./page/SignIn";
@@ -10,17 +11,19 @@ import NotFound from "./status/NotFound";
 export default function App() {
 	return (
 		<Routes>
-			<Route path="/" element={<Layout />}>
-				<Route path="/" element={<Home />} />
-				<Route path="signin" element={<SignIn />} />
+			<Route element={<PersistLogin />}>
+				<Route path="/" element={<Layout />}>
+					<Route path="/" element={<Home />} />
+					<Route path="signin" element={<SignIn />} />
 
-				<Route path="test" element={<Test />} />
+					<Route path="test" element={<Test />} />
 
-				<Route element={<RequireAuth />}>
-					<Route path="users" element={<Users />} />
+					<Route element={<RequireAuth />}>
+						<Route path="users" element={<Users />} />
+					</Route>
+
+					<Route path="*" element={<NotFound />} />
 				</Route>
-
-				<Route path="*" element={<NotFound />} />
 			</Route>
 		</Routes>
 	);

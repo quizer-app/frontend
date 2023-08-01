@@ -101,7 +101,7 @@ export default function SignIn() {
 										Forgot Password?
 									</a>
 								</div>
-								<Button text="Sign in" />
+								<Button>Sign In</Button>
 							</form>
 							<p className="text-textPrimary font-medium text-center mt-12">
 								Don't have an account?

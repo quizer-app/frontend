@@ -18,7 +18,7 @@ export default function NavLinks({ isOpen }: NavLinksProps) {
               lg:rounded-none lg:w-auto lg:h-auto lg:border-none lg:flex lg:text-[17px]`}>
 					<LiElement href="/">Home</LiElement>
 					<LiElement href="/about">About</LiElement>
-					<LiElement href="/blog">Blog</LiElement>
+					<LiElement href="/users">Users</LiElement>
 					<LiElement href="/support">Support</LiElement>
 					<AuthElement href="/signin">Sign In</AuthElement>
 					<AuthElement href="/signup">Sign Up</AuthElement>
