@@ -1,5 +1,6 @@
 import { api, apiPrivate } from "@/api/axios";
 import { AuthResponse } from "@/api/response";
+import { setAccessToken } from "@/utils/accessToken";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
@@ -34,6 +35,7 @@ export default function Login() {
 			const { accessToken, message } = data.data;
 			if (accessToken) {
 				apiPrivate.defaults.headers["Authorization"] = `Bearer ${accessToken}`;
+				setAccessToken(accessToken);
 			}
 			console.log(message);
 		},
