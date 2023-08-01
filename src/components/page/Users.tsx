@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { apiPrivate } from "../../api/axios";
+import useApiPrivate from "../hooks/useApiPrivate";
 
 type UserType = {
 	id: string;
@@ -11,6 +11,8 @@ type UserType = {
 };
 
 export default function Users() {
+	const apiPrivate = useApiPrivate();
+
 	const { isLoading, isError, data } = useQuery({
 		queryKey: ["users"],
 		queryFn: () => apiPrivate.get("/users"),
