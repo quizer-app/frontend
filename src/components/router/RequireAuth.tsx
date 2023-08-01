@@ -1,10 +1,17 @@
-import { Outlet } from "react-router-dom";
+import { useAtomValue } from "jotai";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { accessTokenAtom, isAuthenticatedAtom } from "../atoms/auth";
 
 export default function RequireAuth() {
-	// const location = useLocation();
+	const location = useLocation();
 
-	// if (false == 1) {
-	// 	return <Navigate to="/login" state={{ from: location }} replace />;
-	// }
-	return <Outlet />;
+	const isAuthenticated = useAtomValue(isAuthenticatedAtom);
+	const accessToken = useAtomValue(accessTokenAtom);
+	console.log("RequireAuth", isAuthenticated, accessToken);
+
+	return isAuthenticated ? (
+		<Outlet />
+	) : (
+		<Navigate to="/signin" state={{ from: location }} replace />
+	);
 }

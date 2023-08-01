@@ -17,7 +17,7 @@ export default function App() {
 				<Route path="test" element={<Test />} />
 
 				<Route element={<RequireAuth />}>
-					<Route path="users" element={<Users />} />R
+					<Route path="users" element={<Users />} />
 				</Route>
 
 				<Route path="*" element={<NotFound />} />

@@ -1,10 +1,10 @@
 import { api } from "@/api/axios";
 
-import { useAtom } from "jotai";
+import { useSetAtom } from "jotai";
 import { accessTokenAtom } from "../atoms/auth";
 
 export default function useRefreshToken() {
-	const [, setAccessToken] = useAtom(accessTokenAtom);
+	const setAccessToken = useSetAtom(accessTokenAtom);
 
 	const refresh = async () => {
 		const response = await api.post("/auth/token", {

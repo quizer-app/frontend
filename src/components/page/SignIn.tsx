@@ -4,7 +4,7 @@ import GoogleLogo from "@/assets/images/GoogleIcon.svg";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import { useAtom } from "jotai";
+import { useAtomValue, useSetAtom } from "jotai";
 import {
 	FieldValues,
 	RegisterOptions,
@@ -12,8 +12,7 @@ import {
 	useForm,
 } from "react-hook-form";
 import { z } from "zod";
-import { accessTokenAtom } from "../atoms/auth";
-import useApiPrivate from "../hooks/useApiPrivate";
+import { accessTokenAtom, isAuthenticatedAtom } from "../atoms/auth";
 
 const schema = z.object({
 	usernameOrEmail: z.string().min(1),
@@ -32,8 +31,8 @@ export default function SignIn() {
 		mode: "onChange",
 	});
 
-	const [, setAccessToken] = useAtom(accessTokenAtom);
-	const apiPrivate = useApiPrivate();
+	const setAccessToken = useSetAtom(accessTokenAtom);
+	const isAuthenticated = useAtomValue(isAuthenticatedAtom);
 
 	const loginMutation = useMutation({
 		mutationFn: (data: LoginForm) => {
@@ -43,11 +42,8 @@ export default function SignIn() {
 		},
 		onSuccess: (data) => {
 			const { accessToken, message } = data.data;
-			if (accessToken) {
-				apiPrivate.defaults.headers["Authorization"] = `Bearer ${accessToken}`;
-				setAccessToken(accessToken);
-			}
-			console.log(message);
+			setAccessToken(accessToken ?? null);
+			console.log(message, isAuthenticated);
 		},
 		onError: (error: AxiosError) => {
 			console.log(error.response?.data);
