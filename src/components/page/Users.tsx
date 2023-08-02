@@ -10,12 +10,17 @@ type UserType = {
 	role: string;
 };
 
+type UsersResponseType = {
+	users: UserType[];
+	message: string;
+};
+
 export default function Users() {
 	const apiPrivate = useApiPrivate();
 
 	const { isLoading, isError, data } = useQuery({
 		queryKey: ["users"],
-		queryFn: () => apiPrivate.get("/users"),
+		queryFn: () => apiPrivate.get<UsersResponseType>("/users"),
 	});
 
 	return (
@@ -25,7 +30,7 @@ export default function Users() {
 			{isError && <div>Error</div>}
 			{!isLoading && !isError && (
 				<ul>
-					{data.data.users.map((user: UserType) => (
+					{data.data.users.map((user) => (
 						<li key={user.id}>
 							{user.username} - {user.email}
 						</li>

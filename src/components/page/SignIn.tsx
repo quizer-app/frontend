@@ -3,7 +3,6 @@ import { AuthResponse } from "@/api/response";
 import GoogleLogo from "@/assets/images/GoogleIcon.svg";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import { AxiosError } from "axios";
 import { useAtomValue, useSetAtom } from "jotai";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -39,10 +38,15 @@ export default function SignIn() {
 		handleSubmit,
 		formState: { errors },
 		reset,
+		setFocus,
 	} = useForm({
 		resolver: zodResolver(schema),
 		mode: "onChange",
 	});
+
+	useEffect(() => {
+		setFocus("usernameOrEmail");
+	}, [setFocus]);
 
 	const loginMutation = useMutation({
 		mutationFn: (data: LoginForm) => {
@@ -55,9 +59,6 @@ export default function SignIn() {
 			setAccessToken(accessToken ?? null);
 			setSignedIn(true);
 			reset();
-		},
-		onError: (error: AxiosError) => {
-			console.log(error.response?.data);
 		},
 	});
 
