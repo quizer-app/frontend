@@ -4,10 +4,12 @@ import GoogleLogo from "@/assets/images/GoogleIcon.svg";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import { useSetAtom } from "jotai";
+import { useAtomValue, useSetAtom } from "jotai";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { z } from "zod";
-import { accessTokenAtom } from "../../atoms/auth";
+import { accessTokenAtom, isAuthenticatedAtom } from "../../atoms/auth";
 import { Button } from "../form/Button";
 import { FormInput } from "../form/FormInput";
 
@@ -19,6 +21,19 @@ const schema = z.object({
 type LoginForm = z.infer<typeof schema>;
 
 export default function SignIn() {
+	const isAuthenticated = useAtomValue(isAuthenticatedAtom);
+	const navigate = useNavigate();
+	const [signedIn, setSignedIn] = useState<boolean>(false);
+
+	useEffect(() => {
+		if (isAuthenticated && !signedIn) {
+			navigate(-1);
+		}
+	}, [isAuthenticated, navigate, signedIn]);
+
+	const setAccessToken = useSetAtom(accessTokenAtom);
+	// const [persist, setPersist] = useAtom(persistAtom);
+
 	const {
 		register,
 		handleSubmit,
@@ -29,9 +44,6 @@ export default function SignIn() {
 		mode: "onChange",
 	});
 
-	const setAccessToken = useSetAtom(accessTokenAtom);
-	// const [persist, setPersist] = useAtom(persistAtom);
-
 	const loginMutation = useMutation({
 		mutationFn: (data: LoginForm) => {
 			return api.post<AuthResponse>("/auth/login", data, {
@@ -41,6 +53,7 @@ export default function SignIn() {
 		onSuccess: (data) => {
 			const { accessToken } = data.data;
 			setAccessToken(accessToken ?? null);
+			setSignedIn(true);
 			reset();
 		},
 		onError: (error: AxiosError) => {

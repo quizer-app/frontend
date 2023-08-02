@@ -1,4 +1,5 @@
 import "@/index.css";
+import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Provider as JotaiProvider } from "jotai";
@@ -8,6 +9,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./components/App";
 import HydrateAtoms from "./components/HydrateAtoms";
 import queryClient from "./utils/queryClient";
+
+if (process.env.NODE_ENV === "production") {
+	disableReactDevTools();
+}
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>
