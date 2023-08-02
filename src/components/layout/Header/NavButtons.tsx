@@ -1,30 +1,13 @@
-import { api } from "@/api/axios";
-import {
-	accessTokenAtom,
-	isAuthenticatedAtom,
-	tokenDataAtom,
-} from "@/components/atoms/auth";
-import { useMutation } from "@tanstack/react-query";
-import { AxiosError } from "axios";
-import { useAtomValue, useSetAtom } from "jotai";
+import { isAuthenticatedAtom, tokenDataAtom } from "@/atoms/auth";
+import useLogout from "@/hooks/useLogout";
+import { useAtomValue } from "jotai";
 import { Link } from "react-router-dom";
 
 export default function NavButtons() {
 	const isAuthenticated = useAtomValue(isAuthenticatedAtom);
-	const setAccessToken = useSetAtom(accessTokenAtom);
 	const tokenData = useAtomValue(tokenDataAtom);
 
-	const logoutMutation = useMutation({
-		mutationFn: () => {
-			return api.delete("/auth/logout", { withCredentials: true });
-		},
-		onSuccess: () => {
-			setAccessToken(null);
-		},
-		onError: (error: AxiosError) => {
-			console.log(error.response?.data);
-		},
-	});
+	const logout = useLogout();
 
 	return (
 		<div className="hidden sm:block font-bold">
@@ -35,7 +18,7 @@ export default function NavButtons() {
 					</Link>
 					<button
 						className="bg-blueButtonHover py-[0.8rem] px-8 rounded-md"
-						onClick={() => logoutMutation.mutate()}>
+						onClick={logout}>
 						Log Out
 					</button>
 				</>

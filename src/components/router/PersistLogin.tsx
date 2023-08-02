@@ -1,13 +1,14 @@
 import { useAtomValue } from "jotai";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { accessTokenAtom } from "./atoms/auth";
-import useRefreshToken from "./hooks/useRefreshToken";
+import { accessTokenAtom, persistAtom } from "../../atoms/auth";
+import useRefreshToken from "../../hooks/useRefreshToken";
 
 export default function PersistLogin() {
 	const [isLoading, setIsLoading] = useState(true);
 	const refresh = useRefreshToken();
 	const accessToken = useAtomValue(accessTokenAtom);
+	const persist = useAtomValue(persistAtom);
 
 	useEffect(() => {
 		const verifyRefreshToken = async () => {
@@ -25,5 +26,7 @@ export default function PersistLogin() {
 		!accessToken ? verifyRefreshToken() : setIsLoading(false);
 	}, [refresh, accessToken]);
 
-	return <>{isLoading ? <p>Loading...</p> : <Outlet />}</>;
+	return (
+		<>{!persist ? <Outlet /> : isLoading ? <p>Loading...</p> : <Outlet />}</>
+	);
 }

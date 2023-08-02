@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import PersistLogin from "./PersistLogin";
 import Layout from "./layout/Layout";
 import Home from "./page/Home";
 import SignIn from "./page/SignIn";
 import Test from "./page/Test";
 import Users from "./page/Users";
+import PersistLogin from "./router/PersistLogin";
 import RequireAuth from "./router/RequireAuth";
 import NotFound from "./status/NotFound";
 

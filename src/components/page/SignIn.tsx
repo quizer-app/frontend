@@ -5,14 +5,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { useSetAtom } from "jotai";
-import {
-	FieldValues,
-	RegisterOptions,
-	UseFormRegisterReturn,
-	useForm,
-} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { accessTokenAtom } from "../atoms/auth";
+import { accessTokenAtom } from "../../atoms/auth";
+import { Button } from "../form/Button";
+import { FormInput } from "../form/FormInput";
 
 const schema = z.object({
 	usernameOrEmail: z.string().min(1),
@@ -26,12 +23,14 @@ export default function SignIn() {
 		register,
 		handleSubmit,
 		formState: { errors },
+		reset,
 	} = useForm({
 		resolver: zodResolver(schema),
 		mode: "onChange",
 	});
 
 	const setAccessToken = useSetAtom(accessTokenAtom);
+	// const [persist, setPersist] = useAtom(persistAtom);
 
 	const loginMutation = useMutation({
 		mutationFn: (data: LoginForm) => {
@@ -42,6 +41,7 @@ export default function SignIn() {
 		onSuccess: (data) => {
 			const { accessToken } = data.data;
 			setAccessToken(accessToken ?? null);
+			reset();
 		},
 		onError: (error: AxiosError) => {
 			console.log(error.response?.data);
@@ -105,51 +105,6 @@ export default function SignIn() {
 					</a>
 				</p>
 			</div>
-		</div>
-	);
-}
-
-interface ButtonProps {
-	children?: React.ReactNode;
-}
-
-export function Button({ children }: ButtonProps) {
-	return (
-		<button className="bg-blueButtonHover rounded-md w-full font-medium py-4 mt-3">
-			{children}
-		</button>
-	);
-}
-
-interface FormInputProps {
-	name: string;
-	type: string;
-	placeholder: string;
-	labelText: string;
-	register: (
-		name: string,
-		options?: RegisterOptions<FieldValues, string> | undefined
-	) => UseFormRegisterReturn<string>;
-}
-
-export function FormInput({
-	register,
-	name,
-	type,
-	placeholder,
-	labelText,
-}: FormInputProps) {
-	return (
-		<div className="mt-8">
-			<label htmlFor={name} className="block text-sm font-medium">
-				{labelText}
-			</label>
-			<input
-				type={type}
-				{...register(name)}
-				placeholder={placeholder}
-				className="bg-input text-textPrimary rounded-md w-full py-3 pl-6 shadow-md mt-3"
-			/>
 		</div>
 	);
 }

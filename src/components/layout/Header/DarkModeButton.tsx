@@ -1,4 +1,4 @@
-import { themeAtom, toggleThemeAtom } from "@/components/atoms/theme";
+import { themeAtom, toggleThemeAtom } from "@/atoms/theme";
 import { useAtomValue, useSetAtom } from "jotai";
 import { Moon, Sun } from "lucide-react";
 

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import useApiPrivate from "../hooks/useApiPrivate";
+import useApiPrivate from "../../hooks/useApiPrivate";
 
 type UserType = {
 	id: string;

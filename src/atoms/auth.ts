@@ -1,5 +1,6 @@
 import { TokenData } from "@/api/tokenData";
 import { atom } from "jotai";
+import { atomWithStorage } from "jotai/utils";
 
 export const accessTokenAtom = atom<string | null>(null);
 
@@ -15,3 +16,5 @@ export const tokenDataAtom = atom<TokenData | null>((get) => {
 	const tokenData = JSON.parse(atob(token.split(".")[1])) as TokenData;
 	return tokenData;
 });
+
+export const persistAtom = atomWithStorage<boolean>("persist", false);

@@ -1,6 +1,6 @@
 import { useAtomValue } from "jotai";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { isAuthenticatedAtom } from "../atoms/auth";
+import { isAuthenticatedAtom } from "../../atoms/auth";
 
 export default function RequireAuth() {
 	const location = useLocation();

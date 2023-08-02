@@ -1,8 +1,8 @@
 import { api } from "@/api/axios";
 
 import { AuthResponse } from "@/api/response";
+import { accessTokenAtom } from "@/atoms/auth";
 import { useSetAtom } from "jotai";
-import { accessTokenAtom } from "../atoms/auth";
 
 export default function useRefreshToken() {
 	const setAccessToken = useSetAtom(accessTokenAtom);
