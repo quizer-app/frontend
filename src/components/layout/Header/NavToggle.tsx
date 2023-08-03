@@ -1,8 +1,8 @@
-import { Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react";
 
 interface NavToggleProps {
-  toggleNavbar: () => void
-  isOpen: boolean
+  toggleNavbar: () => void;
+  isOpen: boolean;
 }
 
 export default function NavToggle({ toggleNavbar, isOpen }: NavToggleProps) {
@@ -16,5 +16,5 @@ export default function NavToggle({ toggleNavbar, isOpen }: NavToggleProps) {
         )}
       </button>
     </div>
-  )
+  );
 }

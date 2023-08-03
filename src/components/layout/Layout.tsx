@@ -3,13 +3,13 @@ import Content from "./Content";
 import { Header } from "./Header/Header";
 
 export default function Layout() {
-	return (
-		<>
-			<Header />
+  return (
+    <>
+      <Header />
 
-			<Content>
-				<Outlet />
-			</Content>
-		</>
-	);
+      <Content>
+        <Outlet />
+      </Content>
+    </>
+  );
 }

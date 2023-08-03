@@ -1,5 +1,5 @@
 interface LogoProps {
-  logo: string
+  logo: string;
 }
 
 export default function Logo({ logo }: LogoProps) {
@@ -19,5 +19,5 @@ export default function Logo({ logo }: LogoProps) {
         </div>
       </a>
     </div>
-  )
+  );
 }

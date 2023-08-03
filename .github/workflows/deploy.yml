@@ -1,73 +1,73 @@
 name: Deploy
 
 on:
-    push:
-        tags:
-            - "*"
+  push:
+    tags:
+      - "*"
 
 permissions:
-    contents: write
-    packages: write
+  contents: write
+  packages: write
 
 jobs:
-    build:
-        name: Build
-        runs-on: ubuntu-latest
+  build:
+    name: Build
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout repo
-              uses: actions/checkout@v3
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-            - name: Setup Node
-              uses: actions/setup-node@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
 
-            - name: Install dependencies
-              uses: bahmutov/npm-install@v1
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
 
-            - name: Build project
-              run: npm run build
+      - name: Build project
+        run: npm run build
 
-            - name: Copy Dockerfile to build context
-              run: cp Dockerfile dist/
+      - name: Copy Dockerfile to build context
+        run: cp Dockerfile dist/
 
-            - name: Upload production-ready build files
-              uses: actions/upload-artifact@v3
-              with:
-                  name: production-files
-                  path: dist
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v3
+        with:
+          name: production-files
+          path: dist
 
-    deploy:
-        name: Deploy
-        needs: build
-        runs-on: ubuntu-latest
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Download artifact
-              uses: actions/download-artifact@v3
-              with:
-                  name: production-files
-                  path: dist
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: production-files
+          path: dist
 
-            - name: Log in to the Container registry
-              uses: docker/login-action@v2.2.0
-              with:
-                  registry: ghcr.io
-                  username: ${{ github.actor }}
-                  password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2.2.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-            - name: Extract metadata (tags, labels) for Docker
-              id: meta
-              uses: docker/metadata-action@v3
-              with:
-                  images: ghcr.io/${{ github.repository }}
-                  tags: |
-                      type=ref,event=branch
-                      type=ref,event=pr
-                      type=semver,pattern={{version}}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
 
-            - name: Build and push Docker image
-              uses: docker/build-push-action@v4.0.0
-              with:
-                  context: dist
-                  push: true
-                  tags: ${{ steps.meta.outputs.tags }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4.0.0
+        with:
+          context: dist
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}

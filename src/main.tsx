@@ -11,22 +11,22 @@ import HydrateAtoms from "./components/HydrateAtoms";
 import queryClient from "./utils/queryClient";
 
 if (process.env.NODE_ENV === "production") {
-	disableReactDevTools();
+  disableReactDevTools();
 }
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-	<React.StrictMode>
-		<QueryClientProvider client={queryClient}>
-			<JotaiProvider>
-				<HydrateAtoms>
-					<BrowserRouter>
-						<Routes>
-							<Route path="/*" element={<App />} />
-						</Routes>
-					</BrowserRouter>
-					<ReactQueryDevtools />
-				</HydrateAtoms>
-			</JotaiProvider>
-		</QueryClientProvider>
-	</React.StrictMode>
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <JotaiProvider>
+        <HydrateAtoms>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/*" element={<App />} />
+            </Routes>
+          </BrowserRouter>
+          <ReactQueryDevtools />
+        </HydrateAtoms>
+      </JotaiProvider>
+    </QueryClientProvider>
+  </React.StrictMode>
 );

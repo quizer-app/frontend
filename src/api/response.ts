@@ -1,14 +1,14 @@
 export interface AuthResponse {
-	message: string;
-	errors?: ValidationErrors;
-	accessToken?: string;
+  message: string;
+  errors?: ValidationErrors;
+  accessToken?: string;
 }
 
 interface ValidationErrors {
-	[key: string]: ValidationError;
+  [key: string]: ValidationError;
 }
 
 interface ValidationError {
-	tag: string;
-	value: string;
+  tag: string;
+  value: string;
 }

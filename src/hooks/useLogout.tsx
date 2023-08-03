@@ -4,22 +4,22 @@ import { useAtomValue, useSetAtom } from "jotai";
 import { accessTokenAtom, isAuthenticatedAtom } from "../atoms/auth";
 
 export default function useLogout() {
-	const isAuthenticated = useAtomValue(isAuthenticatedAtom);
-	const setAccessToken = useSetAtom(accessTokenAtom);
+  const isAuthenticated = useAtomValue(isAuthenticatedAtom);
+  const setAccessToken = useSetAtom(accessTokenAtom);
 
-	const logoutMutation = useMutation({
-		mutationFn: () => {
-			return api.delete("/auth/logout", { withCredentials: true });
-		},
-		onSuccess: () => {
-			setAccessToken(null);
-		},
-	});
+  const logoutMutation = useMutation({
+    mutationFn: () => {
+      return api.delete("/auth/logout", { withCredentials: true });
+    },
+    onSuccess: () => {
+      setAccessToken(null);
+    },
+  });
 
-	const logout = async () => {
-		if (!isAuthenticated) return;
-		await logoutMutation.mutateAsync();
-	};
+  const logout = async () => {
+    if (!isAuthenticated) return;
+    await logoutMutation.mutateAsync();
+  };
 
-	return logout;
+  return logout;
 }

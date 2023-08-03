@@ -3,10 +3,10 @@ import { queryClientAtom } from "jotai-tanstack-query";
 import { useHydrateAtoms } from "jotai/react/utils";
 
 export default function HydrateAtoms({
-	children,
+  children,
 }: {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-	useHydrateAtoms([[queryClientAtom, queryClient]]);
-	return children;
+  useHydrateAtoms([[queryClientAtom, queryClient]]);
+  return children;
 }
