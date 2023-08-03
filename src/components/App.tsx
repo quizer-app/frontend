@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./layout/Layout";
 import Home from "./page/Home";
+import SignUp from "./page/Register";
 import SignIn from "./page/SignIn";
 import Test from "./page/Test";
 import Users from "./page/Users";
@@ -15,6 +16,7 @@ export default function App() {
 				<Route path="/" element={<Layout />}>
 					<Route path="/" element={<Home />} />
 					<Route path="signin" element={<SignIn />} />
+					<Route path="signup" element={<SignUp />} />
 
 					<Route path="test" element={<Test />} />
 

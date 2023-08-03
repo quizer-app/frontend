@@ -16,7 +16,7 @@ const schema = z.object({
 
 type RegisterForm = z.infer<typeof schema>;
 
-export default function Register() {
+export default function SignUp() {
 	const {
 		register,
 		handleSubmit,
