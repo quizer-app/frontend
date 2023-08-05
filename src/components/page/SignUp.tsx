@@ -17,7 +17,7 @@ const schema = z.object({
   confirmPassword: z.string().min(8).max(64),
 });
 
-type RegisterForm = z.infer<typeof schema>;
+type Form = z.infer<typeof schema>;
 
 export default function SignUp() {
   const {
@@ -30,7 +30,7 @@ export default function SignUp() {
   });
 
   const registerMutation = useMutation({
-    mutationFn: (data: RegisterForm) => {
+    mutationFn: (data: Form) => {
       return api.post<AuthResponse>("/auth/register", data, {
         withCredentials: true,
       });
@@ -43,42 +43,6 @@ export default function SignUp() {
     },
   });
 
-  // return (
-  //   <form
-  //     onSubmit={handleSubmit((data: object) => {
-  //       registerMutation.mutate(data as RegisterForm);
-  //     })}>
-  //     <Input
-  //       label="Username"
-  //       name="username"
-  //       type="text"
-  //       errors={errors}
-  //       register={register}
-  //     />
-  //     <Input
-  //       label="E-mail"
-  //       name="email"
-  //       type="text"
-  //       errors={errors}
-  //       register={register}
-  //     />
-  //     <Input
-  //       label="Password"
-  //       name="password"
-  //       type="password"
-  //       errors={errors}
-  //       register={register}
-  //     />
-  //     <Input
-  //       label="Confirm Password"
-  //       name="confirmPassword"
-  //       type="password"
-  //       errors={errors}
-  //       register={register}
-  //     />
-  //     <button className="btn btn-accent">Submit</button>
-  //   </form>
-  // );
   const persistRef = useRef<HTMLInputElement>(null);
 
   return (
@@ -106,14 +70,22 @@ export default function SignUp() {
           <span className="h-[1px] w-full max-w-[70px] bg-textPrimary font-medium hidden sm:block"></span>
         </div>
         <form
-          onSubmit={handleSubmit((data: object) => {
-            registerMutation.mutate(data as RegisterForm);
+          onSubmit={handleSubmit((data) => {
+            registerMutation.mutate(data as Form);
           })}>
           <FormInput
-            name="usernameOrEmail"
+            name="username"
+            type="text"
+            placeholder="Enter your username"
+            labelText="Username"
+            register={register}
+            errors={errors}
+          />
+          <FormInput
+            name="email"
             type="text"
             placeholder="Enter your email"
-            labelText="Email or Username"
+            labelText="Email"
             register={register}
             errors={errors}
           />
@@ -122,6 +94,14 @@ export default function SignUp() {
             type="password"
             placeholder="Enter your password"
             labelText="Password"
+            register={register}
+            errors={errors}
+          />
+          <FormInput
+            name="confirmPassword"
+            type="password"
+            placeholder="Confirm your password"
+            labelText="Confirm Password"
             register={register}
             errors={errors}
           />

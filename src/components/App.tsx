@@ -7,6 +7,7 @@ import Users from "./page/Users";
 import PersistLogin from "./router/PersistLogin";
 import RequireAuth from "./router/RequireAuth";
 import NotFound from "./status/NotFound";
+import SignUp from "./page/SignUp";
 
 export default function App() {
   return (
@@ -15,7 +16,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="signin" element={<SignIn />} />
-          {/* <Route path="signup" element={<SignUp />} /> */}
+          <Route path="signup" element={<SignUp />} />
 
           <Route path="test" element={<Test />} />
 

@@ -17,11 +17,11 @@ import { Button } from "../form/Button";
 import { FormInput } from "../form/FormInput";
 
 const schema = z.object({
-  usernameOrEmail: z.string().min(3),
-  password: z.string().min(8),
+  usernameOrEmail: z.string().min(1),
+  password: z.string().min(1),
 });
 
-type LoginForm = z.infer<typeof schema>;
+type Form = z.infer<typeof schema>;
 
 export default function SignIn() {
   const isAuthenticated = useAtomValue(isAuthenticatedAtom);
@@ -54,7 +54,7 @@ export default function SignIn() {
   }, [setFocus]);
 
   const loginMutation = useMutation({
-    mutationFn: (data: LoginForm) => {
+    mutationFn: (data: Form) => {
       return api.post<AuthResponse>("/auth/login", data, {
         withCredentials: true,
       });
@@ -97,8 +97,8 @@ export default function SignIn() {
               <span className="h-[1px] w-full max-w-[70px] bg-textPrimary font-medium hidden sm:block"></span>
             </div>
             <form
-              onSubmit={handleSubmit((data: object) => {
-                loginMutation.mutate(data as LoginForm);
+              onSubmit={handleSubmit((data) => {
+                loginMutation.mutate(data as Form);
               })}>
               <FormInput
                 name="usernameOrEmail"
