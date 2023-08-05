@@ -14,7 +14,7 @@ export function Header() {
   };
 
   return (
-    <header className="bg-transparent absolute text-white top-0 right-0 left-0 z-[1000] font-primary">
+    <div className="bg-transparent absolute text-white top-0 w-full -z-100 font-primary">
       <div className="flex justify-between items-center h-[88px] mx-[10%]">
         <Logo logo={MainLogo} />
         <div className="flex justify-between items-center grow my-8 mr-[6px]">
@@ -26,6 +26,6 @@ export function Header() {
           <NavToggle toggleNavbar={toggleNavbar} isOpen={isOpen} />
         </div>
       </div>
-    </header>
+    </div>
   );
 }
