@@ -10,7 +10,7 @@ import App from "./components/App";
 import HydrateAtoms from "./components/HydrateAtoms";
 import queryClient from "./utils/queryClient";
 
-if (process.env.NODE_ENV === "production") {
+if (import.meta.env.PROD) {
   disableReactDevTools();
 }
 

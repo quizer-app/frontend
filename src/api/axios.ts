@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:3000/api/v1/";
-// const baseURL = "https://api.local.elotoja.com/api/v1/";
+const baseURL = import.meta.env.VITE_API_URL as string;
 
 export const api = axios.create({
   baseURL,
