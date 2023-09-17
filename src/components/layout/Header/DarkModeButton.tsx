@@ -11,12 +11,12 @@ export default function DarkModeButton() {
   };
 
   return (
-    <div className="flex p-[13px]">
+    <div className="flex p-3">
       <button onClick={toggleDarkMode}>
         {theme === "dark" ? (
-          <Sun width={30} height={30} />
+          <Sun className="w-8 h-8" />
         ) : (
-          <Moon width={30} height={30} />
+          <Moon className="w-8 h-8" />
         )}
       </button>
     </div>

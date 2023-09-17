@@ -14,10 +14,12 @@ export function Header() {
   };
 
   return (
-    <div className="bg-transparent absolute text-white top-0 w-full -z-100 font-primary">
-      <div className="flex justify-between items-center h-[88px] mx-[10%]">
-        <Logo logo={MainLogo} />
-        <div className="flex justify-between items-center grow my-8 mr-[6px]">
+    <div className="bg-transparent absolute text-white top-0 w-full z-10 font-primary">
+      <div className="flex justify-between items-center gap-2 container mx-auto px-4 sm:px-6 py-2 sm:py-3">
+        <div>
+          <Logo logo={MainLogo} />
+        </div>
+        <div className="flex justify-between items-center grow">
           <NavLinks isOpen={isOpen} />
           <NavButtons />
         </div>

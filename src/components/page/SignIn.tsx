@@ -73,7 +73,7 @@ export default function SignIn() {
   }, [isAuthenticated, navigate, loginMutation.isSuccess]);
 
   return (
-    <div className="w-full px-4">
+    <div className="w-full">
       <div className="bg-secondary mx-auto max-w-[500px] rounded-md py-10 px-6 sm:p-[60px]">
         <h1 className="font-bold text-center text-2xl sm:text-3xl">
           Sign in to your account

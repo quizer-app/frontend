@@ -1,59 +1,58 @@
 import { Link } from "react-router-dom";
 
-interface NavLinksProps {
-  isOpen: boolean;
-}
-
-export default function NavLinks({ isOpen }: NavLinksProps) {
+export default function NavLinks({ isOpen }: { isOpen: boolean }) {
   return (
     <div>
-      <nav>
-        <ul
-          className={`${
-            isOpen ? "flex" : "hidden"
-          } justify-center items-center ml-5 border-[#959cb137] 
-            bg-[#1D2144] flex-col right-[6%] top-[88px] absolute
-              rounded-md w-[250px] h-[274px] sm:h-[194px] border-[.5px]
-              lg:bg-transparent lg:flex-row lg:right-auto lg:top-auto lg:static
-              lg:rounded-none lg:w-auto lg:h-auto lg:border-none lg:flex lg:text-[17px]`}>
-          <LiElement href="/">Home</LiElement>
-          <LiElement href="/about">About</LiElement>
-          <LiElement href="/users">Users</LiElement>
-          <LiElement href="/support">Support</LiElement>
-          <AuthElement href="/signin">Sign In</AuthElement>
-          <AuthElement href="/signup">Sign Up</AuthElement>
-        </ul>
-      </nav>
+      <ul
+        className={`${
+          isOpen ? "flex" : "hidden"
+        } flex-col border-[#959CB137] bg-[#1D2144]
+          absolute right-4 top-20 rounded-sm border-[.5px] gap-[10px] p-5
+          sm:gap-3 sm:top-[5.5rem] lg:bg-transparent lg:flex-row lg:static
+          lg:border-none lg:flex lg:gap-7 lg:ml-3
+          `}
+      >
+        <LiElement href="/">Home</LiElement>
+        <LiElement href="/about">About</LiElement>
+        <LiElement href="/users">Users</LiElement>
+        <LiElement href="/support">Support</LiElement>
+        <AuthElement href="/signin">Sign In</AuthElement>
+        <AuthElement href="/signup">Sign Up</AuthElement>
+      </ul>
     </div>
   );
 }
 
-interface LiElementProps {
+function LiElement({
+  children,
+  href,
+}: {
   href: string;
   children?: React.ReactNode;
-}
-
-function LiElement({ children, href }: LiElementProps) {
+}) {
   return (
     <li>
       <Link
-        className="py-2 flex w-[200px] h-[40px] lg:py-auto lg:block lg:w-auto lg:h-auto lg:px-5"
-        to={href}>
+        className="flex w-52 lg:w-auto hover:text-[#959cb1]"
+        // className="lg:px-5 lg:py-auto lg:block lg:w-auto lg:h-auto"
+        to={href}
+      >
         {children}
       </Link>
     </li>
   );
 }
 
-interface AuthElementProps {
+function AuthElement({
+  children,
+  href,
+}: {
   children?: React.ReactNode;
   href: string;
-}
-
-function AuthElement({ children, href }: AuthElementProps) {
+}) {
   return (
     <li className="sm:hidden">
-      <Link className="py-2 flex w-[200px] h-[40px]" to={href}>
+      <Link className="flex w-52 hover:text-[#959CB1]" to={href}>
         {children}
       </Link>
     </li>
