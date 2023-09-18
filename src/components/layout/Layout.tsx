@@ -8,9 +8,9 @@ export default function Layout() {
     <>
       <Toaster />
       <Header />
-      <Content>
-        <Outlet />
-      </Content>
+      {/* <Content> */}
+      <Outlet />
+      {/* </Content> */}
     </>
   );
 }
