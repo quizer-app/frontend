@@ -13,11 +13,11 @@ export default function NavButtons() {
     <div className="hidden sm:block font-bold">
       {isAuthenticated ? (
         <>
-          <Link to="/dashboard" className="py-4 px-6 hover:text-[#959cb1]">
+          <Link to="/dashboard" className="py-4 px-6 hover:text-textHover">
             Dashboard ({tokenData?.user.username})
           </Link>
           <button
-            className="bg-blueButtonHover py-4 px-8 rounded-md hover:bg-opacity-95"
+            className="bg-blueButton py-4 px-8 rounded-md hover:bg-opacity-95"
             onClick={logout}
           >
             Log Out
@@ -25,12 +25,12 @@ export default function NavButtons() {
         </>
       ) : (
         <>
-          <Link to="/signin" className="py-4 px-6 hover:text-[#959cb1]">
+          <Link to="/signin" className="py-4 px-6 hover:text-textHover">
             Sign In
           </Link>
           <Link
             to="/signup"
-            className="bg-blueButtonHover py-4 px-8 rounded-md hover:bg-opacity-95"
+            className="bg-blueButton py-4 px-8 rounded-md hover:bg-opacity-95"
           >
             Sign Up
           </Link>

@@ -127,7 +127,7 @@ export default function SignUp() {
         </form>
         <p className="text-textPrimary font-medium text-center mt-6">
           Already using Quizer?
-          <Link to="/signin" className="text-blueButtonHover pl-2">
+          <Link to="/signin" className="text-blueButton pl-2">
             Sign in
           </Link>
         </p>

@@ -131,7 +131,7 @@ export default function SignIn() {
             >
               Keep me signed in
             </label>
-            <a href="#" className="text-blueButtonHover text-sm font-medium">
+            <a href="#" className="text-blueButton text-sm font-medium">
               Forgot Password?
             </a>
           </div>
@@ -139,7 +139,7 @@ export default function SignIn() {
         </form>
         <p className="text-textPrimary font-medium text-center mt-6">
           Don't have an account?
-          <Link to="/signup" className="text-blueButtonHover pl-2">
+          <Link to="/signup" className="text-blueButton pl-2">
             Sign up
           </Link>
         </p>
