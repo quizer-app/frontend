@@ -4,7 +4,7 @@ export default function Content({ children }: { children?: React.ReactNode }) {
       <div className="container text-white">
         <div className="flex flex-wrap">{children}</div>
       </div>
-      <div className="bg-blue-400 absolute top-0 right-0 w-full h-[300vh] -z-50"></div>
+      <div className="absolute top-0 right-0 w-full h-[300vh] -z-50"></div>
     </div>
   );
 }

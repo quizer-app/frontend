@@ -6,7 +6,7 @@ export default {
       colors: {
         primary: "#090E34",
         secondary: "#1D2144",
-        blueButton: "#4A6CF7",
+        lightBlue: "#4A6CF7",
         textHover: "#9BA1B3",
         // XX
         textPrimary: "#959CB1",

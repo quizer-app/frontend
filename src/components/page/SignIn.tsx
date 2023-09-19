@@ -13,8 +13,8 @@ import {
   isAuthenticatedAtom,
   persistAtom,
 } from "../../atoms/auth";
-import { Button } from "../form/Button";
-import { FormInput } from "../form/FormInput";
+import { Button } from "../layout/ContentBox/Button";
+import { FormInput } from "../layout/ContentBox/FormInput";
 import { AxiosError } from "axios";
 import toast from "react-hot-toast";
 
@@ -131,7 +131,7 @@ export default function SignIn() {
             >
               Keep me signed in
             </label>
-            <a href="#" className="text-blueButton text-sm font-medium">
+            <a href="#" className="text-lightBlue text-sm font-medium">
               Forgot Password?
             </a>
           </div>
@@ -139,7 +139,7 @@ export default function SignIn() {
         </form>
         <p className="text-textPrimary font-medium text-center mt-6">
           Don't have an account?
-          <Link to="/signup" className="text-blueButton pl-2">
+          <Link to="/signup" className="text-lightBlue pl-2">
             Sign up
           </Link>
         </p>

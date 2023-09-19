@@ -6,7 +6,7 @@ interface ButtonProps {
 export function Button({ children, disabled }: ButtonProps) {
   return (
     <button
-      className="bg-blueButton rounded-md w-full font-medium py-4 mt-3"
+      className="bg-lightBlue rounded-md w-full font-medium py-4 mt-3"
       disabled={disabled}
     >
       {children}

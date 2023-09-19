@@ -6,8 +6,8 @@ import { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import GoogleLogo from "@/assets/images/GoogleIcon.svg";
-import { FormInput } from "../form/FormInput";
-import { Button } from "../form/Button";
+import { FormInput } from "../layout/ContentBox/FormInput";
+import { Button } from "../layout/ContentBox/Button";
 import { useEffect } from "react";
 import { useAtomValue } from "jotai";
 import { isAuthenticatedAtom } from "@/atoms/auth";
@@ -127,7 +127,7 @@ export default function SignUp() {
     //   </form>
     //   <p className="text-textPrimary font-medium text-center mt-6">
     //     Already using Quizer?
-    //     <Link to="/signin" className="text-blueButton pl-2">
+    //     <Link to="/signin" className="text-lightBlue pl-2">
     //       Sign in
     //     </Link>
     //   </p>
@@ -160,44 +160,11 @@ export default function SignUp() {
           registerMutation.mutate(data as Form);
         })}
       >
-        <FormInput
-          name="username"
-          type="text"
-          placeholder="Enter your username"
-          labelText="Username"
-          register={register}
-          errors={errors}
-        />
-        <FormInput
-          name="email"
-          type="text"
-          placeholder="Enter your email"
-          labelText="Email"
-          register={register}
-          errors={errors}
-        />
-        <FormInput
-          name="password"
-          type="password"
-          placeholder="Enter your password"
-          labelText="Password"
-          register={register}
-          errors={errors}
-        />
-        <FormInput
-          name="confirmPassword"
-          type="password"
-          placeholder="Confirm your password"
-          labelText="Confirm Password"
-          register={register}
-          errors={errors}
-        />
-
         <Button>Sign In</Button>
       </form>
       <p className="text-textPrimary font-medium text-center mt-6">
         Already using Quizer?
-        <Link to="/signin" className="text-blueButton pl-2">
+        <Link to="/signin" className="text-lightBlue pl-2">
           Sign in
         </Link>
       </p>

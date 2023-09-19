@@ -35,7 +35,7 @@ export function FormInput({
         {...register(name)}
         placeholder={placeholder}
         className="bg-input text-textPrimary rounded-md w-full py-3 pl-6 shadow-md
-                    focus:border-blue-600"
+                    border border-transparent focus:border-lightBlue outline-none"
       />
       {errors && errors[name] && (
         <p className="pt-3 text-sm">

@@ -17,7 +17,7 @@ export default function NavButtons() {
             Dashboard ({tokenData?.user.username})
           </Link>
           <button
-            className="bg-blueButton py-4 px-8 rounded-md hover:bg-opacity-95"
+            className="bg-lightBlue py-4 px-8 rounded-md hover:bg-opacity-95"
             onClick={logout}
           >
             Log Out
@@ -30,7 +30,7 @@ export default function NavButtons() {
           </Link>
           <Link
             to="/signup"
-            className="bg-blueButton py-4 px-8 rounded-md hover:bg-opacity-95"
+            className="bg-lightBlue py-4 px-8 rounded-md hover:bg-opacity-95"
           >
             Sign Up
           </Link>
