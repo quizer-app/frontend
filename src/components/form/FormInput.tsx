@@ -26,15 +26,16 @@ export function FormInput({
   errors,
 }: FormInputProps) {
   return (
-    <div className="mt-8">
-      <label htmlFor={name} className="block text-sm font-medium">
+    <div>
+      <label htmlFor={name} className="block text-sm font-medium mb-3">
         {labelText}
       </label>
       <input
         type={type}
         {...register(name)}
         placeholder={placeholder}
-        className="bg-input text-textPrimary rounded-md w-full py-3 pl-6 shadow-md mt-3"
+        className="bg-input text-textPrimary rounded-md w-full py-3 pl-6 shadow-md
+                    focus:border-blue-600"
       />
       {errors && errors[name] && (
         <p className="pt-3 text-sm">
