@@ -26,7 +26,7 @@ export function FormInput({
   errors,
 }: FormInputProps) {
   return (
-    <div>
+    <div className="mb-8">
       <label htmlFor={name} className="block text-sm font-medium mb-3">
         {labelText}
       </label>
