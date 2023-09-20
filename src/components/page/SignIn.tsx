@@ -1,12 +1,11 @@
 import { api } from "@/api/axios";
 import { AuthResponse } from "@/api/response";
-import GoogleLogo from "@/assets/images/GoogleIcon.svg";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useAtomValue, useSetAtom } from "jotai";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import {
   accessTokenAtom,
@@ -17,6 +16,12 @@ import { Button } from "../layout/ContentBox/Button";
 import { FormInput } from "../layout/ContentBox/FormInput";
 import { AxiosError } from "axios";
 import toast from "react-hot-toast";
+import ContentBox from "../layout/ContentBox/ContentBox";
+import Title from "../layout/ContentBox/Title";
+import GoogleButton from "../layout/ContentBox/GoogleButton";
+import Text from "../layout/ContentBox/Text";
+import TextWithLink from "../layout/ContentBox/TextWithLink";
+import TextWithLines from "../layout/ContentBox/TextWithLines";
 
 const schema = z.object({
   usernameOrEmail: z.string().min(1),
@@ -73,77 +78,54 @@ export default function SignIn() {
   }, [isAuthenticated, navigate, loginMutation.isSuccess]);
 
   return (
-    <div className="w-full">
-      <div className="bg-secondary mx-auto max-w-[500px] rounded-md py-10 px-6 sm:p-[60px]">
-        <h1 className="font-bold text-center text-2xl sm:text-3xl">
-          Sign in to your account
-        </h1>
-        <p className="text-textPrimary text-center mt-3">
-          Login to your account for better experience
-        </p>
-        <button
-          className="text-textPrimary bg-input shadow-md rounded-md font-medium w-full py-3
-                            flex items-center justify-center gap-4 mt-10"
-        >
-          <span>
-            <img src={GoogleLogo} alt="logo" className="w-5 h-5"></img>
-          </span>
-          Sign in with Google
-        </button>
-        <div className="flex items-center justify-center mt-5">
-          <span className="h-[1px] w-full max-w-[70px] bg-textPrimary font-medium hidden sm:block"></span>
-          <p className="text-textPrimary px-5 text-center font-medium">
-            Or, sign in with your email
-          </p>
-          <span className="h-[1px] w-full max-w-[70px] bg-textPrimary font-medium hidden sm:block"></span>
+    <ContentBox>
+      <Title>Sign in to your account</Title>
+      <Text>Login to your account for better experience</Text>
+      <GoogleButton>Sign in with Google</GoogleButton>
+      <TextWithLines>Or, sign in with your email</TextWithLines>
+      <form
+        onSubmit={handleSubmit(data => {
+          loginMutation.mutate(data as Form);
+        })}
+      >
+        <FormInput
+          name="usernameOrEmail"
+          type="text"
+          placeholder="Enter your email"
+          labelText="Email or Username"
+          register={register}
+          errors={errors}
+        />
+        <FormInput
+          name="password"
+          type="password"
+          placeholder="Enter your password"
+          labelText="Password"
+          register={register}
+          errors={errors}
+        />
+        <div className="mt-8 flex justify-center mb-5">
+          <input
+            id="persist"
+            type="checkbox"
+            className="bg-secondary"
+            ref={persistRef}
+          />
+          <label
+            htmlFor="persist"
+            className="text-textPrimary text-sm font-medium grow pl-3"
+          >
+            Keep me signed in
+          </label>
+          <a href="#" className="text-lightBlue text-sm font-medium">
+            Forgot Password?
+          </a>
         </div>
-        <form
-          onSubmit={handleSubmit(data => {
-            loginMutation.mutate(data as Form);
-          })}
-        >
-          <FormInput
-            name="usernameOrEmail"
-            type="text"
-            placeholder="Enter your email"
-            labelText="Email or Username"
-            register={register}
-            errors={errors}
-          />
-          <FormInput
-            name="password"
-            type="password"
-            placeholder="Enter your password"
-            labelText="Password"
-            register={register}
-            errors={errors}
-          />
-          <div className="mt-8 flex justify-center mb-5">
-            <input
-              id="persist"
-              type="checkbox"
-              className="bg-secondary"
-              ref={persistRef}
-            />
-            <label
-              htmlFor="persist"
-              className="text-textPrimary text-sm font-medium grow pl-3"
-            >
-              Keep me signed in
-            </label>
-            <a href="#" className="text-lightBlue text-sm font-medium">
-              Forgot Password?
-            </a>
-          </div>
-          <Button>Sign In</Button>
-        </form>
-        <p className="text-textPrimary font-medium text-center mt-6">
-          Don't have an account?
-          <Link to="/signup" className="text-lightBlue pl-2">
-            Sign up
-          </Link>
-        </p>
-      </div>
-    </div>
+        <Button>Sign in</Button>
+      </form>
+      <TextWithLink link="Sign up" path="/signup">
+        Don't have an account?
+      </TextWithLink>
+    </ContentBox>
   );
 }

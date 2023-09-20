@@ -10,7 +10,7 @@ import { Button } from "../layout/ContentBox/Button";
 import { useEffect } from "react";
 import { useAtomValue } from "jotai";
 import { isAuthenticatedAtom } from "@/atoms/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast/headless";
 import ContentBox from "../layout/ContentBox/ContentBox";
 import Title from "../layout/ContentBox/Title";
@@ -110,7 +110,7 @@ export default function SignUp() {
           register={register}
           errors={errors}
         />
-        <Button>Sign In</Button>
+        <Button>Sign up</Button>
         <TextWithLink link="Sign in" path="/signin">
           Already using Quizer?
         </TextWithLink>
