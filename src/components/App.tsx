@@ -9,6 +9,7 @@ import RequireAuth from "./router/RequireAuth";
 import NotFound from "./status/NotFound";
 import SignUp from "./page/SignUp";
 import Verification from "./page/Verification";
+import Verified from "./page/Verified";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/verification/:token" element={<Verification />} />
+          <Route path="/verified" element={<Verified />} />
 
           <Route path="/test" element={<Test />} />
 

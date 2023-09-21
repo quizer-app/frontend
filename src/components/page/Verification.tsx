@@ -12,7 +12,7 @@ export default function Verification() {
     <>
       <ContentBox>
         <Title>Please verify your email</Title>
-        <Text className="mb-5">You're almost there! We sent an email to</Text>
+        <Text className="mb-3">You're almost there! We sent an email to</Text>
         <Text className="text-lg font-bold text-textHover">
           szymonbudziakj@gmail.com
         </Text>
