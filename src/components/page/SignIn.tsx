@@ -87,6 +87,7 @@ export default function SignIn() {
         onSubmit={handleSubmit(data => {
           loginMutation.mutate(data as Form);
         })}
+        autoComplete="off"
       >
         <FormInput
           name="usernameOrEmail"

@@ -77,6 +77,7 @@ export default function SignUp() {
         onSubmit={handleSubmit(data => {
           registerMutation.mutate(data as Form);
         })}
+        autoComplete="off"
       >
         <FormInput
           name="username"

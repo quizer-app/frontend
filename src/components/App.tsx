@@ -8,6 +8,7 @@ import PersistLogin from "./router/PersistLogin";
 import RequireAuth from "./router/RequireAuth";
 import NotFound from "./status/NotFound";
 import SignUp from "./page/SignUp";
+import Verification from "./page/Verification";
 
 export default function App() {
   return (
@@ -15,13 +16,14 @@ export default function App() {
       <Route element={<PersistLogin />}>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="signin" element={<SignIn />} />
-          <Route path="signup" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/verification/:token" element={<Verification />} />
 
-          <Route path="test" element={<Test />} />
+          <Route path="/test" element={<Test />} />
 
           <Route element={<RequireAuth />}>
-            <Route path="users" element={<Users />} />
+            <Route path="/users" element={<Users />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />
