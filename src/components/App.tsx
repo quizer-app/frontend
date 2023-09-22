@@ -10,6 +10,8 @@ import NotFound from "./status/NotFound";
 import SignUp from "./page/SignUp";
 import Verification from "./page/Verification";
 import Verified from "./page/Verified";
+import PasswordReset from "./page/PasswordReset";
+import ForgotPassword from "./page/ForgotPassword";
 
 export default function App() {
   return (
@@ -21,6 +23,8 @@ export default function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/verification/:token" element={<Verification />} />
           <Route path="/verified" element={<Verified />} />
+          <Route path="/password_reset" element={<PasswordReset />} />
+          <Route path="/forgot_password" element={<ForgotPassword />} />
 
           <Route path="/test" element={<Test />} />
 

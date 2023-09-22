@@ -4,6 +4,7 @@ import Text from "../layout/ContentBox/Text";
 import { Button } from "../layout/ContentBox/Button";
 import { useParams } from "react-router-dom";
 import FillHeight from "../layout/Other/FillHeight";
+import EmailIcon from "../layout/ContentBox/SvgIcons/EmailIcon";
 
 export default function Verification() {
   const { token } = useParams();
@@ -11,7 +12,8 @@ export default function Verification() {
   return (
     <>
       <ContentBox>
-        <Title>Please verify your email</Title>
+        <EmailIcon />
+        <Title>Email Verification</Title>
         <Text className="mb-3">You're almost there! We sent an email to</Text>
         <Text className="text-lg font-bold text-textHover">
           szymonbudziakj@gmail.com
