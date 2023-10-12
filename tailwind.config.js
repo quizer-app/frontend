@@ -9,13 +9,13 @@ export default {
         lightBlue: "#4A6CF7",
         textHover: "#9BA1B3",
         textPrimary: "#959CB1",
-        // XX
         input: "#242B51",
-        headerScrolled: "#3B82F6",
-        footer: "#4A6CF70D",
       },
       fontFamily: {
         primary: ["Inter"],
+      },
+      opacity: {
+        2: "0.98",
       },
     },
   },
