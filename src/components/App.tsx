@@ -12,6 +12,7 @@ import Verification from "./page/Verification";
 import Verified from "./page/Verified";
 import PasswordReset from "./page/PasswordReset";
 import ForgotPassword from "./page/ForgotPassword";
+import Quiz from "./page/Quiz";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/verified" element={<Verified />} />
           <Route path="/password_reset" element={<PasswordReset />} />
           <Route path="/forgot_password" element={<ForgotPassword />} />
+          <Route path="/quiz" element={<Quiz />} />
 
           <Route path="/test" element={<Test />} />
 

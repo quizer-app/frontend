@@ -2,7 +2,7 @@ import FeatureBlock from "./FeatureBlock";
 
 export default function Features() {
   return (
-    <div className="bg-primary/2 w-full text-white">
+    <section className="bg-primary/2 w-full text-white">
       <div className="flex flex-col gap-28 items-center py-16 md:py-20 lg:py-28 px-4">
         <div className="max-w-md sm:max-w-lg">
           <h2 className="font-bold mb-5 text-center text-3xl md:text-4xl">
@@ -30,8 +30,16 @@ export default function Features() {
             title="Totally Free"
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid corrupti nam, corporis porro adipisci veritatis temporibus at assumenda impedit cumque?"
           />
+          <FeatureBlock
+            title="Totally Free"
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid corrupti nam, corporis porro adipisci veritatis temporibus at assumenda impedit cumque?"
+          />
+          <FeatureBlock
+            title="Totally Free"
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid corrupti nam, corporis porro adipisci veritatis temporibus at assumenda impedit cumque?"
+          />
         </div>
       </div>
-    </div>
+    </section>
   );
 }

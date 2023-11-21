@@ -4,9 +4,8 @@ import TileGrid from "../layout/Sections/TileGrid/TileGrid";
 export default function Home() {
   return (
     <>
-      <Features />
-
       <TileGrid />
+      <Features />
     </>
   );
 }
