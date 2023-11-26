@@ -12,7 +12,8 @@ import Verification from "./page/Verification";
 import Verified from "./page/Verified";
 import PasswordReset from "./page/PasswordReset";
 import ForgotPassword from "./page/ForgotPassword";
-import Quiz from "./page/Quiz";
+import Quiz from "./layout/Quiz/Quiz";
+import Flashcards from "./layout/Quiz/Flashcards";
 
 export default function App() {
   return (
@@ -26,7 +27,9 @@ export default function App() {
           <Route path="/verified" element={<Verified />} />
           <Route path="/password_reset" element={<PasswordReset />} />
           <Route path="/forgot_password" element={<ForgotPassword />} />
+
           <Route path="/quiz" element={<Quiz />} />
+          {/* <Route path="/flashcards" element={<Flashcards />} /> */}
 
           <Route path="/test" element={<Test />} />
 
@@ -36,6 +39,7 @@ export default function App() {
 
           <Route path="*" element={<NotFound />} />
         </Route>
+        <Route path="/flashcards" element={<Flashcards />} />
       </Route>
     </Routes>
   );
