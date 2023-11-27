@@ -30,9 +30,9 @@ export default function Quiz() {
 
   return (
     <div className="bg-primary w-full text-white px-4 py-10 sm:py-12 md:py-16 lg:py-20">
-      <div className="mx-auto rounded-md max-w-[592px] md:max-w-[720px] lg:max-w-[976px]">
+      <div className="mx-auto rounded-md max-w-[592px] md:max-w-[720px] lg:max-w-[976px] bg-red-500">
         <h2 className="text-2xl font-bold mb-10 xl:text-3xl">Karaluch</h2>
-        <div className="flex flex-col gap-10 w-full mb-16">
+        <div className="flex flex-col gap-10 w-full mb-16 bg-blue-400">
           <div className="flex items-center justify-center h-[280px] sm:h-[320px] md:h-[360px] lg:h-[420px] [perspective:1000px]">
             <Flashcard currTerm={currTerm} terms={terms} />
           </div>

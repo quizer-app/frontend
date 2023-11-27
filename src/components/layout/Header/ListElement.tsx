@@ -12,7 +12,7 @@ export default function ListElement({
   return (
     <li className={`${auth ? "sm:hidden" : ""}`}>
       <Link
-        className={`${auth ? "" : "lg:w-auto"} flex w-52 hover:text-textHover`}
+        className={`${auth ? "" : "lg:w-auto"} flex w-52 textHover`}
         to={href}
       >
         {children}

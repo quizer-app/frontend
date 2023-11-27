@@ -25,7 +25,7 @@ export default function NavButtons() {
         </>
       ) : (
         <>
-          <Link to="/signin" className="py-4 px-6 hover:text-textHover">
+          <Link to="/signin" className="py-4 px-6 textHover">
             Sign In
           </Link>
           <Link
