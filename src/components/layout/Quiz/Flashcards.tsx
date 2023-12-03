@@ -31,7 +31,7 @@ export default function Flashcards() {
     <>
       <Toaster />
       <QuizHeader name={"Karaluch"} />
-      <div className="bg-primary text-white fixed w-full h-[100vh] px-4 py-12 sm:py-16 md:py-20 lg:py-24">
+      <div className="bg-primary text-white fixed w-full h-[100vh] px-4 py-14 sm:py-16 md:py-20 lg:py-24">
         <div className="mx-auto rounded-md max-w-[592px] md:max-w-[720px] lg:max-w-[976px]">
           <div className="flex flex-col gap-10 w-full mb-16">
             <div className="flex items-center justify-center h-[420px] sm:h-[460px] md:h-[460px] lg:h-[500px] [perspective:1000px]">

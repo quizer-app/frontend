@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "./layout/Layout";
 import Home from "./page/Home";
 import SignIn from "./page/SignIn";
-import Test from "./page/Test";
 import Users from "./page/Users";
 import PersistLogin from "./router/PersistLogin";
 import RequireAuth from "./router/RequireAuth";
@@ -14,6 +13,7 @@ import PasswordReset from "./page/PasswordReset";
 import ForgotPassword from "./page/ForgotPassword";
 import Quiz from "./layout/Quiz/Quiz";
 import Flashcards from "./layout/Quiz/Flashcards";
+import Test from "./layout/Quiz/Test";
 
 export default function App() {
   return (
@@ -31,8 +31,6 @@ export default function App() {
           <Route path="/quiz" element={<Quiz />} />
           {/* <Route path="/flashcards" element={<Flashcards />} /> */}
 
-          <Route path="/test" element={<Test />} />
-
           <Route element={<RequireAuth />}>
             <Route path="/users" element={<Users />} />
           </Route>
@@ -40,6 +38,7 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="/flashcards" element={<Flashcards />} />
+        <Route path="/test" element={<Test />} />
       </Route>
     </Routes>
   );
