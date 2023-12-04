@@ -1,16 +1,21 @@
-export default function TestBlock() {
-  return (
-    <div className="bg-secondary rounded-md w-full px-12 py-20 flex flex-col justify-between h-[420px] sm:h-[460px] md:h-[460px] lg:h-[500px]">
-      <p className="text-lg font-semibold">Title</p>
+interface TestBlockProps {
+  title: string;
+  number: number;
+  max: number;
+}
 
-      <div>
-        <p className="mb-6 text-textPrimary">Your answer</p>
-        <input
-          className="bg-input text-textPrimary rounded-md w-full py-3 pl-6 shadow-md
-                    border border-transparent focus:border-lightBlue outline-none"
-          placeholder="Your answer"
-        ></input>
+export default function TestBlock({ title, number, max }: TestBlockProps) {
+  return (
+    <div className="bg-secondary flex flex-col justify-between rounded-md w-full px-6 py-14 sm:px-8 md:py-16 lg:px-12 lg:py-20 gap-20 xl:gap-28">
+      <div className="flex items-center justify-between font-semibold">
+        <p className="text-lg">{title}</p>
+        <p className="text-textPrimary">{`${number} / ${max}`}</p>
       </div>
+      <input
+        className="bg-input text-textPrimary rounded-md w-full py-3 pl-6 shadow-md
+                    border border-transparent focus:border-lightBlue outline-none"
+        placeholder="Your answer"
+      ></input>
     </div>
   );
 }
