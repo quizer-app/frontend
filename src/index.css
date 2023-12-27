@@ -5,3 +5,7 @@
 .textHover {
   @apply hover:text-textHover ease-out duration-200 cursor-pointer;
 }
+
+.mainContainer {
+  @apply container px-4 sm:px-6 xl:px-8 2xl:px-12;
+}

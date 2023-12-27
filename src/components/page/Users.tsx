@@ -30,7 +30,7 @@ export default function Users() {
       {isError && <div>Error</div>}
       {!isLoading && !isError && (
         <ul>
-          {data.data.users.map((user) => (
+          {data.data.users.map(user => (
             <li key={user.id}>
               {user.username} - {user.email}
             </li>
