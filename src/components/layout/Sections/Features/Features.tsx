@@ -3,8 +3,8 @@ import FeatureBlock from "./FeatureBlock";
 export default function Features() {
   return (
     <section className="bg-primary/2 w-full text-white">
-      <div className="flex flex-col gap-28 items-center py-16 md:py-20 lg:py-28 px-4">
-        <div className="max-w-md sm:max-w-lg">
+      <div className="flex flex-col gap-28 py-16 md:py-20 lg:py-28 px-4 mainContainer max-sm:max-w-md mx-auto">
+        <div className="max-w-md sm:max-w-lg mx-auto">
           <h2 className="font-bold mb-5 text-center text-3xl md:text-4xl">
             Main Features
           </h2>
