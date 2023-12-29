@@ -56,7 +56,7 @@ export default function TileGrid() {
 
   return (
     <section className="bg-primary w-full flex items-center justify-center py-14 md:py-16 lg:py-20">
-      <div className="mainContainer max-sm:max-w-md grid grid-cols-1 gap-4 lg:gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mainContainer grid grid-cols-1 gap-4 lg:gap-6 md:grid-cols-2 xl:grid-cols-3">
         {quizes.map((el, id) => {
           return (
             <QuizTile
