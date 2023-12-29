@@ -14,7 +14,7 @@ export function Header() {
   };
 
   return (
-    <nav className="bg-primary text-white top-0 w-full z-10 font-primary">
+    <nav className="bg-primary text-white top-0 w-full font-primary -z-30">
       <div className="flex justify-between items-center gap-2 mx-auto mainContainer py-2 sm:py-3 lg:py-4">
         <div>
           <Logo logo={MainLogo} />
