@@ -1,13 +1,10 @@
-import { useEffect, useState } from "react";
 import QuizTile from "./QuizTile";
-import { api } from "@/api/axios";
-import { useQuery } from "@tanstack/react-query";
 
-interface QuizesQueryProps {
-  userName: string;
-  name: string;
-  description: string;
-}
+// interface QuizesQueryProps {
+//   userName: string;
+//   name: string;
+//   description: string;
+// }
 
 export default function TileGrid() {
   const quizes = [

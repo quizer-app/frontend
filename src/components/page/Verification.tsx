@@ -1,13 +1,12 @@
-import ContentBox from "../layout/ContentBox/ContentBox";
-import Title from "../layout/ContentBox/Title";
-import Text from "../layout/ContentBox/Text";
 import { Button } from "../layout/ContentBox/Button";
-import { useParams } from "react-router-dom";
-import FillHeight from "../layout/Other/FillHeight";
+import ContentBox from "../layout/ContentBox/ContentBox";
 import EmailIcon from "../layout/ContentBox/SvgIcons/EmailIcon";
+import Text from "../layout/ContentBox/Text";
+import Title from "../layout/ContentBox/Title";
+import FillHeight from "../layout/Other/FillHeight";
 
 export default function Verification() {
-  const { token } = useParams();
+  // const { token } = useParams();
 
   return (
     <>

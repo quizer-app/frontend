@@ -1,10 +1,9 @@
-import ContentBox from "../layout/ContentBox/ContentBox";
-import Title from "../layout/ContentBox/Title";
-import Text from "../layout/ContentBox/Text";
 import { Button } from "../layout/ContentBox/Button";
-import FillHeight from "../layout/Other/FillHeight";
-import { Link } from "react-router-dom";
+import ContentBox from "../layout/ContentBox/ContentBox";
 import LockIcon from "../layout/ContentBox/SvgIcons/LockIcon";
+import Text from "../layout/ContentBox/Text";
+import Title from "../layout/ContentBox/Title";
+import FillHeight from "../layout/Other/FillHeight";
 
 export default function PasswordReset() {
   return (

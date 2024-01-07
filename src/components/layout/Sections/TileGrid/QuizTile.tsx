@@ -5,7 +5,7 @@ type QuizTileProps = {
   userName: string;
   desc: string;
 };
-export default function QuizTile({ name, userName, desc }: QuizTileProps) {
+export default function QuizTile({ name, userName }: QuizTileProps) {
   return (
     <div className="bg-secondary rounded-md w-full">
       <a href="#" className="relative">
