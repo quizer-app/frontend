@@ -5,6 +5,8 @@ RUN npm ci
 RUN npm run build
 
 FROM nginx:1.25.3-alpine3.18 AS base
-WORKDIR /usr/share/nginx/html
+WORKDIR /app
 EXPOSE 80
 COPY --from=build /src/dist .
+COPY nginx.conf /etc/nginx/nginx.conf
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
