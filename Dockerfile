@@ -6,6 +6,6 @@ RUN npm ci
 RUN npm run build
 
 FROM nginx:stable-alpine3.17 AS base
-WORKDIR /app
+WORKDIR /usr/share/nginx/html
 EXPOSE 80
 COPY --from=build /src/dist .
