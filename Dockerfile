@@ -1,4 +1,3 @@
-
 FROM node:21.0.0-alpine3.18 AS build
 WORKDIR /src
 COPY . .
