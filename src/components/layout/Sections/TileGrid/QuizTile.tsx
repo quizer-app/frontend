@@ -10,14 +10,14 @@ type QuizTileProps = {
 export default function QuizTile({ quiz }: QuizTileProps) {
   return (
     <div className="bg-secondary rounded-md w-full">
-      <Link to={quiz.link} className="relative">
+      <Link to={quiz.location} className="relative">
         <img src={img} className="w-full rounded-t-md" />
         <div className="text-white text-sm font-bold absolute top-4 right-4 px-4 py-2 bg-lightBlue rounded-3xl">
           Category/QS
         </div>
       </Link>
       <div className="p-6">
-        <Link to={quiz.link} className="relative">
+        <Link to={quiz.location} className="relative">
           <h3 className="text-white text-2xl font-bold mb-3">{quiz.name}</h3>
           <p className="text-textPrimary font-medium">{quiz.description}</p>
         </Link>
