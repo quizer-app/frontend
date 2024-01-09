@@ -6,7 +6,7 @@ type QuizTileProps = {
 };
 
 export default function QuizTile({ quiz }: QuizTileProps) {
-  const url = `/${quiz.userName}/${quiz.name}`;
+  const url = `/${quiz.userName}/${quiz.slug}`;
   return (
     <div className="bg-secondary rounded-md w-full">
       <a href={url} className="relative">
