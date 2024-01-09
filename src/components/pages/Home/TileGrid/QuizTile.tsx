@@ -1,7 +1,7 @@
 import { QuizResponse } from "@/api/types/quiz";
 import { formatDate } from "@/utils/date";
 import { Link } from "react-router-dom";
-import img from "../../../assets/images/office.jpg";
+import img from "@/assets/images/office.jpg";
 
 type QuizTileProps = {
   quiz: QuizResponse;
