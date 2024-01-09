@@ -5,6 +5,11 @@ export const formatDate = (date: string): string => {
 
   const dateStringInUserTimeZone = dateObject.toLocaleString("pl-PL", {
     timeZone: userTimeZone,
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
   });
 
   return dateStringInUserTimeZone;
