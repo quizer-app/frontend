@@ -10,19 +10,16 @@ export default function Quiz() {
   const { userName, quizSlug } = useParams();
 
   const { isLoading, isError, data } = useQuery({
-    queryKey: ["quiz"],
+    queryKey: ["quiz", userName, quizSlug],
     queryFn: () =>
       api.get<QuizResponse>(`/api/v1/Quiz/${userName}/${quizSlug}`),
-    enabled: !!userName && !!quizSlug,
   });
 
   return (
     <>
-      {isError && <NotFound />}
       {isLoading && <Loading />}
-      {!isError && !isLoading && data && data.data && (
-        <QuizView quiz={data.data} />
-      )}
+      {isError && <NotFound />}
+      {data?.data && <QuizView quiz={data.data} />}
     </>
   );
 }
