@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Toaster } from "react-hot-toast";
 import ControlBar from "./ControlBar";
-import Flashcard from "./Flashcard";
 import QuizHeader from "./QuizHeader";
 import { TermProps } from "./Term";
 
@@ -35,7 +34,7 @@ export default function Flashcards() {
         <div className="mx-auto rounded-md max-w-[592px] md:max-w-[720px] lg:max-w-[976px]">
           <div className="flex flex-col gap-10 w-full mb-16">
             <div className="flex items-center justify-center h-[420px] sm:h-[460px] md:h-[460px] lg:h-[500px] [perspective:1000px]">
-              <Flashcard currTerm={currTerm} question={terms} />
+              {/* <Flashcard currTerm={currTerm} question={terms} /> */}
             </div>
 
             <ControlBar
