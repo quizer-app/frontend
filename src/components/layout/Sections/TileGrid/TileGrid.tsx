@@ -1,6 +1,6 @@
-import QuizTile from "./QuizTile";
-import { useQuery } from "@tanstack/react-query";
 import { api } from "@/api/axios";
+import { useQuery } from "@tanstack/react-query";
+import QuizTile from "./QuizTile";
 
 interface QuizesQueryProps {
   userName: string;
@@ -9,44 +9,7 @@ interface QuizesQueryProps {
 }
 
 export default function TileGrid() {
-  const quizes = [
-    {
-      userName: "Michał Pazdan",
-      name: "Best UI components for modern websites",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dictum neque, laoreet dolor",
-    },
-    {
-      userName: "Michał Pazdan",
-      name: "Best UI components for modern websites",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dictum neque, laoreet dolor",
-    },
-    {
-      userName: "Michał Pazdan",
-      name: "Best UI components for modern websites",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dictum neque, laoreet dolor",
-    },
-    {
-      userName: "Michał Pazdan",
-      name: "Best UI components for modern websites",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dictum neque, laoreet dolor",
-    },
-    {
-      userName: "Michał Pazdan",
-      name: "Best UI components for modern websites",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dictum neque, laoreet dolor",
-    },
-    {
-      userName: "Michał Pazdan",
-      name: "Best UI components for modern websites",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dictum neque, laoreet dolor",
-    },
-  ];
+  
 
   const { isLoading, isError, error, data } = useQuery({
     queryKey: ["quizes"],
