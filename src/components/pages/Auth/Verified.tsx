@@ -1,10 +1,10 @@
-import ContentBox from "../layout/ContentBox/ContentBox";
-import Title from "../layout/ContentBox/Title";
-import Text from "../layout/ContentBox/Text";
-import { Button } from "../layout/ContentBox/Button";
-import FillHeight from "../layout/Other/FillHeight";
+import ContentBox from "../../layout/ContentBox/ContentBox";
+import Title from "../../layout/ContentBox/Title";
+import Text from "../../layout/ContentBox/Text";
+import { Button } from "../../layout/ContentBox/Button";
+import FillHeight from "../../layout/Other/FillHeight";
 import { Link } from "react-router-dom";
-import CheckmarkIcon from "../layout/ContentBox/SvgIcons/CheckmarkIcon";
+import CheckmarkIcon from "../../layout/ContentBox/Icons/CheckmarkIcon";
 
 export default function Verified() {
   return (

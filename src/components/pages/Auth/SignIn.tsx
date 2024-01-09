@@ -13,15 +13,15 @@ import {
   accessTokenAtom,
   isAuthenticatedAtom,
   persistAtom,
-} from "../../atoms/auth";
-import { Button } from "../layout/ContentBox/Button";
-import ContentBox from "../layout/ContentBox/ContentBox";
-import { FormInput } from "../layout/ContentBox/FormInput";
-import GoogleButton from "../layout/ContentBox/GoogleButton";
-import Text from "../layout/ContentBox/Text";
-import TextWithLines from "../layout/ContentBox/TextWithLines";
-import TextWithLink from "../layout/ContentBox/TextWithLink";
-import Title from "../layout/ContentBox/Title";
+} from "../../../atoms/auth";
+import { Button } from "../../layout/ContentBox/Button";
+import ContentBox from "../../layout/ContentBox/ContentBox";
+import { FormInput } from "../../layout/ContentBox/FormInput";
+import GoogleButton from "../../layout/ContentBox/GoogleButton";
+import Text from "../../layout/ContentBox/Text";
+import TextWithLines from "../../layout/ContentBox/TextWithLines";
+import TextWithLink from "../../layout/ContentBox/TextWithLink";
+import Title from "../../layout/ContentBox/Title";
 
 const schema = z.object({
   usernameOrEmail: z.string().min(1),

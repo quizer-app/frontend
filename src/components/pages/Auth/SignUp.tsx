@@ -10,14 +10,14 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast/headless";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
-import { Button } from "../layout/ContentBox/Button";
-import ContentBox from "../layout/ContentBox/ContentBox";
-import { FormInput } from "../layout/ContentBox/FormInput";
-import GoogleButton from "../layout/ContentBox/GoogleButton";
-import Text from "../layout/ContentBox/Text";
-import TextWithLines from "../layout/ContentBox/TextWithLines";
-import TextWithLink from "../layout/ContentBox/TextWithLink";
-import Title from "../layout/ContentBox/Title";
+import { Button } from "../../layout/ContentBox/Button";
+import ContentBox from "../../layout/ContentBox/ContentBox";
+import { FormInput } from "../../layout/ContentBox/FormInput";
+import GoogleButton from "../../layout/ContentBox/GoogleButton";
+import Text from "../../layout/ContentBox/Text";
+import TextWithLines from "../../layout/ContentBox/TextWithLines";
+import TextWithLink from "../../layout/ContentBox/TextWithLink";
+import Title from "../../layout/ContentBox/Title";
 
 const schema = z.object({
   username: z.string().min(3).max(32),

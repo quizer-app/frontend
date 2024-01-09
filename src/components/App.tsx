@@ -1,16 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./layout/Layout";
-import Flashcards from "./layout/Quiz/Flashcards";
-import Quiz from "./layout/Quiz/Quiz";
-import Test from "./layout/Quiz/Test";
-import ForgotPassword from "./page/ForgotPassword";
-import Home from "./page/Home";
-import PasswordReset from "./page/PasswordReset";
-import SignIn from "./page/SignIn";
-import SignUp from "./page/SignUp";
-import Users from "./page/Users";
-import Verification from "./page/Verification";
-import Verified from "./page/Verified";
+import Flashcards from "./pages/Quiz/Flashcards";
+import Quiz from "./pages/Quiz/Quiz";
+import Test from "./pages/Quiz/Test";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
+import Home from "./pages/Home/Home";
+import PasswordReset from "./pages/Auth/PasswordReset";
+import SignIn from "./pages/Auth/SignIn";
+import SignUp from "./pages/Auth/SignUp";
+import Verification from "./pages/Auth/Verification";
+import Verified from "./pages/Auth/Verified";
 import PersistLogin from "./router/PersistLogin";
 import RequireAuth from "./router/RequireAuth";
 import NotFound from "./status/NotFound";
@@ -29,9 +28,9 @@ export default function App() {
           <Route path="/forgot_password" element={<ForgotPassword />} />
 
           {/* <Route path="/flashcards" element={<Flashcards />} /> */}
-          <Route element={<RequireAuth />}>
+          {/* <Route element={<RequireAuth />}>
             <Route path="/users" element={<Users />} />
-          </Route>
+          </Route> */}
 
           <Route path="/:userName/:quizSlug" element={<Quiz />} />
 

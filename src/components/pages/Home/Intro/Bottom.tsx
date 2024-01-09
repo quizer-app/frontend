@@ -47,8 +47,8 @@ export default function Bottom() {
           y2="212.24"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4A6CF7" stop-opacity="0"></stop>
-          <stop offset="1" stop-color="#4A6CF7"></stop>
+          <stop stopColor="#4A6CF7" stopOpacity="0"></stop>
+          <stop offset="1" stopColor="#4A6CF7"></stop>
         </linearGradient>
         <linearGradient
           id="paint1_linear_25:218"
@@ -58,8 +58,8 @@ export default function Bottom() {
           y2="212.24"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4A6CF7" stop-opacity="0"></stop>
-          <stop offset="1" stop-color="#4A6CF7"></stop>
+          <stop stopColor="#4A6CF7" stopOpacity="0"></stop>
+          <stop offset="1" stopColor="#4A6CF7"></stop>
         </linearGradient>
         <linearGradient
           id="paint2_linear_25:218"
@@ -69,8 +69,8 @@ export default function Bottom() {
           y2="212.24"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4A6CF7" stop-opacity="0"></stop>
-          <stop offset="1" stop-color="#4A6CF7"></stop>
+          <stop stopColor="#4A6CF7" stopOpacity="0"></stop>
+          <stop offset="1" stopColor="#4A6CF7"></stop>
         </linearGradient>
         <linearGradient
           id="paint3_linear_25:218"
@@ -80,8 +80,8 @@ export default function Bottom() {
           y2="210.214"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4A6CF7" stop-opacity="0"></stop>
-          <stop offset="1" stop-color="#4A6CF7"></stop>
+          <stop stopColor="#4A6CF7" stopOpacity="0"></stop>
+          <stop offset="1" stopColor="#4A6CF7"></stop>
         </linearGradient>
         <linearGradient
           id="paint4_linear_25:218"
@@ -91,8 +91,8 @@ export default function Bottom() {
           y2="99.5816"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4A6CF7"></stop>
-          <stop offset="1" stop-color="#4A6CF7" stop-opacity="0"></stop>
+          <stop stopColor="#4A6CF7"></stop>
+          <stop offset="1" stopColor="#4A6CF7" stopOpacity="0"></stop>
         </linearGradient>
         <radialGradient
           id="paint5_radial_25:218"
@@ -102,8 +102,8 @@ export default function Bottom() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(220 63) rotate(90) scale(43)"
         >
-          <stop offset="0.145833" stop-color="white" stop-opacity="0"></stop>
-          <stop offset="1" stop-color="white" stop-opacity="0.08"></stop>
+          <stop offset="0.145833" stopColor="white" stopOpacity="0"></stop>
+          <stop offset="1" stopColor="white" stopOpacity="0.08"></stop>
         </radialGradient>
       </defs>
     </svg>

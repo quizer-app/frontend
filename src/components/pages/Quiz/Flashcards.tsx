@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Toaster } from "react-hot-toast";
 import ControlBar from "./ControlBar";
-import QuizHeader from "./QuizHeader";
+import QuizHeader from "../../layout/Header/QuizHeader";
 import { TermProps } from "./Term";
 
 export default function Flashcards() {

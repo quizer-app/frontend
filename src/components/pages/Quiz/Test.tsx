@@ -1,5 +1,5 @@
 import { Toaster } from "react-hot-toast";
-import QuizHeader from "./QuizHeader";
+import QuizHeader from "../../layout/Header/QuizHeader";
 import TestBlock from "./TestBlock";
 
 export default function Test() {
