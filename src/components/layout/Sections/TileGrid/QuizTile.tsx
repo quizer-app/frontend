@@ -1,4 +1,5 @@
 import { QuizResponse } from "@/api/types/quiz";
+import { formatDate } from "@/utils/date";
 import { Link } from "react-router-dom";
 import img from "../../../../assets/images/office.jpg";
 
@@ -7,17 +8,16 @@ type QuizTileProps = {
 };
 
 export default function QuizTile({ quiz }: QuizTileProps) {
-  const url = `/${quiz.userName}/${quiz.slug}`;
   return (
     <div className="bg-secondary rounded-md w-full">
-      <Link to={url} className="relative">
+      <Link to={quiz.link} className="relative">
         <img src={img} className="w-full rounded-t-md" />
         <div className="text-white text-sm font-bold absolute top-4 right-4 px-4 py-2 bg-lightBlue rounded-3xl">
           Category/QS
         </div>
       </Link>
       <div className="p-6">
-        <Link to={url} className="relative">
+        <Link to={quiz.link} className="relative">
           <h3 className="text-white text-2xl font-bold mb-3">{quiz.name}</h3>
           <p className="text-textPrimary font-medium">{quiz.description}</p>
         </Link>
@@ -32,7 +32,7 @@ export default function QuizTile({ quiz }: QuizTileProps) {
           </div>
           <div>
             <h4 className="text-white font-semibold text-sm">Date</h4>
-            <p className="text-textPrimary text-xs font-medium">2023</p>
+            <p className="text-textPrimary text-xs font-medium">{formatDate(quiz.createdAt)}</p>
           </div>
         </div>
       </div>
