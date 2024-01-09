@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { Toaster } from "react-hot-toast";
-import ControlBar from "./ControlBar";
-import QuizHeader from "../../layout/Header/QuizHeader";
-import { TermProps } from "./Term";
+import ControlBar from "../ControlBar";
+import QuizHeader from "../../../layout/Header/QuizHeader";
+import { TermProps } from "../Term";
 
 export default function Flashcards() {
-  // TODO: Nie wiem co tutaj zrobic
-
   const [currTerm, setCurrTerm] = useState<number>(0);
 
   const terms: TermProps[] = [

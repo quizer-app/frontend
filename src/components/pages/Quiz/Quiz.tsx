@@ -1,7 +1,7 @@
 import { api } from "@/api/axios";
 import { QuizResponse } from "@/api/types/quiz";
-import Loading from "@/components/status/Loading";
-import NotFound from "@/components/status/NotFound";
+import Loading from "@/components/pages/Status/Loading";
+import NotFound from "@/components/pages/Status/NotFound";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import QuizView from "./QuizView";

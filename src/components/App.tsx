@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./layout/Layout";
-import Flashcards from "./pages/Quiz/Flashcards";
+import Flashcards from "./pages/Quiz/Flashcards/Flashcards";
 import Quiz from "./pages/Quiz/Quiz";
 import Test from "./pages/Quiz/Test";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
@@ -12,7 +12,7 @@ import Verification from "./pages/Auth/Verification";
 import Verified from "./pages/Auth/Verified";
 import PersistLogin from "./router/PersistLogin";
 import RequireAuth from "./router/RequireAuth";
-import NotFound from "./status/NotFound";
+import NotFound from "./pages/Status/NotFound";
 
 export default function App() {
   return (
