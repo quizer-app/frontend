@@ -1,13 +1,13 @@
+import { QuestionResponse } from "@/api/types/quiz";
 import { useState } from "react";
-import { TermProps } from "./Term";
 
 interface FlashcardProps {
-  currTerm: number;
-  terms: TermProps[];
+  question: QuestionResponse | undefined;
 }
 
-export default function Flashcard({ currTerm, terms }: FlashcardProps) {
+export default function Flashcard({ question }: FlashcardProps) {
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
+  if(!question) return (<></>);
 
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
@@ -22,12 +22,12 @@ export default function Flashcard({ currTerm, terms }: FlashcardProps) {
     >
       <div className="bg-secondary flex items-center justify-center rounded-md p-4 absolute w-full h-full [backface-visibility:hidden]">
         <p className="text-xl sm:text-2xl xl:text-3xl">
-          {terms[currTerm].term}
+          {question.question}
         </p>
       </div>
       <div className="bg-secondary flex items-center justify-center rounded-md p-4 w-full h-full overflow-auto [backface-visibility:hidden] [transform:rotateX(180deg)]">
         <p className="text-xl sm:text-2xl xl:text-3xl">
-          {terms[currTerm].desc}
+          {question.answers[0].text}
         </p>
       </div>
     </button>
