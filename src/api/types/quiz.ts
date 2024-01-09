@@ -1,3 +1,13 @@
+export type PaginatedQuizResponse = {
+  items: QuizResponse[];
+  pageNumber: number;
+  pageSize: number;
+  totalCount: number;
+  totalPages: number;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+};
+
 export type QuizResponse = {
   id: string;
   userId: string;
