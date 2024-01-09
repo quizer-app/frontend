@@ -9,7 +9,7 @@ export type QuizResponse = {
   averageRating: number;
   numberOfRatings: number;
   questions: QuestionResponse[];
-  createdAt: Date;
+  createdAt: string;
 };
 
 export type QuestionResponse = {
