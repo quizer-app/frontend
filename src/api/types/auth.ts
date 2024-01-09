@@ -1,14 +1,14 @@
-export interface AuthResponse {
+export type AuthResponse = {
   message: string;
   errors?: ValidationErrors;
   accessToken?: string;
 }
 
-interface ValidationErrors {
+type ValidationErrors = {
   [key: string]: ValidationError;
 }
 
-interface ValidationError {
+type ValidationError = {
   tag: string;
   value: string;
 }
