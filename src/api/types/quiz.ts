@@ -4,7 +4,7 @@ export type QuizResponse = {
   userName: string;
   name: string;
   slug: string;
-  link: string;
+  location: string;
   description: string;
   averageRating: number;
   numberOfRatings: number;
