@@ -1,5 +1,5 @@
 import { api } from "@/api/axios";
-import { PaginatedQuizResponse } from "@/api/types/quiz";
+import { GetQuizesQueryParams, PaginatedQuizResponse } from "@/api/types/quiz";
 import Loading from "@/components/status/Loading";
 import { useQuery } from "@tanstack/react-query";
 import TileGridView from "./TileGridView";
@@ -12,7 +12,9 @@ export default function TileGrid() {
       params: {
         pageNumber: 1,
         pageSize: 6,
-      },
+        sortColumn: "createdAt",
+        sortOrder: "desc"
+      } as GetQuizesQueryParams,
     }),
   });
 

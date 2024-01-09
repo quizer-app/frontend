@@ -32,3 +32,12 @@ export type Answer = {
   text: string;
   isCorrect: boolean;
 };
+
+export type GetQuizesQueryParams = {
+  pageNumber: number;
+  pageSize: number;
+  sortColumn: "createdAt" | "name" | "userName";
+  sortOrder: "desc" | "asc";
+  searchTerm: string;
+  userName: string;
+};
