@@ -1,23 +1,23 @@
+import { AuthResponse } from "@/api/types/auth";
 import { api } from "@/api/axios";
-import { AuthResponse } from "@/api/response";
+import { isAuthenticatedAtom } from "@/atoms/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { FormInput } from "../layout/ContentBox/FormInput";
-import { Button } from "../layout/ContentBox/Button";
-import { useEffect } from "react";
 import { useAtomValue } from "jotai";
-import { isAuthenticatedAtom } from "@/atoms/auth";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast/headless";
+import { useNavigate } from "react-router-dom";
+import { z } from "zod";
+import { Button } from "../layout/ContentBox/Button";
 import ContentBox from "../layout/ContentBox/ContentBox";
-import Title from "../layout/ContentBox/Title";
+import { FormInput } from "../layout/ContentBox/FormInput";
 import GoogleButton from "../layout/ContentBox/GoogleButton";
 import Text from "../layout/ContentBox/Text";
-import TextWithLink from "../layout/ContentBox/TextWithLink";
 import TextWithLines from "../layout/ContentBox/TextWithLines";
+import TextWithLink from "../layout/ContentBox/TextWithLink";
+import Title from "../layout/ContentBox/Title";
 
 const schema = z.object({
   username: z.string().min(3).max(32),
