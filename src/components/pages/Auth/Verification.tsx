@@ -1,9 +1,9 @@
-import { Button } from "../layout/ContentBox/Button";
-import ContentBox from "../layout/ContentBox/ContentBox";
-import EmailIcon from "../layout/ContentBox/SvgIcons/EmailIcon";
-import Text from "../layout/ContentBox/Text";
-import Title from "../layout/ContentBox/Title";
-import FillHeight from "../layout/Other/FillHeight";
+import { Button } from "../../layout/ContentBox/Button";
+import ContentBox from "../../layout/ContentBox/ContentBox";
+import EmailIcon from "../../layout/ContentBox/Icons/EmailIcon";
+import Text from "../../layout/ContentBox/Text";
+import Title from "../../layout/ContentBox/Title";
+import FillHeight from "../../layout/Other/FillHeight";
 
 export default function Verification() {
   // const { token } = useParams();

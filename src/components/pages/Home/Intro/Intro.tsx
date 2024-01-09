@@ -1,5 +1,5 @@
-import Bottom from "@/components/svg/main/Bottom";
-import Top from "@/components/svg/main/Top";
+import Bottom from "@/components/pages/Home/Intro/Bottom";
+import Top from "@/components/pages/Home/Intro/Top";
 
 export default function Intro() {
   return (

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { Button } from "../layout/ContentBox/Button";
-import ContentBox from "../layout/ContentBox/ContentBox";
-import WarningIcon from "../layout/ContentBox/SvgIcons/WarningIcon";
-import Text from "../layout/ContentBox/Text";
-import Title from "../layout/ContentBox/Title";
-import FillHeight from "../layout/Other/FillHeight";
+import { Button } from "../../layout/ContentBox/Button";
+import ContentBox from "../../layout/ContentBox/ContentBox";
+import WarningIcon from "../../layout/ContentBox/Icons/WarningIcon";
+import Text from "../../layout/ContentBox/Text";
+import Title from "../../layout/ContentBox/Title";
+import FillHeight from "../../layout/Other/FillHeight";
 
 export default function ForgotPassword() {
   return (

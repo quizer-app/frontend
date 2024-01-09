@@ -3,8 +3,13 @@ export const formatDate = (date: string): string => {
 
   const dateObject = new Date(date);
 
-  const dateStringInUserTimeZone = dateObject.toLocaleString("en-US", {
+  const dateStringInUserTimeZone = dateObject.toLocaleString("pl-PL", {
     timeZone: userTimeZone,
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
   });
 
   return dateStringInUserTimeZone;

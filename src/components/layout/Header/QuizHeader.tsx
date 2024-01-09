@@ -1,8 +1,8 @@
 import MainLogo from "@/assets/images/light.png";
 import { X } from "lucide-react";
 import { Link } from "react-router-dom";
-import DarkModeButton from "../Header/DarkModeButton";
-import Logo from "../Header/Logo";
+import DarkModeButton from "./DarkModeButton";
+import Logo from "./Logo";
 
 interface QuizHeaderProps {
   name: string;
