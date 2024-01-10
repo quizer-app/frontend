@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { Toaster } from "react-hot-toast";
 import ControlBar from "../ControlBar";
-import QuizHeader from "../../../layout/Header/QuizHeader";
 import { TermProps } from "../Term";
 
 export default function Flashcards() {
@@ -28,8 +26,6 @@ export default function Flashcards() {
   };
   return (
     <>
-      <Toaster />
-      <QuizHeader name={"Karaluch"} />
       <div className="bg-primary text-white fixed w-full h-[100vh] px-4 py-14 sm:py-16 md:py-20 lg:py-24">
         <div className="mx-auto rounded-md max-w-[592px] md:max-w-[720px] lg:max-w-[976px]">
           <div className="flex flex-col gap-10 w-full mb-16">

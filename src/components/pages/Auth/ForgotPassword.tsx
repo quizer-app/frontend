@@ -4,7 +4,7 @@ import ContentBox from "../../layout/ContentBox/ContentBox";
 import WarningIcon from "../../layout/ContentBox/Icons/WarningIcon";
 import Text from "../../layout/ContentBox/Text";
 import Title from "../../layout/ContentBox/Title";
-import FillHeight from "../../layout/Other/FillHeight";
+import FillHeight from "../../layout/Background/Background";
 
 export default function ForgotPassword() {
   return (

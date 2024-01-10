@@ -12,6 +12,7 @@ import Home from "./pages/Home/Home";
 import PersistLogin from "./router/PersistLogin";
 import Flashcards from "./pages/Quiz/Flashcards/Flashcards";
 import NotFound from "./pages/Status/NotFound";
+import QuizLayout from "./layout/QuizLayout";
 
 export default function App() {
   return (
@@ -34,8 +35,11 @@ export default function App() {
 
           <Route path="*" element={<NotFound />} />
         </Route>
-        <Route path="/flashcards" element={<Flashcards />} />
-        <Route path="/test" element={<Test />} />
+
+        <Route path="/" element={<QuizLayout />}>
+          <Route path="/flashcards" element={<Flashcards />} />
+          <Route path="/test" element={<Test />} />
+        </Route>
       </Route>
     </Routes>
   );

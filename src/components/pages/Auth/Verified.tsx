@@ -2,7 +2,7 @@ import ContentBox from "../../layout/ContentBox/ContentBox";
 import Title from "../../layout/ContentBox/Title";
 import Text from "../../layout/ContentBox/Text";
 import { Button } from "../../layout/ContentBox/Button";
-import FillHeight from "../../layout/Other/FillHeight";
+import FillHeight from "../../layout/Background/Background";
 import { Link } from "react-router-dom";
 import CheckmarkIcon from "../../layout/ContentBox/Icons/CheckmarkIcon";
 
