@@ -7,9 +7,9 @@ export default function Intro() {
       <section className="bg-primary w-full relative">
         <div className="text-white w-full items-center justify-center pt-14 pb-20 md:pt-20 md:pb-32 lg:pt-28 lg:pb-60">
           <div className="max-w-xl md:max-w-3xl mx-auto flex flex-col gap-8 px-4">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center z-20">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center z-20">
               Fredsa afg FIX LETTER SPACING WDSAD GEAFD ekflsmfksdl
-            </h2>
+            </h1>
             <p className="text-lg  lg:text-xl text-center font-semibold z-20">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Praesentium, neque. Excepturi velit cumque accusantium veniam,

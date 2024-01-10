@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { accessTokenAtom, persistAtom } from "../../atoms/auth";
 import useRefreshToken from "../../hooks/useRefreshToken";
-import Loading from "../status/Loading";
+import Loading from "../pages/Status/Loading";
 
 export default function PersistLogin() {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,7 +27,5 @@ export default function PersistLogin() {
     !accessToken ? verifyRefreshToken() : setIsLoading(false);
   }, [refresh, accessToken]);
 
-  return (
-    <>{!persist ? <Outlet /> : isLoading ? <Loading/> : <Outlet />}</>
-  );
+  return <>{!persist ? <Outlet /> : isLoading ? <Loading /> : <Outlet />}</>;
 }

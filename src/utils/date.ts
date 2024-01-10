@@ -8,8 +8,6 @@ export const formatDate = (date: string): string => {
     year: "numeric",
     month: "numeric",
     day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
   });
 
   return dateStringInUserTimeZone;
