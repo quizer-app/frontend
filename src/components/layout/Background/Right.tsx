@@ -27,8 +27,8 @@ export default function Right() {
           y2="37.0429"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4A6CF7"></stop>
-          <stop offset="1" stop-color="#4A6CF7" stop-opacity="0"></stop>
+          <stop stopColor="#4A6CF7"></stop>
+          <stop offset="1" stopColor="#4A6CF7" stopOpacity="0"></stop>
         </linearGradient>
         <linearGradient
           id="paint1_linear_0:1"
@@ -38,8 +38,8 @@ export default function Right() {
           y2="32.3398"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4A6CF7"></stop>
-          <stop offset="1" stop-color="#4A6CF7" stop-opacity="0"></stop>
+          <stop stopColor="#4A6CF7"></stop>
+          <stop offset="1" stopColor="#4A6CF7" stopOpacity="0"></stop>
         </linearGradient>
       </defs>
     </svg>

@@ -22,8 +22,8 @@ export default function Left() {
           y2="-97.1485"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4A6CF7"></stop>
-          <stop offset="1" stop-color="#4A6CF7" stop-opacity="0"></stop>
+          <stop stopColor="#4A6CF7"></stop>
+          <stop offset="1" stopColor="#4A6CF7" stopOpacity="0"></stop>
         </linearGradient>
       </defs>
     </svg>

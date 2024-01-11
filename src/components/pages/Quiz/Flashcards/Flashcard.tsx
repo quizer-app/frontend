@@ -1,13 +1,12 @@
-import { QuestionResponse } from "@/api/types/quiz";
 import { useState } from "react";
+import { QuestionResponse } from "@/api/types/quiz";
 
 interface FlashcardProps {
-  question: QuestionResponse | undefined;
+  questions: QuestionResponse;
 }
 
-export default function Flashcard({ question }: FlashcardProps) {
+export default function Flashcard({ questions }: FlashcardProps) {
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
-  if(!question) return (<></>);
 
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
@@ -21,13 +20,11 @@ export default function Flashcard({ question }: FlashcardProps) {
       }`}
     >
       <div className="bg-secondary flex items-center justify-center rounded-md p-4 absolute w-full h-full [backface-visibility:hidden]">
-        <p className="text-xl sm:text-2xl xl:text-3xl">
-          {question.question}
-        </p>
+        <p className="text-xl sm:text-2xl xl:text-3xl">{questions.question}</p>
       </div>
       <div className="bg-secondary flex items-center justify-center rounded-md p-4 w-full h-full overflow-auto [backface-visibility:hidden] [transform:rotateX(180deg)]">
         <p className="text-xl sm:text-2xl xl:text-3xl">
-          {question.answers[0].text}
+          {questions.answers[0].text}
         </p>
       </div>
     </button>
