@@ -4,13 +4,13 @@ import QuizView from "./QuizView";
 import GetQuizData from "@/hooks/getQuizData";
 
 export default function Quiz() {
-  const [{ isLoading, isError, data }] = GetQuizData();
+  const { isLoading, isError, quiz } = GetQuizData();
 
   return (
     <>
       {isLoading && <Loading />}
       {isError && <NotFound />}
-      {data?.data && <QuizView quiz={data.data} />}
+      {quiz && <QuizView quiz={quiz} />}
     </>
   );
 }

@@ -7,5 +7,8 @@ export default function GetQuizData() {
   const [, updateParams] = useAtom(updateParamsAtom);
   updateParams({ newName: userName, newSlug: quizSlug });
 
-  return useAtom(quizAtom);
+  const [{ isLoading, isError, data }] = useAtom(quizAtom);
+  const quiz = data?.data;
+
+  return { isLoading, isError, quiz };
 }
