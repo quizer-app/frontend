@@ -1,18 +1,30 @@
-// import { api } from "@/api/axios";
-// import { QuizResponse } from "@/api/types/quiz";
-// import { useQuery } from "@tanstack/react-query";
-// import { atom } from "jotai";
-// import { atomWithQuery } from "jotai-tanstack-query";
+import { api } from "@/api/axios";
+import { QuizResponse } from "@/api/types/quiz";
+import { atom } from "jotai";
+import { atomWithQuery } from "jotai-tanstack-query";
 
-// export const userNameToken = atom<string>("");
-// export const quizSlugToken = atom<string>("");
+export const userNameAtom = atom<string | undefined>("");
+export const quizSlugAtom = atom<string | undefined>("");
 
-// const { isLoading, isError, data } = useQuery({
-//   queryKey: ["quiz", userNameToken, quizSlugToken],
-//   queryFn: () =>
-//     api.get<QuizResponse>(`/api/v1/Quiz/${userNameToken}/${quizSlugToken}`),
-// });
+export const quizAtom = atomWithQuery(get => ({
+  queryKey: ["quiz", get(userNameAtom), get(quizSlugAtom)],
+  queryFn: () =>
+    api.get<QuizResponse>(
+      `/api/v1/Quiz/${get(userNameAtom)}/${get(quizSlugAtom)}`
+    ),
+}));
 
-// export const todosAtom = atomWithQuery(() => ({
-//   queryKey: ["todos"],
-// }));
+interface updateParamsAtom {
+  newName: string | undefined;
+  newSlug: string | undefined;
+}
+
+export const updateParamsAtom = atom(
+  null,
+  (get, set, { newName, newSlug }: updateParamsAtom) => {
+    if (newName !== get(userNameAtom) || newSlug !== get(quizSlugAtom)) {
+      set(userNameAtom, newName);
+      set(quizSlugAtom, newSlug);
+    }
+  }
+);

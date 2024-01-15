@@ -4,12 +4,20 @@
 // import ControlBar from "../ControlBar";
 // import { QuizResponse } from "@/api/types/quiz";
 
+import GetQuizData from "@/hooks/getQuizData";
+
 // interface FlashcardsProps {
 //   quiz: QuizResponse;
 // }
 
 export default function Flashcards() {
-  return <div className="text-red-600 text-3xl font-bold">FLASHCARDS</div>;
+  const [{ data }] = GetQuizData();
+
+  return (
+    <div className="text-red-600 text-3xl font-bold">
+      {JSON.stringify(data?.data.questions[0].question)}
+    </div>
+  );
   // const [currTerm, setCurrTerm] = useState<number>(0);
 
   // const increment = () => {
