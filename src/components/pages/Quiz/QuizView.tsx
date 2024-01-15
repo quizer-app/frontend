@@ -1,7 +1,7 @@
 import { QuizResponse } from "@/api/types/quiz";
 import { useState } from "react";
 import Category from "./Category";
-import ControlBar from "./ControlBar";
+import ControlBar from "./ControlBar/ControlBar";
 import Flashcard from "./Flashcards/Flashcard";
 import Term from "./Term";
 

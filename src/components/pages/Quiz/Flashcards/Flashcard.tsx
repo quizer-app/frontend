@@ -20,11 +20,13 @@ export default function Flashcard({ questions }: FlashcardProps) {
       }`}
     >
       <div className="bg-secondary flex items-center justify-center rounded-md p-4 absolute w-full h-full [backface-visibility:hidden]">
-        <p className="text-xl sm:text-2xl xl:text-3xl">{questions.question}</p>
+        <p className="text-xl sm:text-2xl xl:text-3xl">
+          {questions ? questions.question : ""}
+        </p>
       </div>
       <div className="bg-secondary flex items-center justify-center rounded-md p-4 w-full h-full overflow-auto [backface-visibility:hidden] [transform:rotateX(180deg)]">
         <p className="text-xl sm:text-2xl xl:text-3xl">
-          {questions.answers[0].text}
+          {questions ? questions.answers[0].text : ""}
         </p>
       </div>
     </button>
