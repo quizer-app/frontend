@@ -37,7 +37,7 @@ export default function App() {
         </Route>
 
         <Route path="/" element={<QuizLayout />}>
-          {/* <Route path="/flashcards" element={<Flashcards />} /> */}
+          <Route path="/flashcards" element={<Flashcards />} />
           <Route
             path="/:userName/:quizSlug/flashcards"
             element={<Flashcards />}

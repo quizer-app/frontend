@@ -10,13 +10,14 @@ export default function Arrow({ onClick, dir }: ArrowProps) {
     <button
       onClick={onClick}
       aria-label={`${dir === "right" ? "Next question" : "Previous question"}`}
-      className="group flex w-10 h-10 md:w-12 md:h-12 items-center justify-center rounded-full shadow-md transition bg-blue-400"
+      className="group flex w-10 h-10 md:w-12 md:h-12 items-center justify-center 
+      rounded-full shadow-md transition bg-secondary ring-[0.5px] ring-lightBlueB/30 hover:ring-lightBlue/60"
     >
       <svg
         viewBox="0 0 16 16"
         aria-hidden="true"
         className={twMerge(
-          "w-4 h-4 md:w-6 md:h-6 stroke-lightBlue transition",
+          "w-4 h-4 md:w-6 md:h-6 stroke-lightBlueB group-hover:stroke-lightBlue transition",
           dir === "right" ? "rotate-180" : ""
         )}
       >
