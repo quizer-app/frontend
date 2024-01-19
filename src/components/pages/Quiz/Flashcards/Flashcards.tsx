@@ -24,10 +24,10 @@ export default function Flashcards() {
       <div className="bg-primary text-white fixed w-full h-[100vh] px-4 py-12 sm:py-16 md:py-20 lg:py-24">
         <div className="mx-auto rounded-md max-w-[592px] md:max-w-[720px] lg:max-w-[976px]">
           <div className="flex flex-col gap-10 w-full mb-16">
-            {/* <div className="flex items-center justify-center h-[420px] sm:h-[460px] md:h-[460px] lg:h-[500px] [perspective:1000px]">
-              <Flashcard questions={quiz.questions[currTerm]} />
-            </div> */}
-            <Flashcard questions={quiz.questions} />
+            <Flashcard
+              questions={quiz.questions}
+              style="h-[420px] sm:h-[460px] md:h-[460px] lg:h-[500px]"
+            />
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ export default function Quiz() {
     <>
       {isLoading && <Loading />}
       {isError && <NotFound />}
-      {quiz && <QuizView quiz={quiz} />}
+      {!isLoading && !isError && quiz && <QuizView quiz={quiz} />}
     </>
   );
 }

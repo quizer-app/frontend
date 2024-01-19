@@ -17,6 +17,14 @@ export const userNameAtom = atom<string | undefined>("");
 export const quizSlugAtom = atom<string | undefined>("");
 export const currTermAtom = atom<number>(0);
 
+export const quizNameAtom = atom<string>(
+  get => get(quizAtom).data?.data.name ?? "Go Back"
+);
+
+export const quizLengthAtom = atom<number>(
+  get => get(quizAtom).data?.data.questions.length ?? 0
+);
+
 export const quizAtom = atomWithQuery(get => ({
   queryKey: ["quiz", get(userNameAtom), get(quizSlugAtom)],
   queryFn: () =>

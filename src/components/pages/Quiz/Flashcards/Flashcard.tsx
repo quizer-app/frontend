@@ -2,32 +2,40 @@ import { useState } from "react";
 import { QuestionResponse } from "@/api/types/quiz";
 import Arrow from "./Arrow";
 import { useAtom, useAtomValue } from "jotai";
-import { currTermAtom, updateCurrTermAtom } from "@/atoms/quiz";
+import { currTermAtom, quizLengthAtom, updateCurrTermAtom } from "@/atoms/quiz";
+import { twMerge } from "tailwind-merge";
 
 interface FlashcardProps {
   questions: QuestionResponse[];
+  style: string;
 }
 
-export default function Flashcard({ questions }: FlashcardProps) {
+export default function Flashcard({ questions, style }: FlashcardProps) {
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
   const currTerm = useAtomValue(currTermAtom);
   const [, updateCurrTerm] = useAtom(updateCurrTermAtom);
+  const length = useAtomValue(quizLengthAtom);
 
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
   };
 
   const decrement = () => {
-    updateCurrTerm({ value: -1, length: questions.length });
+    updateCurrTerm({ value: -1, length: length });
   };
 
   const increment = () => {
-    updateCurrTerm({ value: 1, length: questions.length });
+    updateCurrTerm({ value: 1, length: length });
   };
 
   return (
     <>
-      <div className="flex items-center justify-center h-[420px] sm:h-[460px] md:h-[460px] lg:h-[500px] [perspective:1000px]">
+      <div
+        className={twMerge(
+          "flex items-center justify-center [perspective:1000px]",
+          style
+        )}
+      >
         <button
           onClick={handleFlip}
           className={`w-full h-full transition-transform duration-300 [transform-style:preserve-3d] ${
@@ -36,64 +44,28 @@ export default function Flashcard({ questions }: FlashcardProps) {
         >
           <div className="bg-secondary flex items-center justify-center rounded-md p-4 absolute w-full h-full [backface-visibility:hidden]">
             <p className="text-xl sm:text-2xl xl:text-3xl">
-              {questions ? questions[currTerm].question : ""}
+              {length > 0
+                ? questions[currTerm].question
+                : "No questions available"}
             </p>
           </div>
           <div className="bg-secondary flex items-center justify-center rounded-md p-4 w-full h-full overflow-auto [backface-visibility:hidden] [transform:rotateX(180deg)]">
             <p className="text-xl sm:text-2xl xl:text-3xl">
-              {questions ? questions[currTerm].answers[0].text : ""}
+              {length > 0
+                ? questions[currTerm].answers[0].text
+                : "No questions available"}
             </p>
           </div>
         </button>
       </div>
 
-      {questions.length > 0 && (
+      {length > 0 && (
         <div className="flex items-center justify-center gap-8">
           <Arrow onClick={decrement} dir="left" />
-          <p>{`${currTerm + 1} / ${questions.length}`}</p>
+          <p>{`${currTerm + 1} / ${length}`}</p>
           <Arrow onClick={increment} dir="right" />
         </div>
       )}
     </>
   );
 }
-
-// const increment = () => {
-//   currTerm === quiz.questions.length - 1
-//     ? setCurrTerm(0)
-//     : setCurrTerm(prev => prev + 1);
-// };
-
-// const decrement = () => {
-//   currTerm === 0
-//     ? setCurrTerm(quiz.questions.length - 1)
-//     : setCurrTerm(prev => prev - 1);
-// };
-
-// import Arrow from "./Arrow";
-
-// interface ControlBarProps {
-//   curr: number;
-//   max: number;
-//   left: () => void;
-//   right: () => void;
-// }
-
-// export default function ControlBar({
-//   curr,
-//   max,
-//   left,
-//   right,
-// }: ControlBarProps) {
-//   return (
-//     <>
-//       {max > 0 && (
-//         <div className="flex items-center justify-center gap-8">
-//           <Arrow onClick={left} dir="left" />
-//           <p>{`${curr} / ${max}`}</p>
-//           <Arrow onClick={right} dir="right" />
-//         </div>
-//       )}
-//     </>
-//   );
-// }

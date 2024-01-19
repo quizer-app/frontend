@@ -13,10 +13,10 @@ export default function QuizView({ quiz }: QuizViewProps) {
       <div className="mx-auto rounded-md max-w-[592px] md:max-w-[720px] lg:max-w-[976px]">
         <h2 className="text-2xl font-bold mb-10 xl:text-3xl">{quiz.name}</h2>
         <div className="flex flex-col gap-10 w-full mb-16">
-          {/* <div className="flex items-center justify-center h-[280px] sm:h-[320px] md:h-[360px] lg:h-[420px] [perspective:1000px]">
-            <Flashcard questions={quiz.questions[currTerm]} />
-          </div> */}
-          <Flashcard questions={quiz.questions} />
+          <Flashcard
+            questions={quiz.questions}
+            style="h-[280px] sm:h-[320px] md:h-[360px] lg:h-[420px]"
+          />
 
           <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
             <Category text="Flashcards" to={`/${quiz.location}/flashcards`} />
