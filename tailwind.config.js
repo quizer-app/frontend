@@ -15,6 +15,9 @@ export default {
       fontFamily: {
         primary: ["Inter"],
       },
+      opacity: {
+        2: "0.98",
+      },
     },
   },
   plugins: [],

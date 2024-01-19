@@ -1,7 +1,5 @@
 import { QuizResponse } from "@/api/types/quiz";
-import { useState } from "react";
 import Category from "./Category";
-import ControlBar from "./ControlBar/ControlBar";
 import Flashcard from "./Flashcards/Flashcard";
 import Term from "./Term";
 
@@ -10,35 +8,16 @@ export type QuizViewProps = {
 };
 
 export default function QuizView({ quiz }: QuizViewProps) {
-  const [currTerm, setCurrTerm] = useState<number>(0);
-
-  const increment = () => {
-    currTerm === quiz.questions.length - 1
-      ? setCurrTerm(0)
-      : setCurrTerm(prev => prev + 1);
-  };
-
-  const decrement = () => {
-    currTerm === 0
-      ? setCurrTerm(quiz.questions.length - 1)
-      : setCurrTerm(prev => prev - 1);
-  };
-
   return (
     <div className="bg-primary w-full text-white px-4 py-10 sm:py-12 md:py-16 lg:py-20">
       <div className="mx-auto rounded-md max-w-[592px] md:max-w-[720px] lg:max-w-[976px]">
         <h2 className="text-2xl font-bold mb-10 xl:text-3xl">{quiz.name}</h2>
         <div className="flex flex-col gap-10 w-full mb-16">
-          <div className="flex items-center justify-center h-[280px] sm:h-[320px] md:h-[360px] lg:h-[420px] [perspective:1000px]">
+          {/* <div className="flex items-center justify-center h-[280px] sm:h-[320px] md:h-[360px] lg:h-[420px] [perspective:1000px]">
             <Flashcard questions={quiz.questions[currTerm]} />
-          </div>
+          </div> */}
+          <Flashcard questions={quiz.questions} />
 
-          <ControlBar
-            curr={currTerm + 1}
-            max={quiz.questions.length}
-            left={decrement}
-            right={increment}
-          />
           <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
             <Category text="Flashcards" to={`/${quiz.location}/flashcards`} />
             <Category text="Ucz się" />

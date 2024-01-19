@@ -1,41 +1,22 @@
 import { Toaster } from "react-hot-toast";
-import { useState } from "react";
-import Flashcard from "./Flashcard";
-import ControlBar from "../ControlBar/ControlBar";
 import GetQuizData from "@/hooks/GetQuizData";
 import Loading from "../../Status/Loading";
 import NotFound from "../../Status/NotFound";
 import Error from "../../Status/Error";
-
-// interface FlashcardsProps {
-//   quiz: QuizResponse;
-// }
+import Flashcard from "./Flashcard";
 
 export default function Flashcards() {
-  // const { isLoading, isError, quiz } = GetQuizData();
-  const [currTerm, setCurrTerm] = useState<number>(0);
+  const { isLoading, isError, quiz } = GetQuizData();
 
-  // if (isLoading || isError || !quiz) {
-  //   return (
-  //     <>
-  //       {isLoading && <Loading />}
-  //       {isError && <NotFound />}
-  //       {!quiz && <Error msg="Quiz is undefined" />}
-  //     </>
-  //   );
-  // }
-
-  const increment = () => {
-    // currTerm === quiz.questions.length - 1
-    currTerm === 5 - 1 ? setCurrTerm(0) : setCurrTerm(prev => prev + 1);
-  };
-
-  const decrement = () => {
-    currTerm === 0
-      ? // ? setCurrTerm(quiz.questions.length - 1)
-        setCurrTerm(5 - 1)
-      : setCurrTerm(prev => prev - 1);
-  };
+  if (isLoading || isError || !quiz) {
+    return (
+      <>
+        {isLoading && <Loading />}
+        {isError && <NotFound />}
+        {!quiz && <Error msg="Quiz is undefined" />}
+      </>
+    );
+  }
 
   return (
     <>
@@ -46,14 +27,7 @@ export default function Flashcards() {
             {/* <div className="flex items-center justify-center h-[420px] sm:h-[460px] md:h-[460px] lg:h-[500px] [perspective:1000px]">
               <Flashcard questions={quiz.questions[currTerm]} />
             </div> */}
-
-            <ControlBar
-              curr={currTerm + 1}
-              // max={quiz.questions.length}
-              max={5}
-              left={decrement}
-              right={increment}
-            />
+            <Flashcard questions={quiz.questions} />
           </div>
         </div>
       </div>
