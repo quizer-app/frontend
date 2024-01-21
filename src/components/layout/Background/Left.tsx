@@ -6,7 +6,7 @@ export default function Left() {
       viewBox="0 0 287 254"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="absolute z-10 left-0 top-[500px]"
+      className="absolute z-10 left-0 top-[50vh]"
     >
       <path
         opacity="0.1"

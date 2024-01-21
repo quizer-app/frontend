@@ -1,7 +1,7 @@
 import { Toaster } from "react-hot-toast";
 import GetQuizData from "@/hooks/GetQuizData";
 import Loading from "../../Status/Loading";
-import NotFound from "../../Status/NotFound";
+import NotFound from "../../Status/NotFound/NotFound";
 import Error from "../../Status/Error";
 import Flashcard from "./Flashcard";
 
