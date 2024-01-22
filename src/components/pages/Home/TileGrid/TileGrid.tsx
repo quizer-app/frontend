@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Status/Loading";
 import { QuizResponse } from "@/api/types/quiz";
 import QuizTile from "./QuizTile";
-import NotFound from "../../Status/NotFound";
+import NotFound from "../../Status/NotFound/NotFound";
 
 export type TileGridViewProps = {
   quizes: QuizResponse[];
