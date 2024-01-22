@@ -1,25 +1,16 @@
-import { api } from "@/api/axios";
-import { QuizResponse } from "@/api/types/quiz";
 import Loading from "@/components/pages/Status/Loading";
-import NotFound from "@/components/pages/Status/NotFound";
-import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import NotFound from "@/components/pages/Status/NotFound/NotFound";
 import QuizView from "./QuizView";
+import GetQuizData from "@/hooks/GetQuizData";
 
 export default function Quiz() {
-  const { userName, quizSlug } = useParams();
-
-  const { isLoading, isError, data } = useQuery({
-    queryKey: ["quiz", userName, quizSlug],
-    queryFn: () =>
-      api.get<QuizResponse>(`/api/v1/Quiz/${userName}/${quizSlug}`),
-  });
+  const { isLoading, isError, quiz } = GetQuizData();
 
   return (
     <>
       {isLoading && <Loading />}
       {isError && <NotFound />}
-      {data?.data && <QuizView quiz={data.data} />}
+      {quiz && <QuizView quiz={quiz} />}
     </>
   );
 }
