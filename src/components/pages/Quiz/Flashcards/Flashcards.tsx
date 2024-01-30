@@ -1,12 +1,12 @@
 import { Toaster } from "react-hot-toast";
-import GetQuizData from "@/hooks/GetQuizData";
+import useQuizData from "@/hooks/useQuizData";
 import Loading from "../../Status/Loading";
 import NotFound from "../../Status/NotFound/NotFound";
 import Error from "../../Status/Error";
 import Flashcard from "./Flashcard";
 
 export default function Flashcards() {
-  const { isLoading, isError, quiz } = GetQuizData();
+  const { isLoading, isError, quiz } = useQuizData();
 
   if (isLoading || isError || !quiz) {
     return (
