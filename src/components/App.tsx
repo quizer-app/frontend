@@ -11,11 +11,8 @@ import Verified from "./pages/Auth/Verified";
 import Home from "./pages/Home/Home";
 import PersistLogin from "./router/PersistLogin";
 import Flashcards from "./pages/Quiz/Flashcards/Flashcards";
-import NotFound from "./pages/Status/NotFound/NotFound";
 import QuizLayout from "./layout/QuizLayout";
-import Error from "./pages/Status/Error";
-import Loading from "./pages/Status/Loading";
-import Unauthorized from "./pages/Status/Unauthorized";
+import Profile from "./pages/Profile/Profile";
 
 export default function App() {
   return (
@@ -34,21 +31,21 @@ export default function App() {
             <Route path="/users" element={<Users />} />
           </Route> */}
 
-          <Route path="/:userName/:quizSlug" element={<Quiz />} />
+          <Route path="/profile" element={<Profile />} />
 
           {/* <Route path="*" element={<NotFound />} /> */}
-          <Route path="/error" element={<Error />} />
+          {/* <Route path="/error" element={<Error />} />
           <Route path="/notfound" element={<NotFound />} />
           <Route path="/loading" element={<Loading />} />
-          <Route path="/unauthorized" element={<Unauthorized />} />
+          <Route path="/unauthorized" element={<Unauthorized />} /> */}
         </Route>
-
         <Route path="/" element={<QuizLayout />}>
-          <Route path="/flashcards" element={<Flashcards />} />
+          <Route path="/:userName/:quizSlug" element={<Quiz />} />
           <Route
             path="/:userName/:quizSlug/flashcards"
             element={<Flashcards />}
           />
+
           <Route path="/test" element={<Test />} />
         </Route>
       </Route>

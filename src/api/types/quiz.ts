@@ -20,6 +20,7 @@ export type QuizResponse = {
   numberOfRatings: number;
   questions: QuestionResponse[];
   createdAt: string;
+  numberOfQuestions: number;
 };
 
 export type QuestionResponse = {
@@ -34,10 +35,10 @@ export type Answer = {
 };
 
 export type GetQuizesQueryParams = {
-  pageNumber: number;
-  pageSize: number;
-  sortColumn: "createdAt" | "name" | "userName";
-  sortOrder: "desc" | "asc";
-  searchTerm: string;
-  userName: string;
+  pageNumber?: number;
+  pageSize?: number;
+  sortColumn?: "createdAt" | "name" | "userName";
+  sortOrder?: "desc" | "asc";
+  searchTerm?: string;
+  userName?: string;
 };

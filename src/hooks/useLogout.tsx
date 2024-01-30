@@ -9,7 +9,7 @@ export default function useLogout() {
 
   const logoutMutation = useMutation({
     mutationFn: () => {
-      return api.delete("/auth/logout", { withCredentials: true });
+      return api.delete("/api/v1/Auth/logout", { withCredentials: true });
     },
     onSuccess: () => {
       setAccessToken(null);
