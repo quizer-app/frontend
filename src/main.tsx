@@ -6,6 +6,7 @@ import { Provider as JotaiProvider } from "jotai";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HydrateAtoms from "./atoms/HydrateAtoms";
 import App from "./components/App";
 import queryClient from "./utils/queryClient";
 
@@ -17,12 +18,14 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <JotaiProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/*" element={<App />} />
-          </Routes>
-        </BrowserRouter>
-        <ReactQueryDevtools />
+        <HydrateAtoms>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/*" element={<App />} />
+            </Routes>
+          </BrowserRouter>
+          <ReactQueryDevtools />
+        </HydrateAtoms>
       </JotaiProvider>
     </QueryClientProvider>
   </React.StrictMode>
