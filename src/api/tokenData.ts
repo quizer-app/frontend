@@ -1,13 +1,10 @@
 export interface TokenData {
-  exp: number;
-  user: User;
-}
-
-export interface User {
-  id: string;
-  username: string;
+  jti: string;
+  sub: string;
+  given_name: string;
   email: string;
-  verified: boolean;
-  role: string;
-  createdAt: number;
+  permissions: string;
+  exp: number;
+  iss: string;
+  aud: string;
 }

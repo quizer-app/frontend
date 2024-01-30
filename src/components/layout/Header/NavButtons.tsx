@@ -14,7 +14,7 @@ export default function NavButtons() {
       {isAuthenticated ? (
         <>
           <Link to="/dashboard" className="py-4 px-6 hover:text-textHover">
-            Dashboard ({tokenData?.user.username})
+            Dashboard ({tokenData?.given_name})
           </Link>
           <button
             className="bg-lightBlue py-4 px-8 rounded-md hover:bg-opacity-95"
