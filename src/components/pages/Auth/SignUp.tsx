@@ -41,7 +41,7 @@ export default function SignUp() {
 
   const registerMutation = useMutation({
     mutationFn: (data: Form) => {
-      return api.post<AuthResponse>("/auth/register", data, {
+      return api.post<AuthResponse>("/api/v1/Auth/register", data, {
         withCredentials: true,
       });
     },

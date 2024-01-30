@@ -6,9 +6,10 @@ import { Link } from "react-router-dom";
 
 type QuizTileProps = {
   quiz: QuizResponse;
+  questionsAmount: number;
 };
 
-export default function QuizTile({ quiz }: QuizTileProps) {
+export default function QuizTile({ quiz, questionsAmount }: QuizTileProps) {
   const getImgUrl = (id: string) => {
     return `${baseURL}/api/v1/Quiz/${id}/image`;
   };
@@ -24,7 +25,7 @@ export default function QuizTile({ quiz }: QuizTileProps) {
           className="w-full rounded-t-md"
         />
         <div className="text-white text-sm font-bold absolute top-4 right-4 px-4 py-2 bg-lightBlue rounded-3xl">
-          Category/QS
+          {`${questionsAmount} Questions`}
         </div>
       </Link>
       <div className="p-6">

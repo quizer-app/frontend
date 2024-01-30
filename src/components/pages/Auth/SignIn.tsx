@@ -55,7 +55,7 @@ export default function SignIn() {
 
   const loginMutation = useMutation({
     mutationFn: (data: Form) => {
-      return api.post<AuthResponse>("/auth/login", data, {
+      return api.post<AuthResponse>("/api/v1/Auth/login", data, {
         withCredentials: true,
       });
     },

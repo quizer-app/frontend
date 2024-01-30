@@ -17,7 +17,7 @@ export default function TileGrid() {
       api.get<PaginatedQuizResponse>("/api/v1/Quiz", {
         params: {
           pageNumber: 1,
-          pageSize: 6,
+          pageSize: 3,
           sortColumn: "createdAt",
           sortOrder: "desc",
         } as GetQuizesQueryParams,
@@ -31,7 +31,7 @@ export default function TileGrid() {
       {data?.data && (
         <div className="mainContainer grid grid-cols-1 gap-4 lg:gap-6 md:grid-cols-2 xl:grid-cols-3">
           {data.data.items.map((el, id) => {
-            return <QuizTile quiz={el} key={id} />;
+            return <QuizTile quiz={el} questionsAmount={3} key={id} />;
           })}
         </div>
       )}

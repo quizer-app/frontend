@@ -11,13 +11,13 @@ export default function NotFoundSvg() {
         opacity="0.5"
         d="M25 163.051H101.211V191H133.308V163.051H153V136.111H133.308V32H91.2871L25 136.577V163.051ZM101.831 136.111H58.8025V134.869L100.591 68.6445H101.831V136.111Z"
         stroke="url(#paint0_linear_116:1137)"
-        stroke-width="3"
+        strokeWidth="3"
       ></path>
       <path
         opacity="0.5"
         d="M307 133.051H383.211V161H415.308V133.051H435V106.111H415.308V2H373.287L307 106.577V133.051ZM383.831 106.111H340.803V104.869L382.591 38.6445H383.831V106.111Z"
         stroke="url(#paint1_linear_116:1137)"
-        stroke-width="3"
+        strokeWidth="3"
       ></path>
       <circle
         opacity="0.8"
@@ -57,8 +57,8 @@ export default function NotFoundSvg() {
       <path
         d="M0 182H83.5V209H150.5V178H169.5V148.5C169.5 148.5 194 165 229.5 165C265 165 294 134.5 294 134.5V152H306.5H361V178H435V152H474"
         stroke="white"
-        stroke-opacity="0.08"
-        stroke-width="2"
+        strokeOpacity="0.08"
+        strokeWidth="2"
       ></path>
       <defs>
         <filter
@@ -68,9 +68,9 @@ export default function NotFoundSvg() {
           width="116.412"
           height="116.412"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+          <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -90,8 +90,8 @@ export default function NotFoundSvg() {
           y2="27.0837"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4A6CF7" stop-opacity="0"></stop>
-          <stop offset="1" stop-color="#4A6CF7"></stop>
+          <stop stopColor="#4A6CF7" stopOpacity="0"></stop>
+          <stop offset="1" stopColor="#4A6CF7"></stop>
         </linearGradient>
         <linearGradient
           id="paint1_linear_116:1137"
@@ -101,8 +101,8 @@ export default function NotFoundSvg() {
           y2="-2.91631"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4A6CF7" stop-opacity="0"></stop>
-          <stop offset="1" stop-color="#4A6CF7"></stop>
+          <stop stopColor="#4A6CF7" stopOpacity="0"></stop>
+          <stop offset="1" stopColor="#4A6CF7"></stop>
         </linearGradient>
         <radialGradient
           id="paint2_radial_116:1137"
@@ -112,8 +112,8 @@ export default function NotFoundSvg() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(227.5 81.5) rotate(90) scale(73.5368)"
         >
-          <stop stop-opacity="0.47"></stop>
-          <stop offset="1" stop-opacity="0"></stop>
+          <stop stopOpacity="0.47"></stop>
+          <stop offset="1" stopOpacity="0"></stop>
         </radialGradient>
       </defs>
     </svg>
