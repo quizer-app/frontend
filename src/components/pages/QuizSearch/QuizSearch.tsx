@@ -1,9 +1,9 @@
 import useQuizesPaging from "@/hooks/useQuizesPaging";
+import { useState } from "react";
+import PagingButton from "../Home/TileGrid/PagingButton";
 import QuizTile from "../Home/TileGrid/QuizTile";
 import Loading from "../Status/Loading";
 import NotFound from "../Status/NotFound/NotFound";
-import PagingButton from "../Home/TileGrid/PagingButton";
-import { useState } from "react";
 
 export default function QuizSearch() {
   const { isLoading, isError, quiz } = useQuizesPaging({
@@ -13,15 +13,9 @@ export default function QuizSearch() {
     sortOrder: "desc",
   });
 
-  const [numberOfPages, setNumerOfPages] = useState<number>(10);
+  const [numberOfPages] = useState<number>(10);
   const [currPage, setCurrPage] = useState<number>(1);
-  const [elements, setElement] = useState<number[]>([
-    1,
-    2,
-    3,
-    0,
-    numberOfPages,
-  ]);
+  const [elements] = useState<number[]>([1, 2, 3, 0, numberOfPages]);
 
   const increment = () => {
     if (currPage !== numberOfPages) {
