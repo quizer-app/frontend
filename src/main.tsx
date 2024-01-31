@@ -6,8 +6,8 @@ import { Provider as JotaiProvider } from "jotai";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import App from "./components/App";
 import HydrateAtoms from "./atoms/HydrateAtoms";
+import App from "./components/App";
 import queryClient from "./utils/queryClient";
 
 if (import.meta.env.PROD) {

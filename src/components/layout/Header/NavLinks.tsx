@@ -13,7 +13,7 @@ export default function NavLinks({ isOpen }: { isOpen: boolean }) {
           
           `}
       >
-        <ListElement href="/">Home</ListElement>
+        <ListElement href="/quiz_search">Quizes</ListElement>
         <ListElement href="/about">About</ListElement>
         <ListElement href="/users">Users</ListElement>
         <ListElement href="/support">Support</ListElement>

@@ -1,5 +1,5 @@
-import { AuthResponse } from "@/api/types/auth";
 import { api } from "@/api/axios";
+import { AuthResponse } from "@/api/types/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
@@ -24,7 +24,7 @@ import TextWithLink from "../../layout/ContentBox/TextWithLink";
 import Title from "../../layout/ContentBox/Title";
 
 const schema = z.object({
-  usernameOrEmail: z.string().min(1),
+  email: z.string().min(1),
   password: z.string().min(1),
 });
 
@@ -90,7 +90,7 @@ export default function SignIn() {
         autoComplete="off"
       >
         <FormInput
-          name="usernameOrEmail"
+          name="email"
           type="text"
           placeholder="Enter your email"
           labelText="Email or Username"

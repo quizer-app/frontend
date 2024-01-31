@@ -13,6 +13,7 @@ import PersistLogin from "./router/PersistLogin";
 import Flashcards from "./pages/Quiz/Flashcards/Flashcards";
 import QuizLayout from "./layout/QuizLayout";
 import Profile from "./pages/Profile/Profile";
+import QuizSearch from "./pages/QuizSearch/QuizSearch";
 
 export default function App() {
   return (
@@ -30,7 +31,7 @@ export default function App() {
           {/* <Route element={<RequireAuth />}>
             <Route path="/users" element={<Users />} />
           </Route> */}
-
+          <Route path="/quiz_search" element={<QuizSearch />} />
           <Route path="/profile" element={<Profile />} />
 
           {/* <Route path="*" element={<NotFound />} /> */}
