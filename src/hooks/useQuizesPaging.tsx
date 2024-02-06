@@ -10,7 +10,7 @@ export default function useQuizesPaging(params: GetQuizesQueryParams) {
         params: params,
       }),
   });
-  const quiz = data?.data;
+  const quizes = data?.data;
 
-  return { isLoading, isError, quiz };
+  return { isLoading, isError, quizes };
 }

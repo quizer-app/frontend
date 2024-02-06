@@ -9,7 +9,7 @@ export type TileGridViewProps = {
 };
 
 export default function TileGrid() {
-  const { isLoading, isError, quiz } = useQuizesPaging({
+  const { isLoading, isError, quizes } = useQuizesPaging({
     pageNumber: 1,
     pageSize: 6,
     sortColumn: "createdAt",
@@ -21,7 +21,7 @@ export default function TileGrid() {
       {isLoading && <Loading />}
       {isError && <NotFound />}
       <div className="mainContainer grid grid-cols-1 gap-4 lg:gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {quiz?.items.map((el, id) => {
+        {quizes?.items.map((el, id) => {
           return (
             <QuizTile
               quiz={el}
