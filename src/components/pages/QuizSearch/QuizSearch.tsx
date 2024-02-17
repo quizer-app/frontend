@@ -2,25 +2,16 @@ import { useState } from "react";
 import QuizTile from "../Home/TileGrid/QuizTile";
 import Loading from "../Status/Loading";
 import NotFound from "../Status/NotFound/NotFound";
-import SetQuizes from "./SetQuizes";
-import { useAtom, useAtomValue } from "jotai";
-import {
-  isErrorAtom,
-  isLoadingAtom,
-  quizesAtom,
-  updateParamsAtom,
-} from "@/atoms/quizSearch";
+import { useAtom } from "jotai";
+import { quizesAtom, updateParamsAtom } from "@/atoms/quizSearch";
+import { QuizResponse } from "@/api/types/quiz";
 
 export default function QuizSearch() {
   const [input, setInput] = useState<string>("");
-  SetQuizes();
-
-  const isLoading = useAtomValue(isLoadingAtom);
-  const isError = useAtomValue(isErrorAtom);
-  const quizes = useAtomValue(quizesAtom);
+  const [{ isLoading, isError, data }] = useAtom(quizesAtom);
   const [, setParams] = useAtom(updateParamsAtom);
 
-  const HandleChange = (e: string) => {
+  const handleChange = (e: string) => {
     setInput(e);
     setParams({ searchTerm: e });
   };
@@ -46,7 +37,7 @@ export default function QuizSearch() {
     <>
       <div className="bg-primary flex items-center justify-center gap-20 p-20">
         <input
-          onChange={e => HandleChange(e.target.value)}
+          onChange={e => handleChange(e.target.value)}
           value={input}
           className="bg-secondary rounded-md p-3 text-textPrimary focus:outline-none min-w-96"
           placeholder="Search for quizes..."
@@ -56,7 +47,7 @@ export default function QuizSearch() {
         {isLoading && <Loading />}
         {isError && <NotFound />}
         <div className="mainContainer grid grid-cols-1 gap-4 lg:gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {quizes?.items.map((el, id) => {
+          {data?.data.items.map((el: QuizResponse, id: number) => {
             return (
               <QuizTile
                 quiz={el}
