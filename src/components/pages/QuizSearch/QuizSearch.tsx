@@ -2,15 +2,20 @@ import QuizTile from "../Home/TileGrid/QuizTile";
 import Loading from "../Status/Loading";
 import NotFound from "../Status/NotFound/NotFound";
 import { useAtom } from "jotai";
-import { quizesAtom, updateParamsAtom } from "@/atoms/quizSearch";
+import { paramsAtom, quizesAtom, updateParamsAtom } from "@/atoms/quizSearch";
 import { QuizResponse } from "@/api/types/quiz";
 import FiltersBar from "./FiltersBar";
 import { useState } from "react";
+import PagingBar from "./PagingBar";
 
 export default function QuizSearch() {
   const [{ isLoading, isError, data }] = useAtom(quizesAtom);
-  const [input, setInput] = useState<string>("");
   const [, setParams] = useAtom(updateParamsAtom);
+  const [params] = useAtom(paramsAtom);
+
+  const [input, setInput] = useState<string>(
+    params.searchTerm ? params.searchTerm : ""
+  );
 
   const resetFilters = () => {
     setInput("");
@@ -23,28 +28,13 @@ export default function QuizSearch() {
     });
   };
 
-  // BUTTONS
-  // const [numberOfPages] = useState<number>(10);
-  // const [currPage, setCurrPage] = useState<number>(1);
-  // const [elements] = useState<number[]>([1, 2, 3, 0, numberOfPages]);
-
-  // const increment = () => {
-  //   if (currPage !== numberOfPages) {
-  //     setCurrPage(prev => prev + 1);
-  //   }
-  // };
-
-  // const decrement = () => {
-  //   if (currPage !== 1) {
-  //     setCurrPage(prev => prev - 1);
-  //   }
-  // };
-
   return (
     <>
       <div className="bg-primary flex items-center justify-center gap-20 p-20">
         <FiltersBar input={input} setInput={setInput} />
+        <PagingBar quizes={data?.data} />
       </div>
+
       <div className="bg-primary flex-col gap-16 w-full flex items-center justify-center py-14 md:py-16 lg:py-20">
         {isLoading && <Loading />}
         {isError && <NotFound />}
@@ -70,23 +60,6 @@ export default function QuizSearch() {
             </button>
           </div>
         )}
-
-        {/* <div className="flex gap-2">
-          <PagingButton text="PREV" onClick={decrement} />
-          {elements.map((el, id) => {
-            return (
-              <PagingButton
-                text={el}
-                checked={currPage === el}
-                onClick={() => {
-                  setCurrPage(el);
-                }}
-                key={id}
-              />
-            );
-          })}
-          <PagingButton text="NEXT" onClick={increment} />
-        </div> */}
       </div>
     </>
   );
