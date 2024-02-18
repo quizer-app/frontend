@@ -19,7 +19,7 @@ export const paramsAtom = atom<GetQuizesQueryParams>({
   pageNumber: 1,
   pageSize: 9,
   sortColumn: "createdAt",
-  sortOrder: "desc",
+  sortOrder: "asc",
 });
 
 export const updateParamsAtom = atom(

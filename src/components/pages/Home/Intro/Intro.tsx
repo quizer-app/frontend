@@ -17,12 +17,8 @@ export default function Intro() {
               officiis!
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-5 font-bold z-20">
-              <button className="bg-lightBlue py-4 px-8 rounded-md hover:bg-opacity-95">
-                Log Out
-              </button>
-              <button className="bg-lightBlue py-4 px-8 rounded-md hover:bg-opacity-95">
-                Log Out
-              </button>
+              <button className="buttonPrimary">Log Out</button>
+              <button className="buttonPrimary">Log Out</button>
             </div>
           </div>
         </div>

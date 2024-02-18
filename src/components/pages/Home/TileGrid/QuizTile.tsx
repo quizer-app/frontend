@@ -16,7 +16,7 @@ export default function QuizTile({ quiz, questionsAmount }: QuizTileProps) {
 
   return (
     <div className="bg-secondary rounded-md w-full">
-      <Link to={quiz.location} className="relative">
+      <Link to={`/${quiz.location}`} className="relative">
         <img
           src={getImgUrl(quiz.id)}
           loading="lazy"
