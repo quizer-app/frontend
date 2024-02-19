@@ -58,13 +58,7 @@ export default function PagingBar({ quizes }: PagingBarProps) {
   return (
     <div className="flex gap-2 text-white">
       {`${params.pageNumber} / ${quizes?.totalPages ? quizes.totalPages : "X"}`}
-
       <PagingButton text="PREV" onClick={() => setCurrPage("decrement")} />
-      {quizes?.pageNumber && quizes.pageNumber >= 4 ? (
-        <PagingButton text="..." />
-      ) : (
-        ""
-      )}
 
       {elements.map((el, id) => {
         return isDisplayed(el) ? (
@@ -75,6 +69,15 @@ export default function PagingBar({ quizes }: PagingBarProps) {
               quizes?.pageNumber !== null &&
               quizes?.pageNumber !== undefined &&
               id + 1 === quizes.pageNumber
+            }
+            dots={
+              quizes?.pageNumber && quizes.pageNumber >= 4 && el === 1
+                ? "AFTER"
+                : quizes?.pageNumber &&
+                    quizes.pageNumber <= quizes.totalPages - 3 &&
+                    el === quizes.totalPages
+                  ? "BEFORE"
+                  : ""
             }
           />
         ) : null;
