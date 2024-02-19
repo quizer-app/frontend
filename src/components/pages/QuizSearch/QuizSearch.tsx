@@ -1,4 +1,3 @@
-import QuizTile from "../Home/TileGrid/QuizTile";
 import Loading from "../Status/Loading";
 import NotFound from "../Status/NotFound/NotFound";
 import { useAtom } from "jotai";
@@ -7,6 +6,7 @@ import { QuizResponse } from "@/api/types/quiz";
 import FiltersBar from "./FiltersBar";
 import { useState } from "react";
 import PagingBar from "./PagingBar";
+import QuizTile from "../Home/TileGrid/QuizTile";
 
 export default function QuizSearch() {
   const [{ isLoading, isError, data }] = useAtom(quizesAtom);

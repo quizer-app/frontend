@@ -28,6 +28,7 @@ export default function FiltersBar({ input, setInput }: FiltersBarProps) {
         />
         <SearchIcon color="white" className="absolute top-3 left-3" />
         <div className="flex gap-4">
+          <PageSizeButton pageSize={1} />
           <PageSizeButton pageSize={3} />
           <PageSizeButton pageSize={6} />
           <PageSizeButton pageSize={9} />

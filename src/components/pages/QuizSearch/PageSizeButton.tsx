@@ -10,8 +10,6 @@ export default function PageSizeButton({ pageSize }: PageSizeButtonProps) {
   const [, setParams] = useAtom(updateParamsAtom);
   const [params] = useAtom(paramsAtom);
 
-  console.log(params);
-
   return (
     <button
       className={twMerge(

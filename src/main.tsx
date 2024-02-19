@@ -19,14 +19,14 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <JotaiProvider>
-        <DevTools />
+        {import.meta.env.DEV && <DevTools />}
         <HydrateAtoms>
+          {import.meta.env.DEV && <ReactQueryDevtools />}
           <BrowserRouter>
             <Routes>
               <Route path="/*" element={<App />} />
             </Routes>
           </BrowserRouter>
-          <ReactQueryDevtools />
         </HydrateAtoms>
       </JotaiProvider>
     </QueryClientProvider>
