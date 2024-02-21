@@ -21,7 +21,7 @@
     "jotai": "^2.6.4",
     "jotai-devtools": "^0.7.1",
     "jotai-tanstack-query": "^0.8.4",
-    "lucide-react": "^0.321.0",
+    "lucide-react": "^0.335.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.50.0",
