@@ -3,8 +3,6 @@ import { GetQuizesQueryParams, PaginatedQuizResponse } from "@/api/types/quiz";
 import { atom } from "jotai";
 import { atomWithQuery } from "jotai-tanstack-query";
 
-export const elementsAtom = atom([1]);
-
 export const quizesAtom = atomWithQuery(get => ({
   queryKey: [
     "quizes",
@@ -27,14 +25,6 @@ export const paramsAtom = atom<GetQuizesQueryParams>({
 export const updateParamsAtom = atom(
   null,
   (get, set, params: GetQuizesQueryParams) => {
-    set(paramsAtom, { ...get(paramsAtom), ...params });
-    // delay??
-    set(
-      elementsAtom,
-      Array.from(
-        Array(get(quizesAtom).data.data.totalPages),
-        (_, index) => index + 1
-      )
-    );
+    set(paramsAtom, { ...get(paramsAtom), ...{ pageNumber: 1 }, ...params });
   }
 );

@@ -1,6 +1,6 @@
 import { PaginatedQuizResponse } from "@/api/types/quiz";
 import PagingButton from "./PagingButton";
-import { elementsAtom, paramsAtom, updateParamsAtom } from "@/atoms/quizSearch";
+import { paramsAtom, updateParamsAtom } from "@/atoms/quizSearch";
 import { useAtom } from "jotai";
 
 interface PagingBarProps {
@@ -8,9 +8,12 @@ interface PagingBarProps {
 }
 
 export default function PagingBar({ quizes }: PagingBarProps) {
-  const [elements] = useAtom(elementsAtom);
   const [params] = useAtom(paramsAtom);
   const [, setParams] = useAtom(updateParamsAtom);
+  const elements = Array.from(
+    Array(quizes?.totalCount ? quizes.totalCount : 1),
+    (_, index) => index + 1
+  );
 
   const setCurrPage = (action: number | "increment" | "decrement") => {
     if (typeof action === "number") {
@@ -57,31 +60,32 @@ export default function PagingBar({ quizes }: PagingBarProps) {
 
   return (
     <div className="flex gap-2 text-white">
-      {`${params.pageNumber} / ${quizes?.totalPages ? quizes.totalPages : "X"}`}
       <PagingButton text="PREV" onClick={() => setCurrPage("decrement")} />
 
-      {elements.map((el, id) => {
-        return isDisplayed(el) ? (
-          <PagingButton
-            text={el}
-            onClick={() => setCurrPage(el)}
-            current={
-              quizes?.pageNumber !== null &&
-              quizes?.pageNumber !== undefined &&
-              id + 1 === quizes.pageNumber
-            }
-            dots={
-              quizes?.pageNumber && quizes.pageNumber >= 4 && el === 1
-                ? "AFTER"
-                : quizes?.pageNumber &&
-                    quizes.pageNumber <= quizes.totalPages - 3 &&
-                    el === quizes.totalPages
-                  ? "BEFORE"
-                  : ""
-            }
-          />
-        ) : null;
-      })}
+      {elements
+        .slice(0, quizes?.totalPages ? quizes.totalPages : 1)
+        .map((el, id) => {
+          return isDisplayed(el) ? (
+            <PagingButton
+              text={el}
+              onClick={() => setCurrPage(el)}
+              current={
+                quizes?.pageNumber !== null &&
+                quizes?.pageNumber !== undefined &&
+                id + 1 === quizes.pageNumber
+              }
+              dots={
+                quizes?.pageNumber && quizes.pageNumber >= 4 && el === 1
+                  ? "AFTER"
+                  : quizes?.pageNumber &&
+                      quizes.pageNumber <= quizes.totalPages - 3 &&
+                      el === quizes.totalPages
+                    ? "BEFORE"
+                    : ""
+              }
+            />
+          ) : null;
+        })}
 
       <PagingButton text="NEXT" onClick={() => setCurrPage("increment")} />
     </div>

@@ -12,8 +12,9 @@ import Home from "./pages/Home/Home";
 import PersistLogin from "./router/PersistLogin";
 import Flashcards from "./pages/Quiz/Flashcards/Flashcards";
 import QuizLayout from "./layout/QuizLayout";
-import Profile from "./pages/Profile/Profile";
 import QuizSearch from "./pages/QuizSearch/QuizSearch";
+import RequireAuth from "./router/RequireAuth";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 export default function App() {
   return (
@@ -28,11 +29,11 @@ export default function App() {
           <Route path="/password_reset" element={<PasswordReset />} />
           <Route path="/forgot_password" element={<ForgotPassword />} />
 
-          {/* <Route element={<RequireAuth />}>
-            <Route path="/users" element={<Users />} />
-          </Route> */}
+          <Route element={<RequireAuth />}>
+            <Route path="/:userName" element={<Dashboard />} />
+          </Route>
+
           <Route path="/quiz_search" element={<QuizSearch />} />
-          <Route path="/profile" element={<Profile />} />
 
           {/* <Route path="*" element={<NotFound />} /> */}
           {/* <Route path="/error" element={<Error />} />
