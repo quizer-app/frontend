@@ -83,6 +83,7 @@ export default function PagingBar({ quizes }: PagingBarProps) {
                     ? "BEFORE"
                     : ""
               }
+              key={id}
             />
           ) : null;
         })}

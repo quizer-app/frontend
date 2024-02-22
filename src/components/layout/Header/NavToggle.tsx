@@ -1,12 +1,11 @@
 import { Menu, X } from "lucide-react";
 
-export default function NavToggle({
-  toggleNavbar,
-  isOpen,
-}: {
+interface NavToggleProps {
   toggleNavbar: () => void;
   isOpen: boolean;
-}) {
+}
+
+export default function NavToggle({ toggleNavbar, isOpen }: NavToggleProps) {
   return (
     <div className="flex pl-3 lg:hidden z-50">
       <button onClick={toggleNavbar}>

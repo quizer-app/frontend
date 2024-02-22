@@ -1,6 +1,11 @@
 import ListElement from "./ListElement";
 
-export default function NavLinks({ isOpen }: { isOpen: boolean }) {
+interface NavLinksProps {
+  isOpen: boolean;
+  onClick: () => void;
+}
+
+export default function NavLinks({ isOpen, onClick }: NavLinksProps) {
   return (
     <div>
       <ul
@@ -13,14 +18,22 @@ export default function NavLinks({ isOpen }: { isOpen: boolean }) {
           
           `}
       >
-        <ListElement href="/quiz_search">Quizes</ListElement>
-        <ListElement href="/about">About</ListElement>
-        <ListElement href="/users">Users</ListElement>
-        <ListElement href="/support">Support</ListElement>
-        <ListElement href="/signin" auth={true}>
+        <ListElement href="/quiz_search" onClick={onClick}>
+          Quizes
+        </ListElement>
+        <ListElement href="/about" onClick={onClick}>
+          About
+        </ListElement>
+        <ListElement href="/users" onClick={onClick}>
+          Users
+        </ListElement>
+        <ListElement href="/support" onClick={onClick}>
+          Support
+        </ListElement>
+        <ListElement href="/signin" onClick={onClick} auth={true}>
           Sign In
         </ListElement>
-        <ListElement href="/signup" auth={true}>
+        <ListElement href="/signup" onClick={onClick} auth={true}>
           Sign Up
         </ListElement>
       </ul>

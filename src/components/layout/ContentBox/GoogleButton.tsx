@@ -1,10 +1,10 @@
 import GoogleLogo from "@/assets/images/GoogleIcon.svg";
 
-export default function GoogleButton({
-  children,
-}: {
+interface GoogleButtonProps {
   children: React.ReactNode;
-}) {
+}
+
+export default function GoogleButton({ children }: GoogleButtonProps) {
   return (
     <button
       className="text-textPrimary bg-input shadow-md rounded-md font-medium w-full py-3
