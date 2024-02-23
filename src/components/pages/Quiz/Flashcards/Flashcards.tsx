@@ -1,5 +1,5 @@
 import { Toaster } from "react-hot-toast";
-import useQuizData from "@/hooks/useQuizData";
+import useQuizData from "@/hooks/quizes/useQuizData";
 import Loading from "../../Status/Loading";
 import NotFound from "../../Status/NotFound/NotFound";
 import Error from "../../Status/Error";

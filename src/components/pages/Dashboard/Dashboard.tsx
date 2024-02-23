@@ -1,4 +1,4 @@
-import useUserData from "@/hooks/useUserData";
+import useUserData from "@/hooks/quizes/useUserData";
 import Loading from "../Status/Loading";
 import Error from "../Status/Error";
 import UserQuizes from "./UserQuizes";

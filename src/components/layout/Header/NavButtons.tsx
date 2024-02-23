@@ -1,5 +1,5 @@
 import { isAuthenticatedAtom, tokenDataAtom } from "@/atoms/auth";
-import useLogout from "@/hooks/useLogout";
+import useLogout from "@/hooks/auth/useLogout";
 import { useAtomValue } from "jotai";
 import { Link } from "react-router-dom";
 

@@ -2,7 +2,7 @@ import { useAtomValue } from "jotai";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { accessTokenAtom } from "../../atoms/auth";
-import useRefreshToken from "../../hooks/useRefreshToken";
+import useRefreshToken from "../../hooks/auth/useRefreshToken";
 import Loading from "../pages/Status/Loading";
 
 export default function PersistLogin() {

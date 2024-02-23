@@ -1,7 +1,7 @@
 import { QuizResponse } from "@/api/types/quiz";
-import { paramsAtom, quizesAtom, updateParamsAtom } from "@/atoms/quizSearch";
+import { quizesAtom, updateParamsAtom } from "@/atoms/quizSearch";
 import { useAtom } from "jotai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import QuizTile from "../Home/TileGrid/QuizTile";
 import Loading from "../Status/Loading";
 import NotFound from "../Status/NotFound/NotFound";
@@ -11,22 +11,24 @@ import PagingBar from "./PagingBar";
 export default function QuizSearch() {
   const [{ isLoading, isError, data }] = useAtom(quizesAtom);
   const [, setParams] = useAtom(updateParamsAtom);
-  const [params] = useAtom(paramsAtom);
 
-  const [input, setInput] = useState<string>(
-    params.searchTerm ? params.searchTerm : ""
-  );
+  const [input, setInput] = useState<string>("");
 
   const resetFilters = () => {
     setInput("");
     setParams({
       pageNumber: 1,
-      pageSize: 9,
-      sortColumn: "createdAt",
+      pageSize: 12,
+      sortColumn: "name",
       sortOrder: "asc",
       searchTerm: "",
+      userName: "",
     });
   };
+
+  useEffect(() => {
+    resetFilters();
+  }, []);
 
   return (
     <>

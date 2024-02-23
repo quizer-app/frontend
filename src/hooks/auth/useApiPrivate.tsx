@@ -2,7 +2,7 @@ import { apiPrivate } from "@/api/axios";
 import { AxiosError } from "axios";
 import { useAtomValue } from "jotai";
 import { useEffect } from "react";
-import { accessTokenAtom } from "../atoms/auth";
+import { accessTokenAtom } from "../../atoms/auth";
 import useRefreshToken from "./useRefreshToken";
 
 export default function useApiPrivate() {
@@ -11,7 +11,7 @@ export default function useApiPrivate() {
 
   useEffect(() => {
     const requestIntercept = apiPrivate.interceptors.request.use(
-      (config) => {
+      config => {
         if (!config.headers["Authorization"]) {
           config.headers["Authorization"] = `Bearer ${accessToken}`;
         }
@@ -22,7 +22,7 @@ export default function useApiPrivate() {
     );
 
     const responseIntercept = apiPrivate.interceptors.response.use(
-      (response) => response,
+      response => response,
       async (error: AxiosError) => {
         const prevRequest = error.config;
         if (!prevRequest) return Promise.reject(error);

@@ -1,7 +1,7 @@
 import Loading from "@/components/pages/Status/Loading";
 import NotFound from "@/components/pages/Status/NotFound/NotFound";
 import QuizView from "./QuizView";
-import useQuizData from "@/hooks/useQuizData";
+import useQuizData from "@/hooks/quizes/useQuizData";
 
 export default function Quiz() {
   const { isLoading, isError, quiz } = useQuizData();
