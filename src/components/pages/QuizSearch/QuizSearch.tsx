@@ -1,12 +1,12 @@
+import { QuizResponse } from "@/api/types/quiz";
+import { paramsAtom, quizesAtom, updateParamsAtom } from "@/atoms/quizSearch";
+import { useAtom } from "jotai";
+import { useState } from "react";
+import QuizTile from "../Home/TileGrid/QuizTile";
 import Loading from "../Status/Loading";
 import NotFound from "../Status/NotFound/NotFound";
-import { useAtom } from "jotai";
-import { paramsAtom, quizesAtom, updateParamsAtom } from "@/atoms/quizSearch";
-import { QuizResponse } from "@/api/types/quiz";
 import FiltersBar from "./FiltersBar";
-import { useState } from "react";
 import PagingBar from "./PagingBar";
-import QuizTile from "../Home/TileGrid/QuizTile";
 
 export default function QuizSearch() {
   const [{ isLoading, isError, data }] = useAtom(quizesAtom);
@@ -32,7 +32,7 @@ export default function QuizSearch() {
     <>
       <div className="bg-primary flex items-center justify-center gap-20 p-20">
         <FiltersBar input={input} setInput={setInput} />
-        <PagingBar quizes={data?.data} />
+        {data?.data && <PagingBar quizes={data?.data} />}
       </div>
 
       <div className="bg-primary flex-col gap-16 w-full flex items-center justify-center py-14 md:py-16 lg:py-20">
