@@ -13,13 +13,13 @@ export default function NavButtons() {
     <div className="hidden sm:block font-bold z-50">
       {isAuthenticated ? (
         <>
-          <Link to="/dashboard" className="py-4 px-6 hover:text-textHover">
+          <Link
+            to={`/${tokenData?.given_name}`}
+            className="py-4 px-6 hover:text-textHover"
+          >
             Dashboard ({tokenData?.given_name})
           </Link>
-          <button
-            className="bg-lightBlue py-4 px-8 rounded-md hover:bg-opacity-95"
-            onClick={logout}
-          >
+          <button className="buttonPrimary" onClick={logout}>
             Log Out
           </button>
         </>
@@ -28,10 +28,7 @@ export default function NavButtons() {
           <Link to="/signin" className="py-4 px-6 textHover">
             Sign In
           </Link>
-          <Link
-            to="/signup"
-            className="bg-lightBlue py-4 px-8 rounded-md hover:bg-opacity-95"
-          >
+          <Link to="/signup" className="buttonPrimary">
             Sign Up
           </Link>
         </>

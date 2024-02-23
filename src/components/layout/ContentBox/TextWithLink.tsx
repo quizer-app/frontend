@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 
+interface TextWithLinkProps {
+  children: React.ReactNode;
+  link: string;
+  path: string;
+}
+
 export default function TextWithLink({
   children,
   link,
   path,
-}: {
-  children: React.ReactNode;
-  link: string;
-  path: string;
-}) {
+}: TextWithLinkProps) {
   return (
     <p className="text-textPrimary font-medium text-center">
       {children}

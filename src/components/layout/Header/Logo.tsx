@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
-export default function Logo({ logo }: { logo: string }) {
+interface LogoProps {
+  logo: string;
+}
+
+export default function Logo({ logo }: LogoProps) {
   return (
     <Link to="/" className="cursor-pointer">
       <div className="flex items-center justify-center gap-2 lg:gap-3 lg:pb-1 z-50">

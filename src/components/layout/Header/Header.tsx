@@ -13,6 +13,10 @@ export function Header() {
     setIsOpen(!isOpen);
   };
 
+  const closeNavbar = () => {
+    setIsOpen(false);
+  };
+
   return (
     <nav className="bg-primary text-white top-0 w-full font-primary -z-30">
       <div className="flex justify-between items-center gap-2 mx-auto mainContainer py-2 sm:py-3 lg:py-4">
@@ -20,7 +24,7 @@ export function Header() {
           <Logo logo={MainLogo} />
         </div>
         <div className="flex justify-between items-center grow">
-          <NavLinks isOpen={isOpen} />
+          <NavLinks isOpen={isOpen} onClick={closeNavbar} />
           <NavButtons />
         </div>
         <div className="flex justify-between items-center">

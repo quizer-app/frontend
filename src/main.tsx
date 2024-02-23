@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HydrateAtoms from "./atoms/HydrateAtoms";
 import App from "./components/App";
 import queryClient from "./utils/queryClient";
+import { DevTools } from "jotai-devtools";
 
 if (import.meta.env.PROD) {
   disableReactDevTools();
@@ -18,13 +19,14 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <JotaiProvider>
+        {import.meta.env.DEV && <DevTools />}
         <HydrateAtoms>
+          {import.meta.env.DEV && <ReactQueryDevtools />}
           <BrowserRouter>
             <Routes>
               <Route path="/*" element={<App />} />
             </Routes>
           </BrowserRouter>
-          <ReactQueryDevtools />
         </HydrateAtoms>
       </JotaiProvider>
     </QueryClientProvider>

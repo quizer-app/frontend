@@ -4,16 +4,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { useAtomValue, useSetAtom } from "jotai";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
-import {
-  accessTokenAtom,
-  isAuthenticatedAtom,
-  persistAtom,
-} from "../../../atoms/auth";
+import { accessTokenAtom, isAuthenticatedAtom } from "../../../atoms/auth";
 import { Button } from "../../layout/ContentBox/Button";
 import ContentBox from "../../layout/ContentBox/ContentBox";
 import { FormInput } from "../../layout/ContentBox/FormInput";
@@ -26,6 +22,7 @@ import Title from "../../layout/ContentBox/Title";
 const schema = z.object({
   email: z.string().min(1),
   password: z.string().min(1),
+  rememberMe: z.boolean().optional(),
 });
 
 type Form = z.infer<typeof schema>;
@@ -35,8 +32,6 @@ export default function SignIn() {
   const navigate = useNavigate();
 
   const setAccessToken = useSetAtom(accessTokenAtom);
-  const persistRef = useRef<HTMLInputElement>(null);
-  const setPersist = useSetAtom(persistAtom);
 
   const {
     register,
@@ -63,7 +58,6 @@ export default function SignIn() {
       const { accessToken, message } = data.data;
       toast.success(message);
       setAccessToken(accessToken ?? null);
-      setPersist(persistRef.current?.checked ?? false);
       reset();
     },
     onError: (error: AxiosError) => {
@@ -107,13 +101,13 @@ export default function SignIn() {
         />
         <div className="mt-8 flex justify-center mb-5">
           <input
-            id="persist"
             type="checkbox"
+            {...register("rememberMe")}
             className="bg-secondary"
-            ref={persistRef}
+            id="rememberMe"
           />
           <label
-            htmlFor="persist"
+            htmlFor="rememberMe"
             className="text-textPrimary text-sm font-medium grow pl-3"
           >
             Keep me signed in
