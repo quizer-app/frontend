@@ -57,7 +57,7 @@ export default function Quiz() {
               <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
                 <Category
                   text="Flashcards"
-                  to={`/${quiz.location}/flashcards`}
+                  to={`/${quiz.location}/flashcards?term=${currTerm}`}
                   state={{ term: currTerm }}
                 />
                 <Category text="Ucz się" />

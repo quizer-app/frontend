@@ -36,11 +36,13 @@ export default function SearchInput({ input, setInput }: SearchInputProps) {
         color="white"
         className="absolute top-3 left-3 cursor-text"
       />
-      <XCircle
-        onClick={clearInput}
-        color="#959CB1"
-        className="absolute top-3 right-3 cursor-pointer"
-      />
+      {input !== "" && (
+        <XCircle
+          onClick={clearInput}
+          color="#959CB1"
+          className="absolute top-3 right-3 cursor-pointer"
+        />
+      )}
     </div>
   );
 }
