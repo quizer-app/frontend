@@ -1,5 +1,5 @@
-import Bottom from "@/components/pages/Home/Intro/Bottom";
-import Top from "@/components/pages/Home/Intro/Top";
+import Bottom from "./Bottom";
+import Top from "./Top";
 
 export default function Intro() {
   return (

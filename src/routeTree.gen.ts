@@ -13,41 +13,125 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as LayoutImport } from './routes/_layout'
+import { Route as LayoutAuthImport } from './routes/_layout/_auth'
 
 // Create Virtual Routes
 
-const AboutLazyImport = createFileRoute('/about')()
-const IndexLazyImport = createFileRoute('/')()
+const LayoutIndexLazyImport = createFileRoute('/_layout/')()
+const LayoutVerifiedLazyImport = createFileRoute('/_layout/verified')()
+const LayoutSignupLazyImport = createFileRoute('/_layout/signup')()
+const LayoutSigninLazyImport = createFileRoute('/_layout/signin')()
+const LayoutPasswordResetLazyImport = createFileRoute(
+  '/_layout/password-reset',
+)()
+const LayoutForgotPasswordLazyImport = createFileRoute(
+  '/_layout/forgot-password',
+)()
 
 // Create/Update Routes
 
-const AboutLazyRoute = AboutLazyImport.update({
-  path: '/about',
+const LayoutRoute = LayoutImport.update({
+  id: '/_layout',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
+} as any)
 
-const IndexLazyRoute = IndexLazyImport.update({
+const LayoutIndexLazyRoute = LayoutIndexLazyImport.update({
   path: '/',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+  getParentRoute: () => LayoutRoute,
+} as any).lazy(() => import('./routes/_layout/index.lazy').then((d) => d.Route))
+
+const LayoutVerifiedLazyRoute = LayoutVerifiedLazyImport.update({
+  path: '/verified',
+  getParentRoute: () => LayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_layout/verified.lazy').then((d) => d.Route),
+)
+
+const LayoutSignupLazyRoute = LayoutSignupLazyImport.update({
+  path: '/signup',
+  getParentRoute: () => LayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_layout/signup.lazy').then((d) => d.Route),
+)
+
+const LayoutSigninLazyRoute = LayoutSigninLazyImport.update({
+  path: '/signin',
+  getParentRoute: () => LayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_layout/signin.lazy').then((d) => d.Route),
+)
+
+const LayoutPasswordResetLazyRoute = LayoutPasswordResetLazyImport.update({
+  path: '/password-reset',
+  getParentRoute: () => LayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_layout/password-reset.lazy').then((d) => d.Route),
+)
+
+const LayoutForgotPasswordLazyRoute = LayoutForgotPasswordLazyImport.update({
+  path: '/forgot-password',
+  getParentRoute: () => LayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_layout/forgot-password.lazy').then((d) => d.Route),
+)
+
+const LayoutAuthRoute = LayoutAuthImport.update({
+  id: '/_auth',
+  getParentRoute: () => LayoutRoute,
+} as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      preLoaderRoute: typeof IndexLazyImport
+    '/_layout': {
+      preLoaderRoute: typeof LayoutImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      preLoaderRoute: typeof AboutLazyImport
-      parentRoute: typeof rootRoute
+    '/_layout/_auth': {
+      preLoaderRoute: typeof LayoutAuthImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/forgot-password': {
+      preLoaderRoute: typeof LayoutForgotPasswordLazyImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/password-reset': {
+      preLoaderRoute: typeof LayoutPasswordResetLazyImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/signin': {
+      preLoaderRoute: typeof LayoutSigninLazyImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/signup': {
+      preLoaderRoute: typeof LayoutSignupLazyImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/verified': {
+      preLoaderRoute: typeof LayoutVerifiedLazyImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/': {
+      preLoaderRoute: typeof LayoutIndexLazyImport
+      parentRoute: typeof LayoutImport
     }
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([IndexLazyRoute, AboutLazyRoute])
+export const routeTree = rootRoute.addChildren([
+  LayoutRoute.addChildren([
+    LayoutAuthRoute,
+    LayoutForgotPasswordLazyRoute,
+    LayoutPasswordResetLazyRoute,
+    LayoutSigninLazyRoute,
+    LayoutSignupLazyRoute,
+    LayoutVerifiedLazyRoute,
+    LayoutIndexLazyRoute,
+  ]),
+])
 
 /* prettier-ignore-end */

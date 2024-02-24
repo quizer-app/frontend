@@ -1,6 +1,6 @@
 import Background from "@/components/layout/Background/Background";
+import HomePageButton from "@/components/other/HomePageButton";
 import NotFoundSvg from "./NotFoundSvg";
-import HomePageButton from "../../../other/HomePageButton";
 
 export default function NotFound() {
   return (

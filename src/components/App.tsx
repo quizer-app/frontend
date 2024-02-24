@@ -3,12 +3,8 @@ import Layout from "./layout/Layout";
 import QuizLayout from "./layout/QuizLayout";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import PasswordReset from "./pages/Auth/PasswordReset";
-import SignIn from "./pages/Auth/SignIn";
-import SignUp from "./pages/Auth/SignUp";
 import Verification from "./pages/Auth/Verification";
-import Verified from "./pages/Auth/Verified";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import Home from "./pages/Home/Home";
 import Flashcards from "./pages/Quiz/Flashcards/Flashcards";
 import Quiz from "./pages/Quiz/Quiz";
 import Test from "./pages/Quiz/Test";
@@ -21,11 +17,7 @@ export default function App() {
     <Routes>
       <Route element={<PersistLogin />}>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
           <Route path="/verification/:token" element={<Verification />} />
-          <Route path="/verified" element={<Verified />} />
           <Route path="/password_reset" element={<PasswordReset />} />
           <Route path="/forgot_password" element={<ForgotPassword />} />
 

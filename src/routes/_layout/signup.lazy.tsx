@@ -1,23 +1,27 @@
 import { api } from "@/api/axios";
 import { AuthResponse } from "@/api/types/auth";
 import { isAuthenticatedAtom } from "@/atoms/auth";
+import { Button } from "@/components/layout/ContentBox/Button";
+import ContentBox from "@/components/layout/ContentBox/ContentBox";
+import { FormInput } from "@/components/layout/ContentBox/FormInput";
+import GoogleButton from "@/components/layout/ContentBox/GoogleButton";
+import Text from "@/components/layout/ContentBox/Text";
+import TextWithLines from "@/components/layout/ContentBox/TextWithLines";
+import TextWithLink from "@/components/layout/ContentBox/TextWithLink";
+import Title from "@/components/layout/ContentBox/Title";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "@tanstack/react-router";
+import { createLazyFileRoute, useNavigate } from "@tanstack/react-router";
 import { AxiosError } from "axios";
 import { useAtomValue } from "jotai";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast/headless";
 import { z } from "zod";
-import { Button } from "../../layout/ContentBox/Button";
-import ContentBox from "../../layout/ContentBox/ContentBox";
-import { FormInput } from "../../layout/ContentBox/FormInput";
-import GoogleButton from "../../layout/ContentBox/GoogleButton";
-import Text from "../../layout/ContentBox/Text";
-import TextWithLines from "../../layout/ContentBox/TextWithLines";
-import TextWithLink from "../../layout/ContentBox/TextWithLink";
-import Title from "../../layout/ContentBox/Title";
+
+export const Route = createLazyFileRoute("/_layout/signup")({
+  component: SignUp,
+});
 
 const schema = z.object({
   username: z.string().min(3).max(32),
@@ -28,7 +32,7 @@ const schema = z.object({
 
 type Form = z.infer<typeof schema>;
 
-export default function SignUp() {
+function SignUp() {
   const {
     register,
     handleSubmit,

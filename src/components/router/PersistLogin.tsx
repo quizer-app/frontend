@@ -1,11 +1,10 @@
-import { Outlet } from "@tanstack/react-router";
+import useRefreshToken from "@/hooks/auth/useRefreshToken";
 import { useAtomValue } from "jotai";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { accessTokenAtom } from "../../atoms/auth";
-import useRefreshToken from "../../hooks/auth/useRefreshToken";
-import Loading from "../pages/Status/Loading";
+import Loading from "../Status/Loading";
 
-export default function PersistLogin() {
+export default function PersistLogin({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const refresh = useRefreshToken();
   const accessToken = useAtomValue(accessTokenAtom);
@@ -26,5 +25,5 @@ export default function PersistLogin() {
     !accessToken ? verifyRefreshToken() : setIsLoading(false);
   }, [refresh, accessToken]);
 
-  return <>{isLoading ? <Loading /> : <Outlet />}</>;
+  return <>{isLoading ? <Loading /> : <>{children}</>}</>;
 }
