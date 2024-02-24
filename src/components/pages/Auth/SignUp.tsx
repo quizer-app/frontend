@@ -1,14 +1,14 @@
-import { AuthResponse } from "@/api/types/auth";
 import { api } from "@/api/axios";
+import { AuthResponse } from "@/api/types/auth";
 import { isAuthenticatedAtom } from "@/atoms/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "@tanstack/react-router";
 import { AxiosError } from "axios";
 import { useAtomValue } from "jotai";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast/headless";
-import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { Button } from "../../layout/ContentBox/Button";
 import ContentBox from "../../layout/ContentBox/ContentBox";

@@ -1,6 +1,6 @@
+import { Outlet } from "@tanstack/react-router";
 import { useAtomValue } from "jotai";
 import { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
 import { accessTokenAtom } from "../../atoms/auth";
 import useRefreshToken from "../../hooks/auth/useRefreshToken";
 import Loading from "../pages/Status/Loading";

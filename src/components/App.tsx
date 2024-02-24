@@ -1,20 +1,20 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./layout/Layout";
-import Quiz from "./pages/Quiz/Quiz";
-import Test from "./pages/Quiz/Test";
+import QuizLayout from "./layout/QuizLayout";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import PasswordReset from "./pages/Auth/PasswordReset";
 import SignIn from "./pages/Auth/SignIn";
 import SignUp from "./pages/Auth/SignUp";
 import Verification from "./pages/Auth/Verification";
 import Verified from "./pages/Auth/Verified";
-import Home from "./pages/Home/Home";
-import PersistLogin from "./router/PersistLogin";
-import Flashcards from "./pages/Quiz/Flashcards/Flashcards";
-import QuizLayout from "./layout/QuizLayout";
-import QuizSearch from "./pages/QuizSearch/QuizSearch";
-import RequireAuth from "./router/RequireAuth";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import Home from "./pages/Home/Home";
+import Flashcards from "./pages/Quiz/Flashcards/Flashcards";
+import Quiz from "./pages/Quiz/Quiz";
+import Test from "./pages/Quiz/Test";
+import QuizSearch from "./pages/QuizSearch/QuizSearch";
+import PersistLogin from "./router/PersistLogin";
+import RequireAuth from "./router/RequireAuth";
 
 export default function App() {
   return (

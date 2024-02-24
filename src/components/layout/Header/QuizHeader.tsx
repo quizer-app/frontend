@@ -1,6 +1,6 @@
 import MainLogo from "@/assets/images/light.png";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { X } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
 import DarkModeButton from "./DarkModeButton";
 import Logo from "./Logo";
 

@@ -2,7 +2,7 @@ import { baseURL } from "@/api/axios";
 import { QuizResponse } from "@/api/types/quiz";
 import img from "@/assets/images/office.jpg";
 import { formatDate } from "@/utils/date";
-import { Link } from "react-router-dom";
+import { Link } from "@tanstack/react-router";
 
 type QuizTileProps = {
   quiz: QuizResponse;

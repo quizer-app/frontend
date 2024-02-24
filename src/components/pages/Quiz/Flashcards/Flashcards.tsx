@@ -1,10 +1,10 @@
-import { Toaster } from "react-hot-toast";
 import useQuizData from "@/hooks/quizes/useQuizData";
+import intValue from "@/utils/intValue";
+import { useSearchParams } from "@tanstack/react-router";
+import { Toaster } from "react-hot-toast";
 import Loading from "../../Status/Loading";
 import NotFound from "../../Status/NotFound/NotFound";
 import Flashcard from "./Flashcard";
-import { useSearchParams } from "react-router-dom";
-import intValue from "@/utils/intValue";
 
 export default function Flashcards() {
   const { isLoading, isError, quiz } = useQuizData();

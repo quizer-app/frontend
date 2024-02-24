@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import { api } from "@/api/axios";
 import { QuizResponse } from "@/api/types/quiz";
+import { useQuery } from "@tanstack/react-query";
+import { useParams } from "@tanstack/react-router";
 
 export default function useQuizData() {
   const { userName, quizSlug } = useParams();

@@ -1,12 +1,12 @@
+import { QuestionResponse } from "@/api/types/quiz";
 import Loading from "@/components/pages/Status/Loading";
 import NotFound from "@/components/pages/Status/NotFound/NotFound";
 import useQuizData from "@/hooks/quizes/useQuizData";
+import intValue from "@/utils/intValue";
+import { useSearchParams } from "@tanstack/react-router";
 import Category from "./Category";
 import Flashcard from "./Flashcards/Flashcard";
 import Term from "./Term";
-import { QuestionResponse } from "@/api/types/quiz";
-import { useSearchParams } from "react-router-dom";
-import intValue from "@/utils/intValue";
 
 export default function Quiz() {
   const { isLoading, isError, quiz } = useQuizData();

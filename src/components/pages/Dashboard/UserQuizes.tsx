@@ -1,12 +1,12 @@
 import { QuizResponse } from "@/api/types/quiz";
 import { paramsAtom, quizesAtom, updateParamsAtom } from "@/atoms/quizSearch";
+import { useParams } from "@tanstack/react-router";
 import { useAtom } from "jotai";
-import Loading from "../Status/Loading";
-import Error from "../Status/Error";
-import QuizStripe from "./QuizStripe";
 import { useEffect, useState } from "react";
 import SearchInput from "../QuizSearch/SearchInput";
-import { useParams } from "react-router-dom";
+import Error from "../Status/Error";
+import Loading from "../Status/Loading";
+import QuizStripe from "./QuizStripe";
 
 export default function UserQuizes() {
   const [{ isLoading, isError, data }] = useAtom(quizesAtom);
