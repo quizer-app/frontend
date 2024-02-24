@@ -1,6 +1,11 @@
-import TestBlock from "./TestBlock";
+import TestBlock from "@/components/Quiz/TestBlock";
+import { createLazyFileRoute } from "@tanstack/react-router";
 
-export default function Test() {
+export const Route = createLazyFileRoute("/_quizLayout/test")({
+  component: Test,
+});
+
+function Test() {
   return (
     <>
       <div className="bg-primary text-white px-4 py-10 sm:py-14 md:py-16 lg:py-20">

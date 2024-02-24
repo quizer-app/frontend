@@ -1,12 +1,18 @@
+import Flashcard from "@/components/Quiz/Flashcards/Flashcard";
+import Loading from "@/components/Status/Loading";
+import NotFound from "@/components/Status/NotFound/NotFound";
 import useQuizData from "@/hooks/quizes/useQuizData";
 import intValue from "@/utils/intValue";
-import { useSearchParams } from "@tanstack/react-router";
+import { createLazyFileRoute } from "@tanstack/react-router";
 import { Toaster } from "react-hot-toast";
-import Loading from "../../Status/Loading";
-import NotFound from "../../Status/NotFound/NotFound";
-import Flashcard from "./Flashcard";
 
-export default function Flashcards() {
+export const Route = createLazyFileRoute(
+  "/_quizLayout/$username/$quizSlug/flashcards"
+)({
+  component: Flashcards,
+});
+
+function Flashcards() {
   const { isLoading, isError, quiz } = useQuizData();
 
   const [searchParams, setSearchParams] = useSearchParams({ term: "1" });

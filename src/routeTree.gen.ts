@@ -13,23 +13,43 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as QuizLayoutImport } from './routes/_quizLayout'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as LayoutAuthImport } from './routes/_layout/_auth'
 
 // Create Virtual Routes
 
 const LayoutIndexLazyImport = createFileRoute('/_layout/')()
+const QuizLayoutTestLazyImport = createFileRoute('/_quizLayout/test')()
 const LayoutVerifiedLazyImport = createFileRoute('/_layout/verified')()
 const LayoutSignupLazyImport = createFileRoute('/_layout/signup')()
 const LayoutSigninLazyImport = createFileRoute('/_layout/signin')()
+const LayoutQuizSearchLazyImport = createFileRoute('/_layout/quiz-search')()
 const LayoutPasswordResetLazyImport = createFileRoute(
   '/_layout/password-reset',
 )()
 const LayoutForgotPasswordLazyImport = createFileRoute(
   '/_layout/forgot-password',
 )()
+const LayoutVerificationTokenLazyImport = createFileRoute(
+  '/_layout/verification/$token',
+)()
+const LayoutAuthUsernameLazyImport = createFileRoute(
+  '/_layout/_auth/$username',
+)()
+const QuizLayoutUsernameQuizSlugIndexLazyImport = createFileRoute(
+  '/_quizLayout/$username/$quizSlug/',
+)()
+const QuizLayoutUsernameQuizSlugFlashcardsLazyImport = createFileRoute(
+  '/_quizLayout/$username/$quizSlug/flashcards',
+)()
 
 // Create/Update Routes
+
+const QuizLayoutRoute = QuizLayoutImport.update({
+  id: '/_quizLayout',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const LayoutRoute = LayoutImport.update({
   id: '/_layout',
@@ -40,6 +60,13 @@ const LayoutIndexLazyRoute = LayoutIndexLazyImport.update({
   path: '/',
   getParentRoute: () => LayoutRoute,
 } as any).lazy(() => import('./routes/_layout/index.lazy').then((d) => d.Route))
+
+const QuizLayoutTestLazyRoute = QuizLayoutTestLazyImport.update({
+  path: '/test',
+  getParentRoute: () => QuizLayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_quizLayout/test.lazy').then((d) => d.Route),
+)
 
 const LayoutVerifiedLazyRoute = LayoutVerifiedLazyImport.update({
   path: '/verified',
@@ -62,6 +89,13 @@ const LayoutSigninLazyRoute = LayoutSigninLazyImport.update({
   import('./routes/_layout/signin.lazy').then((d) => d.Route),
 )
 
+const LayoutQuizSearchLazyRoute = LayoutQuizSearchLazyImport.update({
+  path: '/quiz-search',
+  getParentRoute: () => LayoutRoute,
+} as any).lazy(() =>
+  import('./routes/_layout/quiz-search.lazy').then((d) => d.Route),
+)
+
 const LayoutPasswordResetLazyRoute = LayoutPasswordResetLazyImport.update({
   path: '/password-reset',
   getParentRoute: () => LayoutRoute,
@@ -81,12 +115,51 @@ const LayoutAuthRoute = LayoutAuthImport.update({
   getParentRoute: () => LayoutRoute,
 } as any)
 
+const LayoutVerificationTokenLazyRoute =
+  LayoutVerificationTokenLazyImport.update({
+    path: '/verification/$token',
+    getParentRoute: () => LayoutRoute,
+  } as any).lazy(() =>
+    import('./routes/_layout/verification.$token.lazy').then((d) => d.Route),
+  )
+
+const LayoutAuthUsernameLazyRoute = LayoutAuthUsernameLazyImport.update({
+  path: '/$username',
+  getParentRoute: () => LayoutAuthRoute,
+} as any).lazy(() =>
+  import('./routes/_layout/_auth/$username.lazy').then((d) => d.Route),
+)
+
+const QuizLayoutUsernameQuizSlugIndexLazyRoute =
+  QuizLayoutUsernameQuizSlugIndexLazyImport.update({
+    path: '/$username/$quizSlug/',
+    getParentRoute: () => QuizLayoutRoute,
+  } as any).lazy(() =>
+    import('./routes/_quizLayout/$username/$quizSlug/index.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const QuizLayoutUsernameQuizSlugFlashcardsLazyRoute =
+  QuizLayoutUsernameQuizSlugFlashcardsLazyImport.update({
+    path: '/$username/$quizSlug/flashcards',
+    getParentRoute: () => QuizLayoutRoute,
+  } as any).lazy(() =>
+    import('./routes/_quizLayout/$username/$quizSlug/flashcards.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/_layout': {
       preLoaderRoute: typeof LayoutImport
+      parentRoute: typeof rootRoute
+    }
+    '/_quizLayout': {
+      preLoaderRoute: typeof QuizLayoutImport
       parentRoute: typeof rootRoute
     }
     '/_layout/_auth': {
@@ -101,6 +174,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutPasswordResetLazyImport
       parentRoute: typeof LayoutImport
     }
+    '/_layout/quiz-search': {
+      preLoaderRoute: typeof LayoutQuizSearchLazyImport
+      parentRoute: typeof LayoutImport
+    }
     '/_layout/signin': {
       preLoaderRoute: typeof LayoutSigninLazyImport
       parentRoute: typeof LayoutImport
@@ -113,9 +190,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutVerifiedLazyImport
       parentRoute: typeof LayoutImport
     }
+    '/_quizLayout/test': {
+      preLoaderRoute: typeof QuizLayoutTestLazyImport
+      parentRoute: typeof QuizLayoutImport
+    }
     '/_layout/': {
       preLoaderRoute: typeof LayoutIndexLazyImport
       parentRoute: typeof LayoutImport
+    }
+    '/_layout/_auth/$username': {
+      preLoaderRoute: typeof LayoutAuthUsernameLazyImport
+      parentRoute: typeof LayoutAuthImport
+    }
+    '/_layout/verification/$token': {
+      preLoaderRoute: typeof LayoutVerificationTokenLazyImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_quizLayout/$username/$quizSlug/flashcards': {
+      preLoaderRoute: typeof QuizLayoutUsernameQuizSlugFlashcardsLazyImport
+      parentRoute: typeof QuizLayoutImport
+    }
+    '/_quizLayout/$username/$quizSlug/': {
+      preLoaderRoute: typeof QuizLayoutUsernameQuizSlugIndexLazyImport
+      parentRoute: typeof QuizLayoutImport
     }
   }
 }
@@ -124,13 +221,20 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   LayoutRoute.addChildren([
-    LayoutAuthRoute,
+    LayoutAuthRoute.addChildren([LayoutAuthUsernameLazyRoute]),
     LayoutForgotPasswordLazyRoute,
     LayoutPasswordResetLazyRoute,
+    LayoutQuizSearchLazyRoute,
     LayoutSigninLazyRoute,
     LayoutSignupLazyRoute,
     LayoutVerifiedLazyRoute,
     LayoutIndexLazyRoute,
+    LayoutVerificationTokenLazyRoute,
+  ]),
+  QuizLayoutRoute.addChildren([
+    QuizLayoutTestLazyRoute,
+    QuizLayoutUsernameQuizSlugFlashcardsLazyRoute,
+    QuizLayoutUsernameQuizSlugIndexLazyRoute,
   ]),
 ])
 

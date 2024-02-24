@@ -19,6 +19,10 @@ declare module "@tanstack/react-router" {
   }
 }
 
+if (import.meta.env.PROD) {
+  disableReactDevTools();
+}
+
 const rootElement = document.getElementById("app")!;
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
@@ -35,4 +39,7 @@ if (!rootElement.innerHTML) {
       </QueryClientProvider>
     </React.StrictMode>
   );
+}
+function disableReactDevTools() {
+  throw new Error("Function not implemented.");
 }

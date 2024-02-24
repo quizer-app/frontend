@@ -1,14 +1,19 @@
 import { QuizResponse } from "@/api/types/quiz";
 import { quizesAtom, updateParamsAtom } from "@/atoms/quizSearch";
+import QuizTile from "@/components/Home/TileGrid/QuizTile";
+import FiltersBar from "@/components/QuizSearch/FiltersBar";
+import PagingBar from "@/components/QuizSearch/PagingBar";
+import Loading from "@/components/Status/Loading";
+import NotFound from "@/components/Status/NotFound/NotFound";
+import { createLazyFileRoute } from "@tanstack/react-router";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
-import QuizTile from "../Home/TileGrid/QuizTile";
-import Loading from "../Status/Loading";
-import NotFound from "../Status/NotFound/NotFound";
-import FiltersBar from "./FiltersBar";
-import PagingBar from "./PagingBar";
 
-export default function QuizSearch() {
+export const Route = createLazyFileRoute("/_layout/quiz-search")({
+  component: QuizSearch,
+});
+
+function QuizSearch() {
   const [{ isLoading, isError, data }] = useAtom(quizesAtom);
   const [, setParams] = useAtom(updateParamsAtom);
 

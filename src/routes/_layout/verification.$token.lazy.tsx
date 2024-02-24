@@ -1,11 +1,16 @@
-import { Button } from "../../layout/ContentBox/Button";
-import ContentBox from "../../layout/ContentBox/ContentBox";
-import EmailIcon from "../../layout/ContentBox/Icons/EmailIcon";
-import Text from "../../layout/ContentBox/Text";
-import Title from "../../layout/ContentBox/Title";
-import FillHeight from "../../layout/Background/Background";
+import FillHeight from "@/components/layout/Background/Background";
+import { Button } from "@/components/layout/ContentBox/Button";
+import ContentBox from "@/components/layout/ContentBox/ContentBox";
+import EmailIcon from "@/components/layout/ContentBox/Icons/EmailIcon";
+import Text from "@/components/layout/ContentBox/Text";
+import Title from "@/components/layout/ContentBox/Title";
+import { createLazyFileRoute } from "@tanstack/react-router";
 
-export default function Verification() {
+export const Route = createLazyFileRoute("/_layout/verification/$token")({
+  component: Verification,
+});
+
+function Verification() {
   // const { token } = useParams();
 
   return (

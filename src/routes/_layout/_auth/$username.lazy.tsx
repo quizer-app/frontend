@@ -1,9 +1,14 @@
+import UserQuizes from "@/components/Dashboard/UserQuizes";
+import Error from "@/components/Status/Error";
+import Loading from "@/components/Status/Loading";
 import useUserData from "@/hooks/quizes/useUserData";
-import Loading from "../Status/Loading";
-import Error from "../Status/Error";
-import UserQuizes from "./UserQuizes";
+import { createLazyFileRoute } from "@tanstack/react-router";
 
-export default function Dashboard() {
+export const Route = createLazyFileRoute("/_layout/_auth/$username")({
+  component: Dashboard,
+});
+
+function Dashboard() {
   const { isLoading, isError, user } = useUserData();
 
   return (

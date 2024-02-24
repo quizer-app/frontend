@@ -1,14 +1,18 @@
 import { QuestionResponse } from "@/api/types/quiz";
-import Loading from "@/components/pages/Status/Loading";
-import NotFound from "@/components/pages/Status/NotFound/NotFound";
+import Category from "@/components/Quiz/Category";
+import Flashcard from "@/components/Quiz/Flashcards/Flashcard";
+import Term from "@/components/Quiz/Term";
+import Loading from "@/components/Status/Loading";
+import NotFound from "@/components/Status/NotFound/NotFound";
 import useQuizData from "@/hooks/quizes/useQuizData";
 import intValue from "@/utils/intValue";
-import { useSearchParams } from "@tanstack/react-router";
-import Category from "./Category";
-import Flashcard from "./Flashcards/Flashcard";
-import Term from "./Term";
+import { createLazyFileRoute } from "@tanstack/react-router";
 
-export default function Quiz() {
+export const Route = createLazyFileRoute("/_quizLayout/$username/$quizSlug/")({
+  component: Quiz,
+});
+
+function Quiz() {
   const { isLoading, isError, quiz } = useQuizData();
 
   const [searchParams, setSearchParams] = useSearchParams({ term: "1" });
