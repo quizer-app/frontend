@@ -1,13 +1,16 @@
 import { useParams } from "react-router-dom";
-import { useAtom } from "jotai";
-import { quizAtom, updateParamsAtom } from "@/atoms/quiz";
+import { useQuery } from "@tanstack/react-query";
+import { api } from "@/api/axios";
+import { QuizResponse } from "@/api/types/quiz";
 
 export default function useQuizData() {
   const { userName, quizSlug } = useParams();
-  const [, updateParams] = useAtom(updateParamsAtom);
-  updateParams({ newName: userName, newSlug: quizSlug });
 
-  const [{ isLoading, isError, data }] = useAtom(quizAtom);
+  const { isLoading, isError, data } = useQuery({
+    queryKey: ["quiz", userName, quizSlug],
+    queryFn: () =>
+      api.get<QuizResponse>(`/api/v1/Quiz/${userName}/${quizSlug}`),
+  });
   const quiz = data?.data;
 
   return { isLoading, isError, quiz };

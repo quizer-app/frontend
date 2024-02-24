@@ -26,7 +26,7 @@ export default function Flashcards() {
           <div className="flex flex-col gap-10 w-full mb-16">
             <Flashcard
               questions={quiz.questions}
-              style="h-[420px] sm:h-[460px] md:h-[460px] lg:h-[500px]"
+              className="h-[420px] sm:h-[460px] md:h-[460px] lg:h-[500px]"
             />
           </div>
         </div>

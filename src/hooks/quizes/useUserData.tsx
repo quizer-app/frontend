@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useAtom, useSetAtom } from "jotai";
 import { userAtom, userNameAtom } from "@/atoms/user";
 
-export default function useQuizData() {
+export default function useUserData() {
   const { userName } = useParams();
   const setUser = useSetAtom(userNameAtom);
   setUser(userName);

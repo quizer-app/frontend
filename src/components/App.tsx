@@ -34,12 +34,6 @@ export default function App() {
           </Route>
 
           <Route path="/quiz_search" element={<QuizSearch />} />
-
-          {/* <Route path="*" element={<NotFound />} /> */}
-          {/* <Route path="/error" element={<Error />} />
-          <Route path="/notfound" element={<NotFound />} />
-          <Route path="/loading" element={<Loading />} />
-          <Route path="/unauthorized" element={<Unauthorized />} /> */}
         </Route>
         <Route path="/" element={<QuizLayout />}>
           <Route path="/:userName/:quizSlug" element={<Quiz />} />
