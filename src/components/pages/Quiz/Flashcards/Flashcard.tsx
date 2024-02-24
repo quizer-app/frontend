@@ -2,39 +2,26 @@ import { useState } from "react";
 import { QuestionResponse } from "@/api/types/quiz";
 import Arrow from "./Arrow";
 import { twMerge } from "tailwind-merge";
-import { useSearchParams } from "react-router-dom";
-import intValue from "@/utils/intValue";
 
 interface FlashcardProps {
   questions: QuestionResponse[];
   className: string;
+  currTerm: number;
+  increment: () => void;
+  decrement: () => void;
 }
 
-export default function Flashcard({ questions, className }: FlashcardProps) {
+export default function Flashcard({
+  questions,
+  className,
+  currTerm,
+  increment,
+  decrement,
+}: FlashcardProps) {
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
-  const [searchParams, setSearchParams] = useSearchParams({ term: "1" });
-  const currTerm = intValue(searchParams.get("term"));
 
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
-  };
-
-  const decrement = () => {
-    setSearchParams(
-      {
-        term: JSON.stringify(currTerm !== 1 ? currTerm - 1 : questions.length),
-      },
-      { replace: true }
-    );
-  };
-
-  const increment = () => {
-    setSearchParams(
-      {
-        term: JSON.stringify(currTerm !== questions.length ? currTerm + 1 : 1),
-      },
-      { replace: true }
-    );
   };
 
   return (

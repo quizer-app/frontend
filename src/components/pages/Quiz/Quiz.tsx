@@ -5,10 +5,36 @@ import Category from "./Category";
 import Flashcard from "./Flashcards/Flashcard";
 import Term from "./Term";
 import { QuestionResponse } from "@/api/types/quiz";
+import { useSearchParams } from "react-router-dom";
+import intValue from "@/utils/intValue";
 
 export default function Quiz() {
   const { isLoading, isError, quiz } = useQuizData();
 
+  const [searchParams, setSearchParams] = useSearchParams({ term: "1" });
+  const currTerm = intValue(searchParams.get("term"));
+
+  const decrement = () => {
+    setSearchParams(
+      {
+        term: JSON.stringify(
+          currTerm !== 1 ? currTerm - 1 : quiz?.questions.length
+        ),
+      },
+      { replace: true }
+    );
+  };
+
+  const increment = () => {
+    setSearchParams(
+      {
+        term: JSON.stringify(
+          currTerm !== quiz?.questions.length ? currTerm + 1 : 1
+        ),
+      },
+      { replace: true }
+    );
+  };
   return (
     <>
       {isLoading && <Loading />}
@@ -23,12 +49,16 @@ export default function Quiz() {
               <Flashcard
                 questions={quiz.questions}
                 className="h-[280px] sm:h-[320px] md:h-[360px] lg:h-[420px]"
+                currTerm={currTerm}
+                increment={increment}
+                decrement={decrement}
               />
 
               <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
                 <Category
                   text="Flashcards"
                   to={`/${quiz.location}/flashcards`}
+                  state={{ term: currTerm }}
                 />
                 <Category text="Ucz się" />
                 <Category text="Test" />
