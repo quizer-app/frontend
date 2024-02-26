@@ -1,5 +1,8 @@
 import { api } from "@/api/axios";
-import { GetQuizesQueryParams, PaginatedQuizResponse } from "@/api/types/quiz";
+import {
+  GetQuizesQueryParams,
+  PaginatedQuizResponse,
+} from "@/types/types/quiz";
 import { atom } from "jotai";
 import { atomWithQuery } from "jotai-tanstack-query";
 

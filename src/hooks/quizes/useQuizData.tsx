@@ -1,5 +1,5 @@
 import { api } from "@/api/axios";
-import { QuizResponse } from "@/api/types/quiz";
+import { QuizResponse } from "@/types/types/quiz";
 import { useQuery } from "@tanstack/react-query";
 
 export default function useQuizData(userName: string, quizSlug: string) {

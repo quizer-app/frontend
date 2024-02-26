@@ -1,4 +1,4 @@
-import { QuizResponse } from "@/api/types/quiz";
+import { QuizResponse } from "@/types/types/quiz";
 import { Link } from "@tanstack/react-router";
 
 interface QuizStripeProps {

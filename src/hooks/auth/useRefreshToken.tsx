@@ -1,6 +1,6 @@
 import { api } from "@/api/axios";
-import { AuthResponse } from "@/api/types/auth";
 import { accessTokenAtom } from "@/atoms/auth";
+import { AuthResponse } from "@/types/types/auth";
 import { useSetAtom } from "jotai";
 
 export default function useRefreshToken() {

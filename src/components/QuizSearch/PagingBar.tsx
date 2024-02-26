@@ -1,7 +1,7 @@
-import { PaginatedQuizResponse } from "@/api/types/quiz";
-import PagingButton from "./PagingButton";
 import { paramsAtom, updateParamsAtom } from "@/atoms/quizSearch";
+import { PaginatedQuizResponse } from "@/types/types/quiz";
 import { useAtom } from "jotai";
+import PagingButton from "./PagingButton";
 
 interface PagingBarProps {
   quizes: PaginatedQuizResponse;

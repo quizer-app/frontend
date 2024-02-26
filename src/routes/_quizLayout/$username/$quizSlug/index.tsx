@@ -1,16 +1,12 @@
-import { QuestionResponse } from "@/api/types/quiz";
 import Category from "@/components/Quiz/Category";
 import Flashcard from "@/components/Quiz/Flashcards/Flashcard";
 import Term from "@/components/Quiz/Term";
 import Loading from "@/components/Status/Loading";
 import NotFound from "@/components/Status/NotFound/NotFound";
 import useQuizData from "@/hooks/quizes/useQuizData";
+import { quizPageSchema } from "@/types/schema/quizPageSchema";
+import { QuestionResponse } from "@/types/types/quiz";
 import { createFileRoute } from "@tanstack/react-router";
-import { z } from "zod";
-
-export const quizPageSchema = z.object({
-  term: z.number().min(1).catch(1),
-});
 
 export const Route = createFileRoute("/_quizLayout/$username/$quizSlug/")({
   component: Quiz,
@@ -36,6 +32,8 @@ export default function Quiz() {
               <Flashcard
                 questions={quiz.questions}
                 className="h-[280px] sm:h-[320px] md:h-[360px] lg:h-[420px]"
+                fullPath={`/$username/$quizSlug`}
+                term={term}
               />
 
               <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">

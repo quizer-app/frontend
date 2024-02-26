@@ -1,6 +1,6 @@
 import { baseURL } from "@/api/axios";
-import { QuizResponse } from "@/api/types/quiz";
 import img from "@/assets/images/office.jpg";
+import { QuizResponse } from "@/types/types/quiz";
 import { formatDate } from "@/utils/date";
 import { Link } from "@tanstack/react-router";
 
@@ -16,7 +16,17 @@ export default function QuizTile({ quiz, questionsAmount }: QuizTileProps) {
 
   return (
     <div className="bg-secondary rounded-md w-full">
-      <Link to={`/${quiz.location}`} className="relative">
+      <Link
+        to={`/$username/$quizSlug`}
+        params={{
+          username: quiz.userName,
+          quizSlug: quiz.slug,
+        }}
+        search={{
+          term: 1,
+        }}
+        className="relative"
+      >
         <img
           src={getImgUrl(quiz.id)}
           loading="lazy"

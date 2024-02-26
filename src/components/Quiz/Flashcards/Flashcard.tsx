@@ -1,35 +1,40 @@
-import { useState } from "react";
-import { QuestionResponse } from "@/api/types/quiz";
-import Arrow from "./Arrow";
-import { twMerge } from "tailwind-merge";
+import {
+  QuizPageFullPath,
+  QuizPageSearchParams,
+} from "@/types/schema/quizPageSchema";
+import { QuestionResponse } from "@/types/types/quiz";
 import { Link } from "@tanstack/react-router";
-import { Route } from "@/routes/_quizLayout/$username/$quizSlug";
+import { useState } from "react";
+import { twMerge } from "tailwind-merge";
+import Arrow from "./Arrow";
 
 interface FlashcardProps {
   questions: QuestionResponse[];
   className: string;
-}
-
-interface FlashcardSearchParams {
+  fullPath: QuizPageFullPath;
   term: number;
 }
 
-export default function Flashcard({ questions, className }: FlashcardProps) {
+export default function Flashcard({
+  questions,
+  className,
+  fullPath,
+  term,
+}: FlashcardProps) {
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
-  const { term } = Route.useSearch();
 
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
   };
 
-  const decrease = (prev: FlashcardSearchParams) => {
+  const decrease = (prev: QuizPageSearchParams) => {
     if (prev.term === 1) {
       return { term: questions.length };
     }
     return { term: prev.term - 1 };
   };
 
-  const increase = (prev: FlashcardSearchParams) => {
+  const increase = (prev: QuizPageSearchParams) => {
     if (prev.term === questions.length) {
       return { term: 1 };
     }
@@ -69,13 +74,13 @@ export default function Flashcard({ questions, className }: FlashcardProps) {
 
       {questions.length > 0 && (
         <div className="flex items-center justify-center gap-8">
-          <Link from={Route.fullPath} search={decrease}>
+          <Link from={fullPath} search={decrease}>
             <Arrow dir="left" />
           </Link>
 
           <p>{`${term} / ${questions.length}`}</p>
 
-          <Link from={Route.fullPath} search={increase}>
+          <Link from={fullPath} search={increase}>
             <Arrow dir="right" />
           </Link>
         </div>

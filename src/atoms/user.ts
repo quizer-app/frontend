@@ -1,5 +1,5 @@
 import { api } from "@/api/axios";
-import { UserResponse } from "@/api/types/user";
+import { UserResponse } from "@/types/types/user";
 import { atom } from "jotai";
 import { atomWithQuery } from "jotai-tanstack-query";
 

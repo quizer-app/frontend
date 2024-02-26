@@ -1,10 +1,10 @@
-import { QuizResponse } from "@/api/types/quiz";
 import { quizesAtom, updateParamsAtom } from "@/atoms/quizSearch";
 import QuizTile from "@/components/Home/TileGrid/QuizTile";
 import FiltersBar from "@/components/QuizSearch/FiltersBar";
 import PagingBar from "@/components/QuizSearch/PagingBar";
 import Loading from "@/components/Status/Loading";
 import NotFound from "@/components/Status/NotFound/NotFound";
+import { QuizResponse } from "@/types/types/quiz";
 import { createLazyFileRoute } from "@tanstack/react-router";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";

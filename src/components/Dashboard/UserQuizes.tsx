@@ -1,5 +1,5 @@
-import { QuizResponse } from "@/api/types/quiz";
 import { paramsAtom, quizesAtom, updateParamsAtom } from "@/atoms/quizSearch";
+import { QuizResponse } from "@/types/types/quiz";
 import { useParams } from "@tanstack/react-router";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";

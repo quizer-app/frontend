@@ -1,8 +1,8 @@
-import Loading from "../../Status/Loading";
-import { QuizResponse } from "@/api/types/quiz";
-import QuizTile from "./QuizTile";
-import NotFound from "../../Status/NotFound/NotFound";
 import useQuizesPaging from "@/hooks/quizes/useQuizesPaging";
+import { QuizResponse } from "@/types/types/quiz";
+import Loading from "../../Status/Loading";
+import NotFound from "../../Status/NotFound/NotFound";
+import QuizTile from "./QuizTile";
 
 export type TileGridViewProps = {
   quizes: QuizResponse[];
