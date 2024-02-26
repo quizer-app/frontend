@@ -18,7 +18,7 @@ export default function NavLinks({ isOpen, onClick }: NavLinksProps) {
           
           `}
       >
-        <ListElement href="/quiz_search" onClick={onClick}>
+        <ListElement href="/quiz-search" onClick={onClick}>
           Quizes
         </ListElement>
         <ListElement href="/about" onClick={onClick}>

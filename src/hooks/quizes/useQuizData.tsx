@@ -1,11 +1,8 @@
 import { api } from "@/api/axios";
 import { QuizResponse } from "@/api/types/quiz";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "@tanstack/react-router";
 
-export default function useQuizData() {
-  const { userName, quizSlug } = useParams();
-
+export default function useQuizData(userName: string, quizSlug: string) {
   const { isLoading, isError, data } = useQuery({
     queryKey: ["quiz", userName, quizSlug],
     queryFn: () =>

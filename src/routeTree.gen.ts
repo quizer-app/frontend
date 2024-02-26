@@ -16,6 +16,8 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as QuizLayoutImport } from './routes/_quizLayout'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as LayoutAuthImport } from './routes/_layout/_auth'
+import { Route as QuizLayoutUsernameQuizSlugIndexImport } from './routes/_quizLayout/$username/$quizSlug/index'
+import { Route as QuizLayoutUsernameQuizSlugFlashcardsImport } from './routes/_quizLayout/$username/$quizSlug/flashcards'
 
 // Create Virtual Routes
 
@@ -36,12 +38,6 @@ const LayoutVerificationTokenLazyImport = createFileRoute(
 )()
 const LayoutAuthUsernameLazyImport = createFileRoute(
   '/_layout/_auth/$username',
-)()
-const QuizLayoutUsernameQuizSlugIndexLazyImport = createFileRoute(
-  '/_quizLayout/$username/$quizSlug/',
-)()
-const QuizLayoutUsernameQuizSlugFlashcardsLazyImport = createFileRoute(
-  '/_quizLayout/$username/$quizSlug/flashcards',
 )()
 
 // Create/Update Routes
@@ -130,25 +126,17 @@ const LayoutAuthUsernameLazyRoute = LayoutAuthUsernameLazyImport.update({
   import('./routes/_layout/_auth/$username.lazy').then((d) => d.Route),
 )
 
-const QuizLayoutUsernameQuizSlugIndexLazyRoute =
-  QuizLayoutUsernameQuizSlugIndexLazyImport.update({
+const QuizLayoutUsernameQuizSlugIndexRoute =
+  QuizLayoutUsernameQuizSlugIndexImport.update({
     path: '/$username/$quizSlug/',
     getParentRoute: () => QuizLayoutRoute,
-  } as any).lazy(() =>
-    import('./routes/_quizLayout/$username/$quizSlug/index.lazy').then(
-      (d) => d.Route,
-    ),
-  )
+  } as any)
 
-const QuizLayoutUsernameQuizSlugFlashcardsLazyRoute =
-  QuizLayoutUsernameQuizSlugFlashcardsLazyImport.update({
+const QuizLayoutUsernameQuizSlugFlashcardsRoute =
+  QuizLayoutUsernameQuizSlugFlashcardsImport.update({
     path: '/$username/$quizSlug/flashcards',
     getParentRoute: () => QuizLayoutRoute,
-  } as any).lazy(() =>
-    import('./routes/_quizLayout/$username/$quizSlug/flashcards.lazy').then(
-      (d) => d.Route,
-    ),
-  )
+  } as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -207,11 +195,11 @@ declare module '@tanstack/react-router' {
       parentRoute: typeof LayoutImport
     }
     '/_quizLayout/$username/$quizSlug/flashcards': {
-      preLoaderRoute: typeof QuizLayoutUsernameQuizSlugFlashcardsLazyImport
+      preLoaderRoute: typeof QuizLayoutUsernameQuizSlugFlashcardsImport
       parentRoute: typeof QuizLayoutImport
     }
     '/_quizLayout/$username/$quizSlug/': {
-      preLoaderRoute: typeof QuizLayoutUsernameQuizSlugIndexLazyImport
+      preLoaderRoute: typeof QuizLayoutUsernameQuizSlugIndexImport
       parentRoute: typeof QuizLayoutImport
     }
   }
@@ -233,8 +221,8 @@ export const routeTree = rootRoute.addChildren([
   ]),
   QuizLayoutRoute.addChildren([
     QuizLayoutTestLazyRoute,
-    QuizLayoutUsernameQuizSlugFlashcardsLazyRoute,
-    QuizLayoutUsernameQuizSlugIndexLazyRoute,
+    QuizLayoutUsernameQuizSlugFlashcardsRoute,
+    QuizLayoutUsernameQuizSlugIndexRoute,
   ]),
 ])
 

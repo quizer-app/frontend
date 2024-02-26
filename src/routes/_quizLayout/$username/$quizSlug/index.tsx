@@ -5,40 +5,23 @@ import Term from "@/components/Quiz/Term";
 import Loading from "@/components/Status/Loading";
 import NotFound from "@/components/Status/NotFound/NotFound";
 import useQuizData from "@/hooks/quizes/useQuizData";
-import intValue from "@/utils/intValue";
-import { createLazyFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { z } from "zod";
 
-export const Route = createLazyFileRoute("/_quizLayout/$username/$quizSlug/")({
-  component: Quiz,
+export const quizPageSchema = z.object({
+  term: z.number().min(1).catch(1),
 });
 
-function Quiz() {
-  const { isLoading, isError, quiz } = useQuizData();
+export const Route = createFileRoute("/_quizLayout/$username/$quizSlug/")({
+  component: Quiz,
+  validateSearch: quizPageSchema,
+});
 
-  const [searchParams, setSearchParams] = useSearchParams({ term: "1" });
-  const currTerm = intValue(searchParams.get("term"));
+export default function Quiz() {
+  const { username, quizSlug } = Route.useParams();
+  const { isLoading, isError, quiz } = useQuizData(username, quizSlug);
+  const { term } = Route.useSearch();
 
-  const decrement = () => {
-    setSearchParams(
-      {
-        term: JSON.stringify(
-          currTerm !== 1 ? currTerm - 1 : quiz?.questions.length
-        ),
-      },
-      { replace: true }
-    );
-  };
-
-  const increment = () => {
-    setSearchParams(
-      {
-        term: JSON.stringify(
-          currTerm !== quiz?.questions.length ? currTerm + 1 : 1
-        ),
-      },
-      { replace: true }
-    );
-  };
   return (
     <>
       {isLoading && <Loading />}
@@ -53,16 +36,13 @@ function Quiz() {
               <Flashcard
                 questions={quiz.questions}
                 className="h-[280px] sm:h-[320px] md:h-[360px] lg:h-[420px]"
-                currTerm={currTerm}
-                increment={increment}
-                decrement={decrement}
               />
 
               <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
                 <Category
                   text="Flashcards"
-                  to={`/${quiz.location}/flashcards?term=${currTerm}`}
-                  state={{ term: currTerm }}
+                  to={`/${quiz.location}/flashcards`}
+                  search={{ term: term }}
                 />
                 <Category text="Ucz się" />
                 <Category text="Test" />

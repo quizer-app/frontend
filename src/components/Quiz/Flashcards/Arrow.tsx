@@ -1,14 +1,12 @@
 import { twMerge } from "tailwind-merge";
 
 interface ArrowProps {
-  onClick: () => void;
   dir: "left" | "right";
 }
 
-export default function Arrow({ onClick, dir }: ArrowProps) {
+export default function Arrow({ dir }: ArrowProps) {
   return (
     <button
-      onClick={onClick}
       aria-label={`${dir === "right" ? "Next question" : "Previous question"}`}
       className="group flex w-10 h-10 md:w-12 md:h-12 items-center justify-center 
       rounded-full shadow-md transition bg-secondary ring-[0.5px] ring-lightBlueB/30 hover:ring-lightBlue/60"
