@@ -32,7 +32,7 @@ export default function Quiz() {
               <Flashcard
                 questions={quiz.questions}
                 className="h-[280px] sm:h-[320px] md:h-[360px] lg:h-[420px]"
-                fullPath={`/$username/$quizSlug`}
+                fullPath="/$username/$quizSlug"
                 term={term}
               />
 
@@ -40,7 +40,7 @@ export default function Quiz() {
                 <Category
                   text="Flashcards"
                   to={`/${quiz.location}/flashcards`}
-                  search={{ term: term }}
+                  search={{ term }}
                 />
                 <Category text="Ucz się" />
                 <Category text="Test" />

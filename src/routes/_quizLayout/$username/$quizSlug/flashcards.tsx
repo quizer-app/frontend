@@ -32,7 +32,7 @@ function Flashcards() {
             <Flashcard
               questions={quiz.questions}
               className="h-[420px] sm:h-[460px] md:h-[460px] lg:h-[500px]"
-              fullPath={`/$username/$quizSlug/flashcards`}
+              fullPath="/$username/$quizSlug/flashcards"
               term={term}
             />
           </div>
