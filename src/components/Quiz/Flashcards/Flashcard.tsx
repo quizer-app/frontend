@@ -74,13 +74,13 @@ export default function Flashcard({
 
       {questions.length > 0 && (
         <div className="flex items-center justify-center gap-8">
-          <Link from={fullPath} search={decrease}>
+          <Link from={fullPath} search={decrease} replace>
             <Arrow dir="left" />
           </Link>
 
           <p>{`${term} / ${questions.length}`}</p>
 
-          <Link from={fullPath} search={increase}>
+          <Link from={fullPath} search={increase} replace>
             <Arrow dir="right" />
           </Link>
         </div>

@@ -18,7 +18,11 @@ export default function NavLinks({ isOpen, onClick }: NavLinksProps) {
           
           `}
       >
-        <ListElement href="/quiz-search" onClick={onClick}>
+        <ListElement
+          href="/quiz-search"
+          onClick={onClick}
+          search={{ pageNumber: 1, pageSize: 3 }}
+        >
           Quizes
         </ListElement>
         <ListElement href="/about" onClick={onClick}>

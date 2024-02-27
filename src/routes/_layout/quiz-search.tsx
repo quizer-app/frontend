@@ -1,34 +1,34 @@
-import { quizesAtom, updateParamsAtom } from "@/atoms/quizSearch";
 import QuizTile from "@/components/Home/TileGrid/QuizTile";
 import FiltersBar from "@/components/QuizSearch/FiltersBar";
 import PagingBar from "@/components/QuizSearch/PagingBar";
 import Loading from "@/components/Status/Loading";
 import NotFound from "@/components/Status/NotFound/NotFound";
+import useQuizesPaging from "@/hooks/quizes/useQuizesPaging";
+import { quizSearchSchema } from "@/types/schema/quizSearchSchema";
 import { QuizResponse } from "@/types/types/quiz";
-import { createLazyFileRoute } from "@tanstack/react-router";
-import { useAtom } from "jotai";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
-export const Route = createLazyFileRoute("/_layout/quiz-search")({
+export const Route = createFileRoute("/_layout/quiz-search")({
   component: QuizSearch,
+  validateSearch: quizSearchSchema,
 });
 
 function QuizSearch() {
-  const [{ isLoading, isError, data }] = useAtom(quizesAtom);
-  const [, setParams] = useAtom(updateParamsAtom);
-
   const [input, setInput] = useState<string>("");
+  const searchParams = Route.useSearch();
+  const { isLoading, isError, quizes } = useQuizesPaging(searchParams);
 
   const resetFilters = () => {
     setInput("");
-    setParams({
-      pageNumber: 1,
-      pageSize: 12,
-      sortColumn: "name",
-      sortOrder: "asc",
-      searchTerm: "",
-      userName: "",
-    });
+    // setParams({
+    //   pageNumber: 1,
+    //   pageSize: 12,
+    //   sortColumn: "name",
+    //   sortOrder: "asc",
+    //   searchTerm: "",
+    //   userName: "",
+    // });
   };
 
   useEffect(() => {
@@ -39,15 +39,15 @@ function QuizSearch() {
     <>
       <div className="bg-primary flex items-center justify-center gap-20 p-20">
         <FiltersBar input={input} setInput={setInput} />
-        {data?.data && <PagingBar quizes={data?.data} />}
+        {quizes && <PagingBar quizes={quizes} />}
       </div>
 
       <div className="bg-primary flex-col gap-16 w-full flex items-center justify-center py-14 md:py-16 lg:py-20">
         {isLoading && <Loading />}
         {isError && <NotFound />}
-        {data?.data.items.length !== 0 ? (
+        {quizes?.items.length !== 0 ? (
           <div className="mainContainer grid grid-cols-1 gap-4 lg:gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {data?.data.items.map((el: QuizResponse, id: number) => {
+            {quizes?.items.map((el: QuizResponse, id: number) => {
               return (
                 <QuizTile
                   quiz={el}

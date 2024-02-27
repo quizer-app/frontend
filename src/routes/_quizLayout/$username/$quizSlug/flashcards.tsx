@@ -8,9 +8,6 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute(
   "/_quizLayout/$username/$quizSlug/flashcards"
 )({
-  // beforeLoad: ({ search }) => {
-  //   search;
-  // },
   component: Flashcards,
   validateSearch: quizPageSchema,
 });

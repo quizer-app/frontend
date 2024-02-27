@@ -15,6 +15,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Route as rootRoute } from './routes/__root'
 import { Route as QuizLayoutImport } from './routes/_quizLayout'
 import { Route as LayoutImport } from './routes/_layout'
+import { Route as LayoutQuizSearchImport } from './routes/_layout/quiz-search'
 import { Route as LayoutAuthImport } from './routes/_layout/_auth'
 import { Route as QuizLayoutUsernameQuizSlugIndexImport } from './routes/_quizLayout/$username/$quizSlug/index'
 import { Route as QuizLayoutUsernameQuizSlugFlashcardsImport } from './routes/_quizLayout/$username/$quizSlug/flashcards'
@@ -26,7 +27,6 @@ const QuizLayoutTestLazyImport = createFileRoute('/_quizLayout/test')()
 const LayoutVerifiedLazyImport = createFileRoute('/_layout/verified')()
 const LayoutSignupLazyImport = createFileRoute('/_layout/signup')()
 const LayoutSigninLazyImport = createFileRoute('/_layout/signin')()
-const LayoutQuizSearchLazyImport = createFileRoute('/_layout/quiz-search')()
 const LayoutPasswordResetLazyImport = createFileRoute(
   '/_layout/password-reset',
 )()
@@ -85,13 +85,6 @@ const LayoutSigninLazyRoute = LayoutSigninLazyImport.update({
   import('./routes/_layout/signin.lazy').then((d) => d.Route),
 )
 
-const LayoutQuizSearchLazyRoute = LayoutQuizSearchLazyImport.update({
-  path: '/quiz-search',
-  getParentRoute: () => LayoutRoute,
-} as any).lazy(() =>
-  import('./routes/_layout/quiz-search.lazy').then((d) => d.Route),
-)
-
 const LayoutPasswordResetLazyRoute = LayoutPasswordResetLazyImport.update({
   path: '/password-reset',
   getParentRoute: () => LayoutRoute,
@@ -105,6 +98,11 @@ const LayoutForgotPasswordLazyRoute = LayoutForgotPasswordLazyImport.update({
 } as any).lazy(() =>
   import('./routes/_layout/forgot-password.lazy').then((d) => d.Route),
 )
+
+const LayoutQuizSearchRoute = LayoutQuizSearchImport.update({
+  path: '/quiz-search',
+  getParentRoute: () => LayoutRoute,
+} as any)
 
 const LayoutAuthRoute = LayoutAuthImport.update({
   id: '/_auth',
@@ -154,16 +152,16 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutAuthImport
       parentRoute: typeof LayoutImport
     }
+    '/_layout/quiz-search': {
+      preLoaderRoute: typeof LayoutQuizSearchImport
+      parentRoute: typeof LayoutImport
+    }
     '/_layout/forgot-password': {
       preLoaderRoute: typeof LayoutForgotPasswordLazyImport
       parentRoute: typeof LayoutImport
     }
     '/_layout/password-reset': {
       preLoaderRoute: typeof LayoutPasswordResetLazyImport
-      parentRoute: typeof LayoutImport
-    }
-    '/_layout/quiz-search': {
-      preLoaderRoute: typeof LayoutQuizSearchLazyImport
       parentRoute: typeof LayoutImport
     }
     '/_layout/signin': {
@@ -210,9 +208,9 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren([
   LayoutRoute.addChildren([
     LayoutAuthRoute.addChildren([LayoutAuthUsernameLazyRoute]),
+    LayoutQuizSearchRoute,
     LayoutForgotPasswordLazyRoute,
     LayoutPasswordResetLazyRoute,
-    LayoutQuizSearchLazyRoute,
     LayoutSigninLazyRoute,
     LayoutSignupLazyRoute,
     LayoutVerifiedLazyRoute,
