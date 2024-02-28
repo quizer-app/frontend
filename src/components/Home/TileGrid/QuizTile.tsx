@@ -39,7 +39,17 @@ export default function QuizTile({ quiz, questionsAmount }: QuizTileProps) {
         </div>
       </Link>
       <div className="p-6">
-        <Link to={quiz.location} className="relative">
+        <Link
+          to={`/$username/$quizSlug`}
+          params={{
+            username: quiz.userName,
+            quizSlug: quiz.slug,
+          }}
+          search={{
+            term: 1,
+          }}
+          className="relative"
+        >
           <h3 className="text-white text-2xl font-bold mb-3">{quiz.name}</h3>
           <p className="text-textPrimary font-medium">{quiz.description}</p>
         </Link>

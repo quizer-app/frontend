@@ -63,7 +63,7 @@ function SignUp() {
 
   useEffect(() => {
     if (isAuthenticated && !registerMutation.isSuccess) {
-      navigate(-1);
+      navigate({ to: "/" });
     }
   }, [isAuthenticated, navigate, registerMutation.isSuccess]);
 

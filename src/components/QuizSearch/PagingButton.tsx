@@ -16,10 +16,7 @@ export default function PagingButton({
   return (
     <>
       {dots === "BEFORE" ? (
-        <button
-          className="bg-secondary text-textPrimary text-sm font-semibold rounded-md min-w-10 min-h-10 px-3 py-2"
-          // id={text === "PREV" ? -1 : text === "NEXT" ? 0 : text}
-        >
+        <button className="bg-secondary text-textPrimary text-sm font-semibold rounded-md min-w-10 min-h-10 px-3 py-2">
           ...
         </button>
       ) : null}
@@ -29,15 +26,11 @@ export default function PagingButton({
           "bg-secondary text-textPrimary text-sm font-semibold rounded-md min-w-10 min-h-10 px-3 py-2",
           current ? "bg-lightBlue text-white" : ""
         )}
-        // id={text === "PREV" ? -1 : text === "NEXT" ? 0 : text}
       >
         {text}
       </button>
       {dots === "AFTER" ? (
-        <button
-          className="bg-secondary text-textPrimary text-sm font-semibold rounded-md min-w-10 min-h-10 px-3 py-2"
-          // id={text === "PREV" ? -1 : text === "NEXT" ? 0 : text}
-        >
+        <button className="bg-secondary text-textPrimary text-sm font-semibold rounded-md min-w-10 min-h-10 px-3 py-2">
           ...
         </button>
       ) : null}

@@ -1,35 +1,48 @@
-import { paramsAtom, updateParamsAtom } from "@/atoms/quizSearch";
 import { PaginatedQuizResponse } from "@/types/types/quiz";
-import { useAtom } from "jotai";
 import PagingButton from "./PagingButton";
+import { useNavigate } from "@tanstack/react-router";
+import { GetQuizesQueryParams } from "@/types/schema/quizSearchSchema";
 
 interface PagingBarProps {
   quizes: PaginatedQuizResponse;
+  fullPath: "/quiz-search";
+  searchParams: GetQuizesQueryParams;
 }
 
-export default function PagingBar({ quizes }: PagingBarProps) {
-  const [params] = useAtom(paramsAtom);
-  const [, setParams] = useAtom(updateParamsAtom);
+export default function PagingBar({
+  quizes,
+  fullPath,
+  searchParams,
+}: PagingBarProps) {
+  const navigate = useNavigate();
   const elements = Array.from(
     Array(quizes?.totalCount ? quizes.totalCount : 1),
     (_, index) => index + 1
   );
 
+  const newPageNumber = (newPage: number) => {
+    navigate({
+      from: fullPath,
+      search: { ...searchParams, pageNumber: newPage },
+      replace: true,
+    });
+  };
+
   const setCurrPage = (action: number | "increment" | "decrement") => {
     if (typeof action === "number") {
-      setParams({ pageNumber: action });
+      newPageNumber(action);
     } else if (
       action === "decrement" &&
-      params?.pageNumber &&
+      searchParams.pageNumber &&
       quizes.hasPreviousPage
     ) {
-      setParams({ pageNumber: params.pageNumber - 1 });
+      newPageNumber(searchParams.pageNumber - 1);
     } else if (
       action === "increment" &&
-      params?.pageNumber &&
+      searchParams.pageNumber &&
       quizes.hasNextPage
     ) {
-      setParams({ pageNumber: params.pageNumber + 1 });
+      newPageNumber(searchParams.pageNumber + 1);
     }
   };
 

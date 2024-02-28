@@ -7,7 +7,6 @@ import useQuizesPaging from "@/hooks/quizes/useQuizesPaging";
 import { quizSearchSchema } from "@/types/schema/quizSearchSchema";
 import { QuizResponse } from "@/types/types/quiz";
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/_layout/quiz-search")({
   component: QuizSearch,
@@ -15,31 +14,22 @@ export const Route = createFileRoute("/_layout/quiz-search")({
 });
 
 function QuizSearch() {
-  const [input, setInput] = useState<string>("");
   const searchParams = Route.useSearch();
   const { isLoading, isError, quizes } = useQuizesPaging(searchParams);
 
-  const resetFilters = () => {
-    setInput("");
-    // setParams({
-    //   pageNumber: 1,
-    //   pageSize: 12,
-    //   sortColumn: "name",
-    //   sortOrder: "asc",
-    //   searchTerm: "",
-    //   userName: "",
-    // });
-  };
-
-  useEffect(() => {
-    resetFilters();
-  }, []);
+  const resetFilters = () => {};
 
   return (
     <>
       <div className="bg-primary flex items-center justify-center gap-20 p-20">
-        <FiltersBar input={input} setInput={setInput} />
-        {quizes && <PagingBar quizes={quizes} />}
+        <FiltersBar fullPath="/quiz-search" searchParams={searchParams} />
+        {quizes && (
+          <PagingBar
+            quizes={quizes}
+            fullPath={Route.fullPath}
+            searchParams={searchParams}
+          />
+        )}
       </div>
 
       <div className="bg-primary flex-col gap-16 w-full flex items-center justify-center py-14 md:py-16 lg:py-20">

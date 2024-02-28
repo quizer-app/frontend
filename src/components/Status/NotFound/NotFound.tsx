@@ -1,5 +1,5 @@
 import Background from "@/components/layout/Background/Background";
-import HomePageButton from "@/components/other/HomePageButton";
+import HomePageButton from "@/components/Status/HomePageButton";
 import NotFoundSvg from "./NotFoundSvg";
 
 export default function NotFound() {

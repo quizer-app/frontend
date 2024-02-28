@@ -6,7 +6,6 @@ import { useAtomValue } from "jotai";
 export default function NavButtons() {
   const isAuthenticated = useAtomValue(isAuthenticatedAtom);
   const tokenData = useAtomValue(tokenDataAtom);
-
   const logout = useLogout();
 
   return (
@@ -14,7 +13,10 @@ export default function NavButtons() {
       {isAuthenticated ? (
         <>
           <Link
-            to={`/${tokenData?.given_name}`}
+            to={"/$username"}
+            params={{
+              username: tokenData?.given_name ? tokenData.given_name : "",
+            }}
             className="py-4 px-6 hover:text-textHover"
           >
             Dashboard ({tokenData?.given_name})

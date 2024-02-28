@@ -71,7 +71,7 @@ function SignIn() {
 
   useEffect(() => {
     if (isAuthenticated && !loginMutation.isSuccess) {
-      navigate(-1);
+      navigate({ to: "/" });
     }
   }, [isAuthenticated, navigate, loginMutation.isSuccess]);
 

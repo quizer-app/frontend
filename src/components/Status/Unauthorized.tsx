@@ -1,5 +1,5 @@
 import Background from "@/components/layout/Background/Background";
-import HomePageButton from "../../other/HomePageButton";
+import HomePageButton from "./HomePageButton";
 
 export default function Unauthorized() {
   return (
