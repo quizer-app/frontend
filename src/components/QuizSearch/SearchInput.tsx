@@ -8,19 +8,32 @@ interface SearchInputProps {
   searchParams: GetQuizesQueryParams;
 }
 
+interface SearchInputProps2 {
+  fullPath: "/$username";
+  searchParams: { searchTerm: string };
+}
+
 export default function SearchInput({
   fullPath,
   searchParams,
-}: SearchInputProps) {
+}: SearchInputProps | SearchInputProps2) {
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate({ from: fullPath });
 
   const handleChange = (e: string) => {
-    navigate({
-      from: fullPath,
-      search: { ...searchParams, searchTerm: e },
-      replace: true,
-    });
+    if (fullPath === "/$username") {
+      navigate({
+        from: fullPath,
+        search: { ...searchParams, searchTerm: e },
+        replace: true,
+      });
+    } else if (fullPath === "/quiz-search") {
+      navigate({
+        from: fullPath,
+        search: { ...searchParams, searchTerm: e },
+        replace: true,
+      });
+    }
   };
 
   const clearInput = (prev: GetQuizesQueryParams) => {
@@ -41,14 +54,22 @@ export default function SearchInput({
         color="white"
         className="absolute top-3 left-3 cursor-text"
       />
-      {searchParams.searchTerm !== "" && searchParams.searchTerm && (
-        <Link from={fullPath} search={clearInput} replace>
-          <XCircle
-            color="#959CB1"
-            className="absolute top-3 right-3 cursor-pointer"
-          />
-        </Link>
-      )}
+      {searchParams.searchTerm !== "" &&
+        (fullPath === "/$username" ? (
+          <Link from={fullPath} search={clearInput} replace>
+            <XCircle
+              color="#959CB1"
+              className="absolute top-3 right-3 cursor-pointer"
+            />
+          </Link>
+        ) : (
+          <Link from={fullPath} search={clearInput} replace>
+            <XCircle
+              color="#959CB1"
+              className="absolute top-3 right-3 cursor-pointer"
+            />
+          </Link>
+        ))}
     </div>
   );
 }

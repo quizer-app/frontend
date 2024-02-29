@@ -5,7 +5,7 @@ export const quizSearchSchema = z.object({
   pageSize: z.number().min(1).catch(9),
   sortColumn: z.enum(["createdAt", "name", "userName"]).optional(),
   sortOrder: z.enum(["desc", "asc"]).optional(),
-  searchTerm: z.string().optional(),
+  searchTerm: z.string().catch(""),
   userName: z.string().optional(),
 });
 

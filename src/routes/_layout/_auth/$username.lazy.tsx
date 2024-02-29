@@ -2,14 +2,18 @@ import UserQuizes from "@/components/Dashboard/UserQuizes";
 import Error from "@/components/Status/Error";
 import Loading from "@/components/Status/Loading";
 import useUserData from "@/hooks/quizes/useUserData";
-import { createLazyFileRoute } from "@tanstack/react-router";
+import { quizSearchSchema } from "@/types/schema/quizSearchSchema";
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createLazyFileRoute("/_layout/_auth/$username")({
+export const Route = createFileRoute("/_layout/_auth/$username")({
   component: Dashboard,
+  validateSearch: quizSearchSchema,
 });
 
-function Dashboard() {
-  const { isLoading, isError, user } = useUserData();
+export default function Dashboard() {
+  const searchParams = Route.useSearch();
+  const { username } = Route.useParams();
+  const { isLoading, isError, user } = useUserData(username);
 
   return (
     <>
@@ -32,7 +36,8 @@ function Dashboard() {
               Tab 3
             </button>
           </div>
-          <UserQuizes />
+
+          <UserQuizes fullPath={Route.fullPath} searchParams={searchParams} />
         </div>
       </div>
     </>

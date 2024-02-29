@@ -10,7 +10,7 @@ export default function QuizStripe({ quiz }: QuizStripeProps) {
     <Link
       to="/$username/$quizSlug"
       params={{ username: quiz.userName, quizSlug: quiz.slug }}
-      // search={{??????}}
+      search={{ term: 1 }}
       className="w-full text-white bg-secondary hover:opacity-90 flex flex-col rounded-md py-5 px-6 gap-3"
     >
       <p className="text-2xl font-bold">{quiz.name}</p>

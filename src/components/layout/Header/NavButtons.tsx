@@ -17,6 +17,11 @@ export default function NavButtons() {
             params={{
               username: tokenData?.given_name ? tokenData.given_name : "",
             }}
+            search={{
+              pageNumber: 1,
+              pageSize: 6,
+              userName: tokenData?.given_name ? tokenData.given_name : "",
+            }}
             className="py-4 px-6 hover:text-textHover"
           >
             Dashboard ({tokenData?.given_name})
