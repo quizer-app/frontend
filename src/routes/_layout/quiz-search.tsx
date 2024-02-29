@@ -38,13 +38,7 @@ function QuizSearch() {
         {quizes?.items.length !== 0 ? (
           <div className="mainContainer grid grid-cols-1 gap-4 lg:gap-6 md:grid-cols-2 xl:grid-cols-3">
             {quizes?.items.map((el: QuizResponse, id: number) => {
-              return (
-                <QuizTile
-                  quiz={el}
-                  questionsAmount={el.numberOfQuestions}
-                  key={id}
-                />
-              );
+              return <QuizTile quiz={el} key={id} />;
             })}
           </div>
         ) : (

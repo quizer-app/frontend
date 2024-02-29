@@ -1,4 +1,3 @@
-import { baseURL } from "@/api/axios";
 import img from "@/assets/images/office.jpg";
 import { QuizResponse } from "@/types/types/quiz";
 import { formatDate } from "@/utils/date";
@@ -6,14 +5,9 @@ import { Link } from "@tanstack/react-router";
 
 type QuizTileProps = {
   quiz: QuizResponse;
-  questionsAmount: number;
 };
 
-export default function QuizTile({ quiz, questionsAmount }: QuizTileProps) {
-  const getImgUrl = (id: string) => {
-    return `${baseURL}/api/v1/Quiz/${id}/image`;
-  };
-
+export default function QuizTile({ quiz }: QuizTileProps) {
   return (
     <div className="bg-secondary rounded-md w-full">
       <Link
@@ -28,14 +22,14 @@ export default function QuizTile({ quiz, questionsAmount }: QuizTileProps) {
         className="relative"
       >
         <img
-          src={getImgUrl(quiz.id)}
+          src={quiz.imageUrl}
           loading="lazy"
           decoding="async"
           alt="quiz banner"
           className="w-full rounded-t-md"
         />
         <div className="text-white text-sm font-bold absolute top-4 right-4 px-4 py-2 bg-lightBlue rounded-3xl">
-          {`${questionsAmount} Questions`}
+          {`${quiz.numberOfQuestions} Questions`}
         </div>
       </Link>
       <div className="p-6">

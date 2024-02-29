@@ -14,6 +14,7 @@ export default function TileGrid() {
     pageSize: 6,
     sortColumn: "createdAt",
     sortOrder: "desc",
+    searchTerm: "",
   });
 
   return (
@@ -22,13 +23,7 @@ export default function TileGrid() {
       {isError && <NotFound />}
       <div className="mainContainer grid grid-cols-1 gap-4 lg:gap-6 md:grid-cols-2 xl:grid-cols-3">
         {quizes?.items.map((el, id) => {
-          return (
-            <QuizTile
-              quiz={el}
-              questionsAmount={el.numberOfQuestions}
-              key={id}
-            />
-          );
+          return <QuizTile quiz={el} key={id} />;
         })}
       </div>
     </section>

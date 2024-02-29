@@ -10,7 +10,6 @@ export type PaginatedQuizResponse = {
 
 export type QuizResponse = {
   id: string;
-  userId: string;
   userName: string;
   name: string;
   slug: string;
@@ -18,9 +17,12 @@ export type QuizResponse = {
   description: string;
   averageRating: number;
   numberOfRatings: number;
+  numberOfQuestions: number;
+  imageUrl: string;
+  imageId: string;
+  userId: string;
   questions: QuestionResponse[];
   createdAt: string;
-  numberOfQuestions: number;
 };
 
 export type QuestionResponse = {
