@@ -5,7 +5,7 @@ export interface TermProps {
 
 export default function Term({ term, desc }: TermProps) {
   return (
-    <div className="bg-secondary flex flex-col gap-3 sm:gap-6 p-5 rounded-md sm:flex-row">
+    <div className="bg-secondary flex flex-col gap-3 sm:gap-6 p-5 rounded-sm sm:flex-row">
       <div className="sm:w-1/4 sm:min-w-[25%]">
         <p className="overflow-auto">{term}</p>
       </div>

@@ -19,7 +19,7 @@ export default function DropDown({ text }: DropDownProps) {
         onClick={handleClick}
         className={twMerge(
           "dropDown relative h-12 w-36",
-          isOpen ? "rounded-t-md" : "rounded-md"
+          isOpen ? "rounded-t-sm" : "rounded-sm"
         )}
       >
         {isOpen ? (
@@ -33,7 +33,7 @@ export default function DropDown({ text }: DropDownProps) {
         <div className="absolute top-12">
           <button className="dropDown h-12 w-36">Latest</button>
           <button className="dropDown h-12 w-36">Quiz Name</button>
-          <button className="dropDown h-12 w-36 rounded-b-md">User Name</button>
+          <button className="dropDown h-12 w-36 rounded-b-sm">User Name</button>
         </div>
       )}
     </div>

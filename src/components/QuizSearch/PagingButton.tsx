@@ -16,21 +16,21 @@ export default function PagingButton({
   return (
     <>
       {dots === "BEFORE" ? (
-        <button className="bg-secondary text-textPrimary text-sm font-semibold rounded-md min-w-10 min-h-10 px-3 py-2">
+        <button className="bg-secondary text-textPrimary text-sm font-semibold rounded-sm min-w-10 min-h-10 px-3 py-2">
           ...
         </button>
       ) : null}
       <button
         onClick={onClick}
         className={twMerge(
-          "bg-secondary text-textPrimary text-sm font-semibold rounded-md min-w-10 min-h-10 px-3 py-2",
+          "bg-secondary text-textPrimary text-sm font-semibold rounded-sm min-w-10 min-h-10 px-3 py-2",
           current ? "bg-lightBlue text-white" : ""
         )}
       >
         {text}
       </button>
       {dots === "AFTER" ? (
-        <button className="bg-secondary text-textPrimary text-sm font-semibold rounded-md min-w-10 min-h-10 px-3 py-2">
+        <button className="bg-secondary text-textPrimary text-sm font-semibold rounded-sm min-w-10 min-h-10 px-3 py-2">
           ...
         </button>
       ) : null}

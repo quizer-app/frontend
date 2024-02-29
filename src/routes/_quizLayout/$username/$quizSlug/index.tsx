@@ -24,7 +24,7 @@ export default function Quiz() {
       {isError && <NotFound />}
       {quiz && (
         <div className="bg-primary w-full text-white px-4 py-10 sm:py-12 md:py-16 lg:py-20">
-          <div className="mx-auto rounded-md max-w-[592px] md:max-w-[720px] lg:max-w-[976px]">
+          <div className="mx-auto rounded-sm max-w-[592px] md:max-w-[720px] lg:max-w-[976px]">
             <h2 className="text-2xl font-bold mb-10 xl:text-3xl">
               {quiz.name}
             </h2>

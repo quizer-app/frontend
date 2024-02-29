@@ -9,7 +9,7 @@ type QuizTileProps = {
 
 export default function QuizTile({ quiz }: QuizTileProps) {
   return (
-    <div className="bg-secondary rounded-md w-full">
+    <div className="bg-secondary rounded-sm w-full">
       <Link
         to={`/$username/$quizSlug`}
         params={{
@@ -26,7 +26,7 @@ export default function QuizTile({ quiz }: QuizTileProps) {
           loading="lazy"
           decoding="async"
           alt="quiz banner"
-          className="w-full rounded-t-md"
+          className="w-full rounded-t-sm"
         />
         <div className="text-white text-sm font-bold absolute top-4 right-4 px-4 py-2 bg-lightBlue rounded-3xl">
           {`${quiz.numberOfQuestions} Questions`}

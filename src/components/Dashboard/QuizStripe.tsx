@@ -11,7 +11,7 @@ export default function QuizStripe({ quiz }: QuizStripeProps) {
       to="/$username/$quizSlug"
       params={{ username: quiz.userName, quizSlug: quiz.slug }}
       search={{ term: 1 }}
-      className="w-full text-white bg-secondary hover:opacity-90 flex flex-col rounded-md py-5 px-6 gap-3"
+      className="w-full text-white bg-secondary hover:opacity-90 flex flex-col rounded-sm py-5 px-6 gap-3"
     >
       <p className="text-2xl font-bold">{quiz.name}</p>
 
