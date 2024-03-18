@@ -18,7 +18,7 @@ export default function QuizStripe({ quiz }: QuizStripeProps) {
       <div className="flex gap-6">
         <p className="font-bold text-textPrimary">{`${quiz.numberOfQuestions} questions`}</p>
         <span className="h-auto w-[1px] bg-textPrimary/50"></span>
-        <p className="text-textPrimary">{quiz.createdAt}</p>
+        <p className="text-textPrimary">{quiz.createdAt.slice(0, 10)}</p>
       </div>
     </Link>
   );

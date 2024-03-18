@@ -8,6 +8,8 @@ export default function NavButtons() {
   const tokenData = useAtomValue(tokenDataAtom);
   const logout = useLogout();
 
+  const username = tokenData?.given_name ? tokenData.given_name : "";
+
   return (
     <div className="hidden sm:block font-bold z-50">
       {isAuthenticated ? (
@@ -15,12 +17,13 @@ export default function NavButtons() {
           <Link
             to={"/$username"}
             params={{
-              username: tokenData?.given_name ? tokenData.given_name : "",
+              username: username,
             }}
             search={{
               pageNumber: 1,
               pageSize: 6,
-              userName: tokenData?.given_name ? tokenData.given_name : "",
+              userName: username,
+              tab: 0,
             }}
             className="py-4 px-6 hover:text-textHover"
           >

@@ -30,20 +30,16 @@ export default function UserQuizes({
         fullPath={fullPath}
         searchParams={{
           ...searchParams,
-          searchTerm: searchParams.searchTerm,
+          searchTerm: searchParams.searchTerm || "",
         }}
       />
       <div className="flex flex-col gap-6">
         {quizes?.items.map((el: QuizResponse, id: number) => {
-          return <QuizStripe quiz={el} key={id}></QuizStripe>;
+          return <QuizStripe quiz={el} key={id} />;
         })}
       </div>
       {quizes?.hasNextPage ? (
         <div>
-          {/* <div className="text-white text-3xl">
-            {fullPath ? fullPath : "XX"}
-          </div> */}
-
           <Link
             from={fullPath}
             search={increaseQuery}

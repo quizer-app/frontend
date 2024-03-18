@@ -6,6 +6,13 @@ interface NavLinksProps {
 }
 
 export default function NavLinks({ isOpen, onClick }: NavLinksProps) {
+  const elements = [
+    { href: "/about", text: "About" },
+    { href: "/users", text: "Users" },
+    { href: "/support", text: "Support" },
+    { href: "/signin", text: "Sign In", auth: true },
+    { href: "/signup", text: "Sign Up", auth: true },
+  ];
   return (
     <div>
       <ul
@@ -25,21 +32,11 @@ export default function NavLinks({ isOpen, onClick }: NavLinksProps) {
         >
           Quizes
         </ListElement>
-        <ListElement href="/about" onClick={onClick}>
-          About
-        </ListElement>
-        <ListElement href="/users" onClick={onClick}>
-          Users
-        </ListElement>
-        <ListElement href="/support" onClick={onClick}>
-          Support
-        </ListElement>
-        <ListElement href="/signin" onClick={onClick} auth={true}>
-          Sign In
-        </ListElement>
-        <ListElement href="/signup" onClick={onClick} auth={true}>
-          Sign Up
-        </ListElement>
+        {elements.map((el, id) => (
+          <ListElement key={id} href={el.href} onClick={onClick} auth={el.auth}>
+            {el.text}
+          </ListElement>
+        ))}
       </ul>
     </div>
   );
