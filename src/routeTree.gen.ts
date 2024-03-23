@@ -18,12 +18,12 @@ import { Route as LayoutImport } from './routes/_layout'
 import { Route as LayoutQuizSearchImport } from './routes/_layout/quiz-search'
 import { Route as LayoutAuthImport } from './routes/_layout/_auth'
 import { Route as QuizLayoutUsernameQuizSlugIndexImport } from './routes/_quizLayout/$username/$quizSlug/index'
+import { Route as QuizLayoutUsernameQuizSlugTestImport } from './routes/_quizLayout/$username/$quizSlug/test'
 import { Route as QuizLayoutUsernameQuizSlugFlashcardsImport } from './routes/_quizLayout/$username/$quizSlug/flashcards'
 
 // Create Virtual Routes
 
 const LayoutIndexLazyImport = createFileRoute('/_layout/')()
-const QuizLayoutTestLazyImport = createFileRoute('/_quizLayout/test')()
 const LayoutVerifiedLazyImport = createFileRoute('/_layout/verified')()
 const LayoutSignupLazyImport = createFileRoute('/_layout/signup')()
 const LayoutSigninLazyImport = createFileRoute('/_layout/signin')()
@@ -56,13 +56,6 @@ const LayoutIndexLazyRoute = LayoutIndexLazyImport.update({
   path: '/',
   getParentRoute: () => LayoutRoute,
 } as any).lazy(() => import('./routes/_layout/index.lazy').then((d) => d.Route))
-
-const QuizLayoutTestLazyRoute = QuizLayoutTestLazyImport.update({
-  path: '/test',
-  getParentRoute: () => QuizLayoutRoute,
-} as any).lazy(() =>
-  import('./routes/_quizLayout/test.lazy').then((d) => d.Route),
-)
 
 const LayoutVerifiedLazyRoute = LayoutVerifiedLazyImport.update({
   path: '/verified',
@@ -130,6 +123,12 @@ const QuizLayoutUsernameQuizSlugIndexRoute =
     getParentRoute: () => QuizLayoutRoute,
   } as any)
 
+const QuizLayoutUsernameQuizSlugTestRoute =
+  QuizLayoutUsernameQuizSlugTestImport.update({
+    path: '/$username/$quizSlug/test',
+    getParentRoute: () => QuizLayoutRoute,
+  } as any)
+
 const QuizLayoutUsernameQuizSlugFlashcardsRoute =
   QuizLayoutUsernameQuizSlugFlashcardsImport.update({
     path: '/$username/$quizSlug/flashcards',
@@ -176,10 +175,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutVerifiedLazyImport
       parentRoute: typeof LayoutImport
     }
-    '/_quizLayout/test': {
-      preLoaderRoute: typeof QuizLayoutTestLazyImport
-      parentRoute: typeof QuizLayoutImport
-    }
     '/_layout/': {
       preLoaderRoute: typeof LayoutIndexLazyImport
       parentRoute: typeof LayoutImport
@@ -194,6 +189,10 @@ declare module '@tanstack/react-router' {
     }
     '/_quizLayout/$username/$quizSlug/flashcards': {
       preLoaderRoute: typeof QuizLayoutUsernameQuizSlugFlashcardsImport
+      parentRoute: typeof QuizLayoutImport
+    }
+    '/_quizLayout/$username/$quizSlug/test': {
+      preLoaderRoute: typeof QuizLayoutUsernameQuizSlugTestImport
       parentRoute: typeof QuizLayoutImport
     }
     '/_quizLayout/$username/$quizSlug/': {
@@ -218,8 +217,8 @@ export const routeTree = rootRoute.addChildren([
     LayoutVerificationTokenLazyRoute,
   ]),
   QuizLayoutRoute.addChildren([
-    QuizLayoutTestLazyRoute,
     QuizLayoutUsernameQuizSlugFlashcardsRoute,
+    QuizLayoutUsernameQuizSlugTestRoute,
     QuizLayoutUsernameQuizSlugIndexRoute,
   ]),
 ])

@@ -42,8 +42,9 @@ export default function Quiz() {
                   to={`/${quiz.location}/flashcards`}
                   search={{ term }}
                 />
+                <Category text="Test" to={`/${quiz.location}/test`} />
+
                 <Category text="Ucz się" />
-                <Category text="Test" />
                 <Category text="Dopasowania" />
               </div>
             </div>

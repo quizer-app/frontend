@@ -12,7 +12,7 @@ export const Route = createFileRoute("/_layout/_auth/$username")({
 export default function Dashboard() {
   const searchParams = Route.useSearch();
   const { username } = Route.useParams();
-  const tabs = ["Information", "Quizes"];
+  const tabs = ["Information", "Quizes", "Activity"];
 
   return (
     <>
