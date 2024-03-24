@@ -1,10 +1,10 @@
 import QuestionNav from "@/components/Quiz/QuestionNav";
-import TestBlock from "@/components/Quiz/TestBlock";
+import TestBlocks from "@/components/Quiz/TestBlocks";
 import Error from "@/components/Status/Error";
 import Loading from "@/components/Status/Loading";
 import useQuizData from "@/hooks/quizes/useQuizData";
 import { createFileRoute } from "@tanstack/react-router";
-import { RefObject, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 export const Route = createFileRoute("/_quizLayout/$username/$quizSlug/test")({
@@ -26,9 +26,10 @@ function Test() {
   const { register, handleSubmit, formState } = useForm<FormFields>();
   const { isSubmitted } = formState;
 
-  const [score, setScore] = useState<number>(0);
   const [answers, setAnswers] = useState<AnswerProps[]>([]);
   const inputRefs = useRef<HTMLInputElement[]>([]);
+  // is state necessarry?
+  const [score, setScore] = useState<number>(0);
 
   const isValid = (answer: string, user: string) => {
     return answer === user;
@@ -72,21 +73,13 @@ function Test() {
               className="flex flex-col gap-10 items-center"
               onSubmit={handleSubmit(onSubmit)}
             >
-              {/* change to test blocks */}
-              {quiz?.questions.map((question, id) => {
-                return (
-                  <TestBlock
-                    key={question.id}
-                    question={question.question}
-                    number={id + 1}
-                    max={quiz.questions.length}
-                    register={register}
-                    isSubmitted={isSubmitted}
-                    isCorrect={answers[id] ? answers[id].isCorrect : false}
-                    inputRefs={inputRefs}
-                  />
-                );
-              })}
+              <TestBlocks
+                quiz={quiz}
+                isSubmitted={isSubmitted}
+                answers={answers}
+                inputRefs={inputRefs}
+                register={register}
+              />
               {!isSubmitted && (
                 <div className="w-full">
                   <button className="bg-lightBlue px-8 py-4 lg:py-5 rounded-sm hover:bg-opacity-95">

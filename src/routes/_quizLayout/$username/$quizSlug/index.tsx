@@ -44,8 +44,8 @@ export default function Quiz() {
                 />
                 <Category text="Test" to={`/${quiz.location}/test`} />
 
-                <Category text="Ucz się" />
-                <Category text="Dopasowania" />
+                <Category text="Coming Soon!" />
+                <Category text="Coming Soon!" />
               </div>
             </div>
             <div className="mb-16">
@@ -56,7 +56,7 @@ export default function Quiz() {
               <p className="overflow-auto">{quiz.description}</p>
             </div>
             <h3 className="text-xl font-bold mb-10 xl:text-2xl">
-              Pojęcia w tym zestawie
+              Terms and Definitions
             </h3>
             <div className="flex flex-col gap-5">
               {quiz.questions.map((el: QuestionResponse, id: number) => {
