@@ -4,7 +4,7 @@ import Error from "@/components/Status/Error";
 import Loading from "@/components/Status/Loading";
 import useQuizData from "@/hooks/quizes/useQuizData";
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { RefObject, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 export const Route = createFileRoute("/_quizLayout/$username/$quizSlug/test")({
@@ -28,6 +28,7 @@ function Test() {
 
   const [score, setScore] = useState<number>(0);
   const [answers, setAnswers] = useState<AnswerProps[]>([]);
+  const inputRefs = useRef<HTMLInputElement[]>([]);
 
   const isValid = (answer: string, user: string) => {
     return answer === user;
@@ -64,6 +65,7 @@ function Test() {
                 answers={answers}
                 score={score}
                 length={quiz ? quiz.questions.length : 0}
+                inputRefs={inputRefs}
               />
             )}
             <form
@@ -81,6 +83,7 @@ function Test() {
                     register={register}
                     isSubmitted={isSubmitted}
                     isCorrect={answers[id] ? answers[id].isCorrect : false}
+                    inputRefs={inputRefs}
                   />
                 );
               })}
