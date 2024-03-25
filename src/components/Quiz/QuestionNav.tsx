@@ -6,7 +6,7 @@ interface QuestionNavProps {
   answers: AnswerProps[];
   score: number;
   length: number;
-  inputRefs: RefObject<HTMLInputElement[]>;
+  inputRefs: RefObject<HTMLElement[]>;
 }
 
 export default function QuestionNav({
@@ -27,12 +27,13 @@ export default function QuestionNav({
   return (
     <>
       <p className="text-3xl font-bold text-green-600">{`Correct: ${score}`}</p>
-      <p className="text-3xl font-bold text-red-600">{`Incorrect: ${length}`}</p>
+      <p className="text-3xl font-bold text-red-600">{`Incorrect: ${length - score}`}</p>
       <div className="fixed top-0 left-10 flex flex-col gap-1 p-4 bg-secondary rounded-sm border-[1px] border-opacity-10 border-white">
         {answers.map((answer, id) => {
           return (
             <button
               onClick={() => onClick(id)}
+              key={id}
               className="flex gap-2 items-center hover:bg-blue-100"
             >
               {answer.isCorrect ? (

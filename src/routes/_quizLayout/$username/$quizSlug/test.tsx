@@ -20,14 +20,17 @@ export interface AnswerProps {
   isCorrect: boolean;
 }
 
-function Test() {
+export default function Test() {
   const { username, quizSlug } = Route.useParams();
   const { isLoading, isError, quiz } = useQuizData(username, quizSlug);
-  const { register, handleSubmit, formState } = useForm<FormFields>();
-  const { isSubmitted } = formState;
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitted },
+  } = useForm<FormFields>();
 
   const [answers, setAnswers] = useState<AnswerProps[]>([]);
-  const inputRefs = useRef<HTMLInputElement[]>([]);
+  const inputRefs = useRef<HTMLElement[]>([]);
   // is state necessarry?
   const [score, setScore] = useState<number>(0);
 
@@ -77,12 +80,15 @@ function Test() {
                 quiz={quiz}
                 isSubmitted={isSubmitted}
                 answers={answers}
-                inputRefs={inputRefs}
                 register={register}
+                inputRefs={inputRefs}
               />
               {!isSubmitted && (
                 <div className="w-full">
-                  <button className="bg-lightBlue px-8 py-4 lg:py-5 rounded-sm hover:bg-opacity-95">
+                  <button
+                    type="submit"
+                    className="bg-lightBlue px-8 py-4 lg:py-5 rounded-sm hover:bg-opacity-95"
+                  >
                     Check Answers
                   </button>
                 </div>
