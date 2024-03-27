@@ -5,16 +5,19 @@ export default function Intro() {
   return (
     <>
       <section className="bg-primary w-full relative">
-        <div className="text-white w-full items-center justify-center pt-14 pb-20 md:pt-20 md:pb-32 lg:pt-28 lg:pb-60">
+        <div
+          className="text-white w-full items-center justify-center 
+        pt-28 pb-36 sm:pt-36 sm:pb-44 md:pt-30 md:pb-40 lg:pt-28 lg:pb-60"
+        >
           <div className="max-w-xl md:max-w-3xl mx-auto flex flex-col gap-8 px-4">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center z-20">
-              Fredsa afg FIX LETTER SPACING WDSAD GEAFD ekflsmfksdl
+              Ignite Your Knowledge with Fun
             </h1>
             <p className="text-lg  lg:text-xl text-center font-semibold z-20">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Praesentium, neque. Excepturi velit cumque accusantium veniam,
-              eveniet non repudiandae possimus officiis, repudiandae possimus
-              officiis!
+              Dive into Quizer for an immersive blend of entertainment and
+              education! Explore captivating quizzes across diverse subjects,
+              from history to science and beyond. Challenge your mind, expand
+              your knowledge, and embark on an exciting journey of discovery.
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-5 font-bold z-20">
               <button className="buttonPrimary">Log Out</button>

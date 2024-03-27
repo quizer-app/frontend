@@ -15,7 +15,7 @@ export default function QuizHeader() {
         <div className="col-start-2 sm:col-start-3 flex items-center ml-auto">
           <DarkModeButton />
           <Link to="/" className="flex pl-3">
-            <X className="w-10 h-10 z-50" />
+            <X className="w-10 h-10 z-50" strokeWidth={1.6} />
           </Link>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import ListElement from "./ListElement";
+import { Link } from "@tanstack/react-router";
 
 interface NavLinksProps {
   isOpen: boolean;
@@ -7,9 +7,12 @@ interface NavLinksProps {
 
 export default function NavLinks({ isOpen, onClick }: NavLinksProps) {
   const elements = [
-    { href: "/about", text: "About" },
-    { href: "/users", text: "Users" },
-    { href: "/support", text: "Support" },
+    { href: "/", text: "Home" },
+    {
+      href: "/quiz-search",
+      text: "Quizes",
+      search: { pageNumber: 1, pageSize: 6 },
+    },
     { href: "/signin", text: "Sign In", auth: true },
     { href: "/signup", text: "Sign Up", auth: true },
   ];
@@ -25,17 +28,17 @@ export default function NavLinks({ isOpen, onClick }: NavLinksProps) {
           
           `}
       >
-        <ListElement
-          href="/quiz-search"
-          onClick={onClick}
-          search={{ pageNumber: 1, pageSize: 3 }}
-        >
-          Quizes
-        </ListElement>
         {elements.map((el, id) => (
-          <ListElement key={id} href={el.href} onClick={onClick} auth={el.auth}>
-            {el.text}
-          </ListElement>
+          <li key={id} className={`${el.auth ? "sm:hidden" : ""}`}>
+            <Link
+              className={`${el.auth ? "" : "lg:w-auto"} flex w-52 textHover`}
+              onClick={onClick}
+              to={el.href}
+              search={el.search}
+            >
+              {el.text}
+            </Link>
+          </li>
         ))}
       </ul>
     </div>

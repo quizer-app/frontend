@@ -37,9 +37,19 @@ export default function QuestionNav({
               className="flex gap-2 items-center hover:bg-blue-100"
             >
               {answer.isCorrect ? (
-                <Check key={id} size={22} className="text-green-600" />
+                <Check
+                  key={id}
+                  size={22}
+                  className="text-green-600"
+                  strokeWidth={1.6}
+                />
               ) : (
-                <X key={id} size={22} className="text-red-600" />
+                <X
+                  key={id}
+                  size={22}
+                  className="text-red-600"
+                  strokeWidth={1.6}
+                />
               )}
               <p className="pb-[2px]">{answer.number}</p>
             </button>

@@ -23,9 +23,15 @@ export default function DropDown({ text }: DropDownProps) {
         )}
       >
         {isOpen ? (
-          <ChevronUp className="absolute top-[12px] right-3" />
+          <ChevronUp
+            className="absolute top-[12px] right-3"
+            strokeWidth={1.6}
+          />
         ) : (
-          <ChevronDown className="absolute top-[12px] right-3" />
+          <ChevronDown
+            className="absolute top-[12px] right-3"
+            strokeWidth={1.6}
+          />
         )}
         {text}
       </button>

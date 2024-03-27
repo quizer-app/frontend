@@ -53,13 +53,16 @@ export default function SearchInput({
         onClick={() => inputRef.current?.focus()}
         color="white"
         className="absolute top-3 left-3 cursor-text"
+        strokeWidth={1.6}
       />
+      {/* avoid types */}
       {searchParams.searchTerm !== "" &&
         (fullPath === "/$username" ? (
           <Link from={fullPath} search={clearInput} replace>
             <XCircle
               color="#959CB1"
               className="absolute top-3 right-3 cursor-pointer"
+              strokeWidth={1.6}
             />
           </Link>
         ) : (
@@ -67,6 +70,7 @@ export default function SearchInput({
             <XCircle
               color="#959CB1"
               className="absolute top-3 right-3 cursor-pointer"
+              strokeWidth={1.6}
             />
           </Link>
         ))}
