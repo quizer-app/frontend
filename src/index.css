@@ -11,11 +11,11 @@
 }
 
 .buttonPrimary {
-  @apply bg-lightBlue py-4 px-8 rounded-md hover:bg-opacity-95 text-white font-bold;
+  @apply bg-lightBlue py-4 px-8 rounded-sm hover:bg-opacity-95 text-white font-bold;
 }
 
 .buttonSecondary {
-  @apply rounded-md text-white text-xl transition duration-100;
+  @apply rounded-sm text-white text-xl transition duration-100;
 }
 
 .dropDown {

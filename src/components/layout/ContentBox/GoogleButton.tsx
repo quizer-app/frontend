@@ -7,7 +7,7 @@ interface GoogleButtonProps {
 export default function GoogleButton({ children }: GoogleButtonProps) {
   return (
     <button
-      className="text-textPrimary bg-input shadow-md rounded-md font-medium w-full py-3
+      className="text-textPrimary bg-input shadow-md rounded-sm font-medium w-full py-3
                   flex items-center justify-center gap-3 hover:text-white mb-6"
     >
       <span>

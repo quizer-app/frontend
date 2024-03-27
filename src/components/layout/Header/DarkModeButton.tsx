@@ -14,9 +14,9 @@ export default function DarkModeButton() {
     <div className="flex p-3 lg:pr-0 z-50">
       <button onClick={toggleDarkMode}>
         {theme === "dark" ? (
-          <Sun className="w-8 h-8 lg:w-9 lg:h-9" />
+          <Sun className="w-8 h-8 lg:w-9 lg:h-9" strokeWidth={1.6} />
         ) : (
-          <Moon className="w-8 h-8 lg:w-9 lg:h-9" />
+          <Moon className="w-8 h-8 lg:w-9 lg:h-9" strokeWidth={1.6} />
         )}
       </button>
     </div>
