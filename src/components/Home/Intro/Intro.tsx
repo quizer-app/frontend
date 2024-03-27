@@ -7,7 +7,7 @@ export default function Intro() {
       <section className="bg-primary w-full relative">
         <div
           className="text-white w-full items-center justify-center 
-        pt-28 pb-36 sm:pt-36 sm:pb-44 md:pt-30 md:pb-40 lg:pt-28 lg:pb-60"
+        pt-28 pb-36 sm:pt-36 sm:pb-44 md:pt-36 md:pb-44 lg:pt-44 lg:pb-60"
         >
           <div className="max-w-xl md:max-w-3xl mx-auto flex flex-col gap-8 px-4">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center z-20">
