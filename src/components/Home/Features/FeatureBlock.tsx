@@ -1,19 +1,21 @@
 interface FeatureBlockProps {
   title: string;
-  description: string;
+  desc: string;
+  children: React.ReactNode;
 }
 
 export default function FeatureBlock({
   title,
-  description,
+  desc,
+  children,
 }: FeatureBlockProps) {
   return (
     <div className="flex flex-col w-full">
       <div className="w-[4.5rem] h-[4.5rem] bg-lightBlue/10 rounded-sm mb-8 flex items-center justify-center">
-        <div className="w-10 h-10 bg-lightBlue rounded-sm"></div>
+        {children}
       </div>
       <h3 className="text-xl sm:text-2xl font-bold mb-4">{title}</h3>
-      <p className="text-textPrimary font-medium">{description}</p>
+      <p className="text-textPrimary font-medium">{desc}</p>
     </div>
   );
 }
