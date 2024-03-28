@@ -6,12 +6,16 @@ interface NavLinksProps {
 }
 
 export default function NavLinks({ isOpen, onClick }: NavLinksProps) {
-  const elements = [
+  const data = [
     { href: "/", text: "Home" },
     {
       href: "/quiz-search",
       text: "Quizes",
       search: { pageNumber: 1, pageSize: 6 },
+    },
+    {
+      href: "/support",
+      text: "Support",
     },
     { href: "/signin", text: "Sign In", auth: true },
     { href: "/signup", text: "Sign Up", auth: true },
@@ -28,7 +32,7 @@ export default function NavLinks({ isOpen, onClick }: NavLinksProps) {
           
           `}
       >
-        {elements.map((el, id) => (
+        {data.map((el, id) => (
           <li key={id} className={`${el.auth ? "sm:hidden" : ""}`}>
             <Link
               className={`${el.auth ? "" : "lg:w-auto"} flex w-52 textHover`}

@@ -7,13 +7,13 @@ export default function Intro() {
       <section className="bg-primary w-full relative">
         <div
           className="text-white w-full items-center justify-center 
-        pt-28 pb-36 sm:pt-36 sm:pb-44 md:pt-36 md:pb-44 lg:pt-44 lg:pb-60"
+        pt-28 pb-36 sm:pt-36 sm:pb-44 md:pt-36 md:pb-44 lg:pt-36 lg:pb-60"
         >
           <div className="max-w-xl md:max-w-3xl mx-auto flex flex-col gap-8 px-4">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center z-20">
               Ignite Your Knowledge with Fun
             </h1>
-            <p className="text-lg  lg:text-xl text-center font-semibold z-20">
+            <p className="text-lg  lg:text-xl text-center font-semibold text-textPrimary z-20">
               Dive into Quizer for an immersive blend of entertainment and
               education! Explore captivating quizzes across diverse subjects,
               from history to science and beyond. Challenge your mind, expand
