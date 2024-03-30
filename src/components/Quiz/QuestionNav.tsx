@@ -28,7 +28,7 @@ export default function QuestionNav({
     <>
       <p className="text-3xl font-bold text-green-600">{`Correct: ${score}`}</p>
       <p className="text-3xl font-bold text-red-600">{`Incorrect: ${length - score}`}</p>
-      <div className="fixed top-0 left-10 flex flex-col gap-1 p-4 bg-secondary rounded-sm border-[1px] border-opacity-10 border-white">
+      <div className="fixed top-0 left-10 flex flex-col gap-1 p-4 bg-secondary dark:bg-secondaryDark rounded-sm border-[1px] border-opacity-10 border-white">
         {answers.map((answer, id) => {
           return (
             <button

@@ -61,7 +61,7 @@ export default function Test() {
     <>
       {isLoading && <Loading />}
       {isError && <Error />}
-      <div className="bg-primary text-white px-4 py-10 sm:py-14 md:py-16 lg:py-20 relative">
+      <div className="bg-primary dark:bg-primaryDark text-white px-4 py-10 sm:py-14 md:py-16 lg:py-20 relative">
         <div className="mx-auto rounded-sm max-w-[592px] md:max-w-[720px] lg:max-w-[976px]">
           <div className="flex flex-col gap-10 w-full mb-16">
             {isSubmitted && (

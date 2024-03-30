@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .textHover {
-  @apply hover:text-textHover ease-out duration-200 cursor-pointer;
+  @apply hover:text-textHover dark:hover:text-textHoverDark ease-out duration-200 cursor-pointer;
 }
 
 .mainContainer {
@@ -19,5 +19,5 @@
 }
 
 .dropDown {
-  @apply bg-secondary text-white text-xl text-left pl-5;
+  @apply bg-secondary dark:bg-secondaryDark text-white text-xl text-left pl-5;
 }

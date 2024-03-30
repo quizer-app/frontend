@@ -8,7 +8,7 @@ export const Route = createFileRoute("/_layout/support")({
 
 export default function Support() {
   return (
-    <div className="w-full bg-primary">
+    <div className="w-full bg-primary dark:bg-primaryDark">
       <div className="mainContainer mx-auto py-12">
         <div className="max-w-xl">
           <h2 className="text-white font-bold text-2xl sm:text-3xl mb-6">

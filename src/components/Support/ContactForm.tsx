@@ -1,6 +1,6 @@
 export default function ContactForm() {
   return (
-    <div className="w-full bg-secondary rounded-sm p-8 lg:basis-2/3">
+    <div className="w-full bg-secondary dark:bg-secondaryDark rounded-sm p-8 lg:basis-2/3">
       <h3 className="text-white text-2xl sm:text-3xl font-bold mb-4">
         Need Help? Open a Ticket
       </h3>
@@ -14,7 +14,7 @@ export default function ContactForm() {
             <input
               type="text"
               placeholder="Enter your name"
-              className="bg-input text-textPrimary rounded-sm w-full py-3 pl-6 shadow-md
+              className="bg-input dark:bg-inputDark text-textPrimary rounded-sm w-full py-3 pl-6 shadow-md
                 border border-transparent focus:border-lightBlue outline-none mb-5"
             />
           </div>
@@ -23,7 +23,7 @@ export default function ContactForm() {
             <input
               type="text"
               placeholder="Enter your email"
-              className="bg-input text-textPrimary rounded-sm w-full py-3 pl-6 shadow-md
+              className="bg-input dark:bg-inputDark text-textPrimary rounded-sm w-full py-3 pl-6 shadow-md
                 border border-transparent focus:border-lightBlue outline-none mb-5"
             />
           </div>
@@ -33,8 +33,8 @@ export default function ContactForm() {
         <textarea
           placeholder="Enter your message"
           rows={4}
-          className="bg-input text-textPrimary rounded-sm w-full py-3 pl-6 shadow-md
-                border border-transparent focus:border-lightBlue outline-none mb-5 resize-none"
+          className="bg-input dark:bg-inputDark text-textPrimary rounded-sm w-full py-3 pl-6 shadow-md
+                border border-transparent focus:border-lightBlue outline-none mb-5 resiz"
         />
 
         <div>

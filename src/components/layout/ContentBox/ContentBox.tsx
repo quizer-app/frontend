@@ -4,8 +4,8 @@ interface ContentBoxProps {
 
 export default function ContentBox({ children }: ContentBoxProps) {
   return (
-    <div className="bg-primary w-full text-white px-4 py-14 md:py-16 lg:py-20">
-      <div className="bg-secondary mx-auto rounded-sm max-w-[420px] sm:max-w-[500px] py-10 px-6 sm:p-[60px]">
+    <div className="bg-primary dark:bg-primaryDark w-full text-white px-4 py-14 md:py-16 lg:py-20">
+      <div className="bg-secondary dark:bg-secondaryDark mx-auto rounded-sm max-w-[420px] sm:max-w-[500px] py-10 px-6 sm:p-[60px]">
         {children}
       </div>
     </div>

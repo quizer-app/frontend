@@ -4,9 +4,9 @@ import Top from "./Top";
 export default function Intro() {
   return (
     <>
-      <section className="bg-primary w-full relative">
+      <section className="bg-primary dark:bg-primaryDark w-full relative">
         <div
-          className="text-white w-full items-center justify-center 
+          className="text-black dark:text-white w-full items-center justify-center 
         pt-28 pb-36 sm:pt-36 sm:pb-44 md:pt-36 md:pb-44 lg:pt-36 lg:pb-60"
         >
           <div className="max-w-xl md:max-w-3xl mx-auto flex flex-col gap-8 px-4">

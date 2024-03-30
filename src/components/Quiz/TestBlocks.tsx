@@ -35,7 +35,7 @@ export default function TestBlocks({
           <div
             key={id}
             ref={element => setInputRef(element, id)}
-            className="bg-secondary flex flex-col justify-between rounded-sm w-full px-6 py-12 gap-8"
+            className="bg-secondary dark:bg-secondaryDark flex flex-col justify-between rounded-sm w-full px-6 py-12 gap-8"
           >
             <div className="flex items-center justify-between font-semibold pb-20">
               <p className="text-lg">{question.question}</p>
@@ -44,7 +44,7 @@ export default function TestBlocks({
 
             {!(answers[id] ? answers[id].isCorrect : false) && isSubmitted && (
               <input
-                className="bg-input text-textPrimary autofill:bg-input rounded-sm w-full py-3 pl-6 shadow-md border border-green-600 outline-none"
+                className="bg-input dark:bg-inputDark text-textPrimary autofill:bg-input dark:autofill:bg-inputDark rounded-sm w-full py-3 pl-6 shadow-md border border-green-600 outline-none"
                 autoComplete="off"
                 value={quiz.questions[id].answers[0].text}
                 readOnly={isSubmitted}
@@ -53,7 +53,7 @@ export default function TestBlocks({
             <input
               {...register(`${id + 1}`)}
               className={twMerge(
-                "bg-input text-textPrimary autofill:bg-input rounded-sm w-full py-3 pl-6 shadow-md border border-transparent outline-none",
+                "bg-input dark:bg-inputDark text-textPrimary autofill:bg-input dark:autofill:bg-inputDark rounded-sm w-full py-3 pl-6 shadow-md border border-transparent outline-none",
                 isSubmitted
                   ? (answers[id] ? answers[id].isCorrect : false)
                     ? "border-green-600"

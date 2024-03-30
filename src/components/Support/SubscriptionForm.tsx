@@ -1,6 +1,6 @@
 export default function SubscriptionForm() {
   return (
-    <div className="w-full bg-secondary rounded-sm p-8 text-white flex flex-col lg:flex-1">
+    <div className="w-full bg-secondary dark:bg-secondaryDark rounded-sm p-8 text-white flex flex-col lg:flex-1">
       <h3 className="text-white text-2xl font-bold mb-4">
         Subscribe to receive future updates
       </h3>
@@ -13,13 +13,13 @@ export default function SubscriptionForm() {
         <input
           type="text"
           placeholder="Enter your name"
-          className="bg-input text-textPrimary rounded-sm w-full py-3 pl-6 shadow-md
+          className="bg-input dark:bg-inputDark text-textPrimary rounded-sm w-full py-3 pl-6 shadow-md
                 border border-transparent focus:border-lightBlue outline-none mb-5"
         />
         <input
           type="text"
           placeholder="Enter your name"
-          className="bg-input text-textPrimary rounded-sm w-full py-3 pl-6 shadow-md
+          className="bg-input dark:bg-inputDark text-textPrimary rounded-sm w-full py-3 pl-6 shadow-md
               border border-transparent focus:border-lightBlue outline-none mb-5"
         />
         <button

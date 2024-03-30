@@ -9,7 +9,7 @@ export default function Arrow({ dir }: ArrowProps) {
     <button
       aria-label={`${dir === "right" ? "Next question" : "Previous question"}`}
       className="group flex w-10 h-10 md:w-12 md:h-12 items-center justify-center 
-      rounded-full shadow-md transition bg-secondary ring-[0.5px] ring-lightBlueB/30 hover:ring-lightBlue/60"
+      rounded-full shadow-md transition bg-secondary dark:bg-secondaryDark ring-[0.5px] ring-lightBlueB/30 hover:ring-lightBlue/60"
     >
       <svg
         viewBox="0 0 16 16"

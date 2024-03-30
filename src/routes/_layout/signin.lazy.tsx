@@ -107,7 +107,7 @@ function SignIn() {
           <input
             type="checkbox"
             {...register("rememberMe")}
-            className="bg-secondary"
+            className="bg-secondary dark:bg-secondaryDark"
             id="rememberMe"
           />
           <label

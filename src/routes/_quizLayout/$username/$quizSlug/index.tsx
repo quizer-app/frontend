@@ -23,7 +23,7 @@ export default function Quiz() {
       {isLoading && <Loading />}
       {isError && <NotFound />}
       {quiz && (
-        <div className="bg-primary w-full text-white px-4 py-10 sm:py-12 md:py-16 lg:py-20">
+        <div className="bg-primary dark:bg-primaryDark w-full text-white px-4 py-10 sm:py-12 md:py-16 lg:py-20">
           <div className="mx-auto rounded-sm max-w-[592px] md:max-w-[720px] lg:max-w-[976px]">
             <h2 className="text-2xl font-bold mb-10 xl:text-3xl">
               {quiz.name}

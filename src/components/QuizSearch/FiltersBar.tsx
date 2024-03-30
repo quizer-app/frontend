@@ -30,7 +30,9 @@ export default function FiltersBar({
                 key={id}
                 className={twMerge(
                   "buttonSecondary w-12 h-12 flex items-center justify-center",
-                  searchParams.pageSize === el ? "bg-lightBlue" : "bg-secondary"
+                  searchParams.pageSize === el
+                    ? "bg-lightBlue"
+                    : "bg-secondary dark:bg-secondaryDark"
                 )}
                 replace
               >

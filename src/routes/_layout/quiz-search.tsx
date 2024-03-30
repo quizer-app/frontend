@@ -21,7 +21,7 @@ function QuizSearch() {
 
   return (
     <>
-      <div className="bg-primary flex items-center justify-center gap-20 p-20">
+      <div className="bg-primary dark:bg-primaryDark flex items-center justify-center gap-20 p-20">
         <FiltersBar fullPath="/quiz-search" searchParams={searchParams} />
         {quizes && (
           <PagingBar
@@ -32,7 +32,7 @@ function QuizSearch() {
         )}
       </div>
 
-      <div className="bg-primary flex-col gap-16 w-full flex items-center justify-center py-14 md:py-16 lg:py-20">
+      <div className="bg-primary dark:bg-primaryDark flex-col gap-16 w-full flex items-center justify-center py-14 md:py-16 lg:py-20">
         {isLoading && <Loading />}
         {isError && <NotFound />}
         {quizes?.items.length !== 0 ? (

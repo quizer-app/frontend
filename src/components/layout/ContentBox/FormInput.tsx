@@ -34,7 +34,7 @@ export function FormInput({
         type={type}
         {...register(name)}
         placeholder={placeholder}
-        className="bg-input text-textPrimary rounded-sm w-full py-3 pl-6 shadow-md
+        className="bg-input dark:bg-inputDark text-textPrimary rounded-sm w-full py-3 pl-6 shadow-md
                     border border-transparent focus:border-lightBlue outline-none"
       />
       {errors && errors[name] && (

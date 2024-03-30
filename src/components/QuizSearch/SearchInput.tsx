@@ -46,7 +46,7 @@ export default function SearchInput({
         onChange={e => handleChange(e.target.value)}
         value={searchParams.searchTerm}
         ref={inputRef}
-        className="bg-secondary w-full rounded-sm p-3 text-textPrimary pl-12 focus:outline-none min-w-99"
+        className="bg-secondary dark:bg-secondaryDark w-full rounded-sm p-3 text-textPrimary pl-12 focus:outline-none min-w-99"
         placeholder="Search for quizes..."
       />
       <SearchIcon

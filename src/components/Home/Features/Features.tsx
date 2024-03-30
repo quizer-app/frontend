@@ -38,7 +38,7 @@ export default function Features() {
   ];
 
   return (
-    <section className="bg-primary/2 w-full text-white">
+    <section className="bg-primary/2 dark:bg-primaryDark/2 w-full text-black dark:text-white">
       <div className="flex flex-col gap-28 py-16 md:py-20 lg:py-28 px-4 mainContainer mx-auto">
         <div className="max-w-md sm:max-w-lg mx-auto">
           <h2 className="font-bold mb-5 text-center text-3xl md:text-4xl">

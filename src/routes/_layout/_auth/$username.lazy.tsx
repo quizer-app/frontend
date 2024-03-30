@@ -16,7 +16,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="bg-primary w-full text-white">
+      <div className="bg-primary dark:bg-primaryDark w-full text-white">
         <div className="flex flex-col gap-14 py-16 md:py-20 lg:py-28 px-4 items-end mainContainer mx-auto justify-between md:flex-row">
           <div className="flex gap-8 items-center">
             <div className="w-16 h-16 rounded-full bg-lightBlue"></div>
@@ -35,7 +35,7 @@ export default function Dashboard() {
                   })}
                   key={id}
                   className={twMerge(
-                    "buttonSecondary bg-secondary px-5 py-3",
+                    "buttonSecondary bg-secondary dark:bg-secondaryDark px-5 py-3",
                     searchParams.tab === id && "bg-lightBlue"
                   )}
                   replace

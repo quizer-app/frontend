@@ -9,7 +9,7 @@ type QuizTileProps = {
 
 export default function QuizTile({ quiz }: QuizTileProps) {
   return (
-    <div className="bg-secondary rounded-sm w-full">
+    <div className="bg-secondary dark:bg-secondaryDark rounded-sm w-full">
       <Link
         to={`/$username/$quizSlug`}
         params={{
