@@ -11,13 +11,15 @@ export default function Support() {
     <div className="w-full bg-primary">
       <div className="mainContainer mx-auto py-12">
         <div className="max-w-xl">
-          <h2 className="text-white font-bold text-2xl mb-6">Support Page</h2>
-          <p className="text-textPrimary font-semibold mb-12">
+          <h2 className="text-white font-bold text-2xl sm:text-3xl mb-6">
+            Support Page
+          </h2>
+          <p className="text-textPrimary mb-12">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
             minima cupiditate dignissimos ipsum consectetur architecto.
           </p>
         </div>
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col lg:flex-row gap-10">
           <ContactForm />
           <SubscriptionForm />
         </div>
