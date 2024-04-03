@@ -2,7 +2,7 @@
 
 ## Description
 
-Quizer is a web application that allows users to create and take quizzes. Users can create quizzes and add questions to them. They can also take quizzes created by other users. The application will keep track of the user's score and display it at the end of the quiz. Users can also view their past scores on their profile page.
+Quizer is a web application enabling quiz creation and participation. It facilitates quiz creation with features to add questions and allows taking quizzes crafted by others. The application tracks and displays scores post-quiz and provides a profile page to review past scores.
 
 ## Backend
 
