@@ -1,3 +1,4 @@
+import { twMerge } from "tailwind-merge";
 import Bottom from "./Bottom";
 import Top from "./Top";
 
@@ -20,8 +21,12 @@ export default function Intro() {
               your knowledge, and embark on an exciting journey of discovery.
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-5 font-bold z-20">
-              <button className="buttonPrimary">Log Out</button>
-              <button className="buttonPrimary">Log Out</button>
+              <button className="bg-lightBlue py-4 px-10 rounded-sm hover:bg-opacity-95 text-white font-bold">
+                Get Pro
+              </button>
+              <button className="bg-secondaryDark py-4 px-10 rounded-sm hover:bg-opacity-95 text-white font-bold">
+                Star on GitHub
+              </button>
             </div>
           </div>
         </div>
